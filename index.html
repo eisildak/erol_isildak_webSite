@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="Erol Isildak | Manual & Automation Test Engineer" data-tr="Erol Işıldak | Manuel & Otomasyon Test Mühendisi">Erol Isildak | Manual & Automation Test Engineer</title>
+    <!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+        }
+        .nav-link {
+            @apply px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100 transition-colors duration-200;
+        }
+        .skill-badge {
+            @apply bg-blue-100 text-blue-800 text-sm font-medium px-4 py-1.5 rounded-full;
+        }
+        .project-badge {
+            @apply bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full;
+        }
+        /* Mobile nav toggle button styles */
+        .mobile-menu-button {
+            @apply sm:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white;
+        }
+        .mobile-menu {
+            @apply sm:hidden;
+        }
+        .mobile-menu a {
+            @apply block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-100;
+        }
+    </style>
+</head>
+<body class="text-gray-900">
+
+    <!-- Header & Navigasyon --><nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-md">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Sol Taraf: İsim --><div class="flex-shrink-0">
+                    <span class="text-2xl font-bold text-blue-600">Erol Isildak</span>
+                </div>
+                <!-- Sağ Taraf: Navigasyon Linkleri ve Dil Seçeneği --><div class="hidden sm:flex sm:items-center sm:ml-6">
+                    <div class="flex space-x-4 mr-4">
+                        <a href="#about" class="nav-link" data-en="About" data-tr="Hakkımda">About</a>
+                        <a href="#experience" class="nav-link" data-en="Experience" data-tr="Deneyim">Experience</a>
+                        <a href="#skills" class="nav-link" data-en="Skills" data-tr="Yetenekler">Skills</a>
+                        <a href="#projects" class="nav-link" data-en="Projects" data-tr="Projeler">Projects</a>
+                        <a href="#education" class="nav-link" data-en="Education" data-tr="Eğitim">Education</a>
+                        <a href="#contact" class="nav-link bg-blue-500 text-white hover:bg-blue-600 hover:text-white" data-en="Contact" data-tr="İletişim">Contact</a>
+                    </div>
+                    <!-- Dil Seçeneği --><div class="relative">
+                        <select id="language-switcher" class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md bg-white">
+                            <option value="en">English</option>
+                            <option value="tr">Türkçe</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Mobil menü düğmesi ve dil seçeneği --><div class="flex sm:hidden">
+                    <div class="relative mr-2">
+                        <select id="language-switcher-mobile" class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md bg-white">
+                            <option value="en">EN</option>
+                            <option value="tr">TR</option>
+                        </select>
+                    </div>
+                    <button type="button" class="mobile-menu-button" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. --><div class="mobile-menu hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#about" class="nav-link" data-en="About" data-tr="Hakkımda">About</a>
+                <a href="#experience" class="nav-link" data-en="Experience" data-tr="Deneyim">Experience</a>
+                <a href="#skills" class="nav-link" data-en="Skills" data-tr="Yetenekler">Skills</a>
+                <a href="#projects" class="nav-link" data-en="Projects" data-tr="Projeler">Projects</a>
+                <a href="#education" class="nav-link" data-en="Education" data-tr="Eğitim">Education</a>
+                <a href="#contact" class="nav-link bg-blue-500 text-white hover:bg-blue-600 hover:text-white" data-en="Contact" data-tr="İletişim">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Ana İçerik Alanı --><main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Hero Bölümü --><header id="about" class="text-center py-16 sm:py-24">
+            <div class="flex flex-col items-center justify-center">
+                <img src="https://i.imgur.com/rN5Lz0c.png" alt="Erol Isildak" class="w-40 h-40 rounded-full object-cover shadow-lg mb-8 border-4 border-white">
+                
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-gray-900 leading-tight">
+                    Erol Isildak
+                </h1>
+                <p class="mt-4 text-xl sm:text-2xl text-blue-600 font-medium" data-en="Manual & Automation Test Engineer" data-tr="Manuel & Otomasyon Test Mühendisi">
+                    Manual & Automation Test Engineer
+                </p>
+                <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-600" data-en="Quality Manager with over 6 years of experience in Manual and Automation Testing. Promoted to Mobile Test Engineer at Pointr, leveraging my expertise in test framework development and mobile platform testing. Proven track record of enhancing workflow efficiency and driving quality assurance initiatives with a detail-oriented and adaptable approach." data-tr="Manuel ve Otomasyon Test alanında 6 yıldan fazla deneyime sahip Kalite Yöneticisi. Test çerçevesi geliştirme ve mobil platform testi konusundaki uzmanlığımdan yararlanarak Pointr'da Mobil Test Mühendisi olarak terfi ettim. İş akışı verimliliğini artırma ve ayrıntı odaklı ve uyarlanabilir bir yaklaşımla kalite güvence girişimlerini yönlendirme konusunda kanıtlanmış bir geçmişe sahibim.">
+                    Quality Manager with over 6 years of experience in Manual and Automation Testing. Promoted to Mobile Test Engineer at Pointr, leveraging my expertise in test framework development and mobile platform testing. Proven track record of enhancing workflow efficiency and driving quality assurance initiatives with a detail-oriented and adaptable approach.
+                </p>
+                <!-- İletişim İkonları --><div id="contact" class="mt-10 flex items-center justify-center flex-wrap gap-x-6 gap-y-4">
+                    <a href="tel:+905535727776" class="flex items-center text-gray-700 hover:text-blue-600 transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                        +90 (553) 572-7776
+                    </a>
+                    <a href="mailto:ei@fruveg.de" class="flex items-center text-gray-700 hover:text-blue-600 transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        ei@fruveg.de
+                    </a>
+                    <span class="flex items-center text-gray-700" data-en="Turkey/Kayseri" data-tr="Turkiye/Kayseri">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        Turkey/Kayseri
+                    </span>
+                    <a href="https://www.linkedin.com/in/erol-isildak-softwaretester/" target="_blank" rel="noopener noreferrer" class="flex items-center text-gray-700 hover:text-blue-600 transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/eisildak" target="_blank" rel="noopener noreferrer" class="flex items-center text-gray-700 hover:text-blue-600 transition-colors">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.49.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.091-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.951 0-1.093.39-1.988 1.03-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.84a9.564 9.564 0 012.518.337c1.91-1.296 2.747-1.026 2.747-1.026.546 1.378.203 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.85-2.339 4.695-4.566 4.942.359.309.678.92.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.003 10.003 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Deneyim Bölümü --><section id="experience" class="py-20">
+            <h2 class="text-3xl font-bold tracking-tight text-center mb-12 flex items-center justify-center gap-3" data-en="Work Experience" data-tr="İş Deneyimi">
+                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-1.208-8.455-3.245m16.91 0c.928.188 1.8.375 2.602.574m-16.91 0c-.928.188-1.8.375-2.602.574m0 0a2.25 2.25 0 01-2.25-2.25v-10h21.5V11a2.25 2.25 0 01-2.25 2.25z"></path></svg>
+                Work Experience
+            </h2>
+            <div class="relative max-w-2xl mx-auto">
+                <!-- Dikey Çizgi --><div class="absolute left-4 sm:left-1/2 top-0 h-full w-0.5 bg-blue-200" aria-hidden="true"></div>
+
+                <!-- Deneyim Öğeleri --><div class="space-y-12">
+
+                    <!-- Deneyim 1: Pointr --><div class="relative">
+                        <div class="sm:flex sm:items-start sm:space-x-8">
+                            <!-- Tarih (Sol/Üst) --><div class="w-full sm:w-1/2 sm:text-right">
+                                <span class="block text-sm font-medium text-gray-500">OCT '23 – Present</span>
+                            </div>
+                            <!-- İçerik (Sağ/Alt) --><div class="w-full sm:w-1/2 mt-2 sm:mt-0 sm:pl-8 relative">
+                                <div class="absolute -left-[5px] sm:left-[-34px] top-1 w-4 h-4 bg-blue-600 rounded-full border-4 border-white"></div>
+                                <div class="p-6 bg-white rounded-lg shadow-lg border border-gray-200">
+                                    <h3 class="text-xl font-semibold" data-en="Mobile Test Engineer" data-tr="Mobil Test Mühendisi">Mobile Test Engineer</h3>
+                                    <p class="text-lg text-gray-700" data-en="Pointr Deep Location Company, England" data-tr="Pointr Deep Location Company, İngiltere">Pointr Deep Location Company, England</p>
+                                    <ul class="mt-3 list-disc list-inside space-y-1 text-gray-600">
+                                        <li data-en="Promoted to Mobile Test Engineer, overseeing comprehensive mobile testing on Android and iOS platforms." data-tr="Android ve iOS platformlarında kapsamlı mobil testi denetleyen Mobil Test Mühendisi pozisyonuna terfi ettim.">Promoted to Mobile Test Engineer, overseeing comprehensive mobile testing on Android and iOS platforms.</li>
+                                        <li data-en="Developed and maintained a robust Manual and Automation Test Framework using Cypress (JavaScript)." data-tr="Cypress (JavaScript) kullanarak güçlü bir Manuel ve Otomasyon Test Çerçevesi geliştirdim ve sürdürdüm.">Developed and maintained a robust Manual and Automation Test Framework using Cypress (JavaScript).</li>
+                                        <li data-en="Led mobile testing initiatives, including the use of Charles Proxy for network analysis." data-tr="Mobil test girişimlerine liderlik ettim, buna ağ analizi için Charles Proxy kullanımı da dahildir.">Led mobile testing initiatives, including the use of Charles Proxy for network analysis.</li>
+                                        <li data-en="Enhanced workflow efficiency through Kanban & Agile methodologies and automated daily smoke tests via JIRA." data-tr="Kanban & Agile metodolojileriyle iş akışı verimliliğini artırdım ve JIRA aracılığıyla günlük smoke testlerini otomatikleştirdim.">Enhanced workflow efficiency through Kanban & Agile methodologies and automated daily smoke tests via JIRA.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Deneyim 2: Optimum7 --><div class="relative">
+                        <div class="sm:flex sm:items-start sm:space-x-8 sm:flex-row-reverse">
+                            <!-- Tarih (Sağ/Üst) --><div class="w-full sm:w-1/2 sm:text-left sm:pl-8">
+                                <span class="block text-sm font-medium text-gray-500">MAY '22 – OCTOBER '23</span>
+                            </div>
+                            <!-- İçerik (Sol/Alt) --><div class="w-full sm:w-1/2 mt-2 sm:mt-0 sm:pr-8 relative">
+                                <div class="absolute -left-[5px] sm:right-[-34px] sm:left-auto top-1 w-4 h-4 bg-blue-600 rounded-full border-4 border-white"></div>
+                                <div class="p-6 bg-white rounded-lg shadow-lg border border-gray-200">
+                                    <h3 class="text-xl font-semibold" data-en="QA Test Engineer (Manual)" data-tr="QA Test Mühendisi (Manuel)">QA Test Engineer (Manual)</h3>
+                                    <p class="text-lg text-gray-700" data-en="Optimum7, USA" data-tr="Optimum7, ABD">Optimum7, USA</p>
+                                    <ul class="mt-3 list-disc list-inside space-y-1 text-gray-600">
+                                        <li data-en="Designed and implemented a Manual Test Framework for E-commerce platforms such as Volusion, BigCommerce, and Shopify." data-tr="Volusion, BigCommerce ve Shopify gibi E-ticaret platformları için Manuel Test Çerçevesi tasarladım ve uyguladım.">Designed and implemented a Manual Test Framework for E-commerce platforms such as Volusion, BigCommerce, and Shopify.</li>
+                                        <li data-en="Conducted critical testing for store setup, tax, and shipping migrations, ensuring seamless transitions." data-tr="Mağaza kurulumu, vergi ve nakliye geçişleri için kritik testler yaparak sorunsuz geçişler sağladım.">Conducted critical testing for store setup, tax, and shipping migrations, ensuring seamless transitions.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Deneyim 3: FrachtPilot GmbH --><div class="relative">
+                        <div class="sm:flex sm:items-start sm:space-x-8">
+                            <!-- Tarih (Sol/Üst) --><div class="w-full sm:w-1/2 sm:text-right">
+                                <span class="block text-sm font-medium text-gray-500">DECEMBER '21 – MAY '22</span>
+                            </div>
+                            <!-- İçerik (Sağ/Alt) --><div class="w-full sm:w-1/2 mt-2 sm:mt-0 sm:pl-8 relative">
+                                <div class="absolute -left-[5px] sm:left-[-34px] top-1 w-4 h-4 bg-blue-600 rounded-full border-4 border-white"></div>
+                                <div class="p-6 bg-white rounded-lg shadow-lg border border-gray-200">
+                                    <h3 class="text-xl font-semibold" data-en="QA Test Engineer (Manual and Automation)" data-tr="QA Test Mühendisi (Manuel ve Otomasyon)">QA Test Engineer (Manual and Automation)</h3>
+                                    <p class="text-lg text-gray-700" data-en="FrachtPilot GmbH, Frankfurt" data-tr="FrachtPilot GmbH, Frankfurt">FrachtPilot GmbH, Frankfurt</p>
+                                    <ul class="mt-3 list-disc list-inside space-y-1 text-gray-600">
+                                        <li data-en="Built and managed a Manual and Automation Test Framework from scratch, utilizing JIRA for test case management." data-tr="JIRA'yı test senaryosu yönetimi için kullanarak sıfırdan Manuel ve Otomasyon Test Çerçevesi oluşturdum ve yönettim.">Built and managed a Manual and Automation Test Framework from scratch, utilizing JIRA for test case management.</li>
+                                        <li data-en="Developed comprehensive Test Plans, Test Cases, and End-to-End Scenarios based on user stories." data-tr="Kullanıcı hikayelerine dayalı kapsamlı Test Planları, Test Senaryoları ve Uçtan Uca Senaryolar geliştirdim.">Developed comprehensive Test Plans, Test Cases, and End-to-End Scenarios based on user stories.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Deneyim 4: Fruveg GmbH --><div class="relative">
+                        <div class="sm:flex sm:items-start sm:space-x-8 sm:flex-row-reverse">
+                            <!-- Tarih (Sağ/Üst) --><div class="w-full sm:w-1/2 sm:text-left sm:pl-8">
+                                <span class="block text-sm font-medium text-gray-500">DECEMBER '18 – DECEMBER '21</span>
+                            </div>
+                            <!-- İçerik (Sol/Alt) --><div class="w-full sm:w-1/2 mt-2 sm:mt-0 sm:pr-8 relative">
+                                <div class="absolute -left-[5px] sm:right-[-34px] sm:left-auto top-1 w-4 h-4 bg-blue-600 rounded-full border-4 border-white"></div>
+                                <div class="p-6 bg-white rounded-lg shadow-lg border border-gray-200">
+                                    <h3 class="text-xl font-semibold" data-en="Quality Manager/Lead Auditor" data-tr="Kalite Yöneticisi/Baş Denetçi">Quality Manager/Lead Auditor</h3>
+                                    <p class="text-lg text-gray-700" data-en="Fruveg GmbH, Frankfurt" data-tr="Fruveg GmbH, Frankfurt">Fruveg GmbH, Frankfurt</p>
+                                    <ul class="mt-3 list-disc list-inside space-y-1 text-gray-600">
+                                        <li data-en="Established the Quality Department, successfully achieving ISO 9001 and ISO 22000 certifications." data-tr="Kalite Departmanını kurdum ve ISO 9001 ile ISO 22000 sertifikalarını başarıyla aldım.">Established the Quality Department, successfully achieving ISO 9001 and ISO 22000 certifications.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Yetenekler Bölümü --><section id="skills" class="py-20 bg-white rounded-lg shadow-inner">
+            <h2 class="text-3xl font-bold tracking-tight text-center mb-12 flex items-center justify-center gap-3" data-en="Skills" data-tr="Yetenekler">
+                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4.636 4.636l-.707.707M3 12H2m15.364 8.364l-.707-.707M12 21v-1m-6.364-1.636l-.707-.707M3.464 21.071c-.754-.755-1.166-1.782-1.166-2.883v-5.234a4.01 4.01 0 011.053-2.61L9.11 3.298c.84-.841 2.148-.841 2.988 0l6.11 6.11a4.01 4.01 0 011.053 2.61v5.234c0 1.101-.412 2.128-1.166 2.883a4.01 4.01 0 01-2.883 1.166h-5.234a4.01 4.01 0 01-2.883-1.166z"></path></svg>
+                Skills
+            </h2>
+            <div class="max-w-4xl mx-auto space-y-8">
+                <!-- Kategori 1: Testing Araçları --><div>
+                    <h3 class="text-xl font-semibold text-blue-600 mb-3" data-en="Testing Tools" data-tr="Testing Araçları">Testing Tools</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-badge">Cypress</span>
+                        <span class="skill-badge">Appium</span>
+                        <span class="skill-badge">Selenium</span>
+                        <span class="skill-badge">JIRA</span>
+                        <span class="skill-badge">Test Rail</span>
+                    </div>
+                </div>
+                <!-- Kategori 2: Programlama --><div>
+                    <h3 class="text-xl font-semibold text-blue-600 mb-3" data-en="Programming" data-tr="Programlama">Programming</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">Java</span>
+                    </div>
+                </div>
+                <!-- Kategori 3: Metodolojiler --><div>
+                    <h3 class="text-xl font-semibold text-blue-600 mb-3" data-en="Methodologies" data-tr="Metodolojiler">Methodologies</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-badge">Agile</span>
+                        <span class="skill-badge">Kanban</span>
+                    </div>
+                </div>
+                <!-- Kategori 4: Diğer --><div>
+                    <h3 class="text-xl font-semibold text-blue-600 mb-3" data-en="Other Tools" data-tr="Diğer Araçlar">Other Tools</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-badge">Charles Proxy</span>
+                        <span class="skill-badge">Postman</span>
+                        <span class="skill-badge">Git/GitHub</span>
+                    </div>
+                </div>
+                <!-- Kategori 5: Diller --><div>
+                    <h3 class="text-xl font-semibold text-blue-600 mb-3" data-en="Languages" data-tr="Diller">Languages</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-badge">English (C1)</span>
+                        <span class="skill-badge">German (B1)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Projeler Bölümü --><section id="projects" class="py-20">
+            <h2 class="text-3xl font-bold tracking-tight text-center mb-12 flex items-center justify-center gap-3" data-en="Featured Projects" data-tr="Öne Çıkan Projeler">
+                <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                Featured Projects
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Proje 1 --><div class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 transform transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2" data-en="Indoor Mapping Application" data-tr="İç Mekan Haritalama Uygulaması">Indoor Mapping Application</h3>
+                        <p class="text-sm font-medium text-blue-600 mb-3" data-en="Role: Lead Manual & Automation Tester" data-tr="Rol: Manuel & Otomasyon Test Lideri">Role: Lead Manual & Automation Tester</p>
+                        <p class="text-gray-600 mb-4" data-en="Conducted comprehensive testing for mobile indoor mapping, ensuring cross-platform functionality and performance optimization." data-tr="Mobil iç mekan haritalama için kapsamlı testler yaptım, platformlar arası işlevsellik ve performans optimizasyonu sağladım.">Conducted comprehensive testing for mobile indoor mapping, ensuring cross-platform functionality and performance optimization.</p>
+                        <h4 class="text-sm font-semibold mb-2" data-en="Technologies:" data-tr="Teknolojiler:">Technologies:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="project-badge">Appium</span>
+                            <span class="project-badge">Jira</span>
+                            <span class="project-badge">JavaScript</span>
+                            <span class="project-badge">Selenium</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proje 2 --><div class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 transform transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2" data-en="E-commerce Platform Migration" data-tr="E-ticaret Platformu Geçişi">E-commerce Platform Migration</h3>
+                        <p class="text-sm font-medium text-blue-600 mb-3" data-en="Role: Manual Test Lead" data-tr="Rol: Manuel Test Lideri">Role: Manual Test Lead</p>
+                        <p class="text-gray-600 mb-4" data-en="Led end-to-end testing for migrating from Magento-Volusion to BigCommerce and Shopify, enhancing site functionality and performance." data-tr="Magento-Volusion'dan BigCommerce ve Shopify'a geçiş için uçtan uca testleri yönettim, site işlevselliğini ve performansını artırdım.">Led end-to-end testing for migrating from Magento-Volusion to BigCommerce and Shopify, enhancing site functionality and performance.</p>
+                        <h4 class="text-sm font-semibold mb-2" data-en="Technologies:" data-tr="Teknolojiler:">Technologies:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="project-badge">JIRA</span>
+                            <span class="project-badge">Test Rail</span>
+                            <span class="project-badge">JMeter</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proje 3 --><div class="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-200 transform transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2" data-en="Food Distribution Application" data-tr="Gıda Dağıtım Uygulaması">Food Distribution Application</h3>
+                        <p class="text-sm font-medium text-blue-600 mb-3" data-en="Role: Automation Tester" data-tr="Rol: Otomasyon Test Uzmanı">Role: Automation Tester</p>
+                        <p class="text-gray-600 mb-4" data-en="Implemented automated testing processes, reducing testing duration by 80% and improving application reliability." data-tr="Otomatik test süreçlerini uygulayarak test süresini %80 azalttım ve uygulama güvenilirliğini artırdım.">Implemented automated testing processes, reducing testing duration by 80% and improving application reliability.</p>
+                        <h4 class="text-sm font-semibold mb-2" data-en="Technologies:" data-tr="Teknolojiler:">Technologies:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="project-badge">Java</span>
+                            <span class="project-badge">Maven</span>
+                            <span class="project-badge">Selenium</span>
+                            <span class="project-badge">Cucumber</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Eğitim ve Sertifikalar Bölümü --><section id="education" class="py-20 bg-white rounded-lg shadow-inner">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                
+                <!-- Eğitim --><div class="text-center md:text-left">
+                    <h2 class="text-3xl font-bold tracking-tight mb-8 flex items-center justify-center md:justify-start gap-3" data-en="Education" data-tr="Eğitim">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.204 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.523 5.796 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.796 5 16.5 5c1.704 0 3.332.477 4.5 1.253v13C19.832 18.523 18.204 18 16.5 18s-3.332.477-4.5 1.253"></path></svg>
+                        Education
+                    </h2>
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-semibold" data-en="Anadolu University" data-tr="Anadolu Üniversitesi">Anadolu University</h3>
+                            <p class="text-gray-700" data-en="Bachelor of Business Administration" data-tr="İşletme Lisansı">Bachelor of Business Administration</p>
+                            <p class="text-sm text-gray-500" data-en="June 2021" data-tr="Haziran 2021">June 2021</p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold" data-en="Istanbul Technical University" data-tr="İstanbul Teknik Üniversitesi">Istanbul Technical University</h3>
+                            <p class="text-gray-700" data-en="Bachelor of Arts" data-tr="Sanat Lisansı">Bachelor of Arts</p>
+                            <p class="text-sm text-gray-500" data-en="July 2013" data-tr="Temmuz 2013">July 2013</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sertifikalar --><div class="text-center md:text-left">
+                    <h2 class="text-3xl font-bold tracking-tight mb-8 flex items-center justify-center md:justify-start gap-3" data-en="Certifications" data-tr="Sertifikalar">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.01 12.01 0 003 12c0 2.21.367 4.353 1.056 6.364l1.529-.382a10.04 10.04 0 012.38-2.613c1.603-1.637 2.665-2.73 3.618-2.73s2.015 1.093 3.618 2.73c.75.766 1.488 1.63 2.38 2.613l1.529.382c.689-2.011 1.056-4.154 1.056-6.364A12.01 12.01 0 0021 12c0-4.478-3.042-8.204-7.257-9.584z"></path></svg>
+                        Certifications
+                    </h2>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 text-lg">
+                        <li data-en="ISTQB Foundation Level Certificate" data-tr="ISTQB Temel Seviye Sertifikası">ISTQB Foundation Level Certificate</li>
+                        <li data-en="ISO9001/22000 Lead Auditor Certificate" data-tr="ISO9001/22000 Baş Denetçi Sertifikası">ISO9001/22000 Lead Auditor Certificate</li>
+                        <li data-en="German Language B2 Certificate" data-tr="Almanca B2 Sertifikası">German Language B2 Certificate</li>
+                        <li data-en="ISO 13485 Medical Devices Quality Management System" data-tr="ISO 13485 Tıbbi Cihazlar Kalite Yönetim Sistemi">ISO 13485 Medical Devices Quality Management System</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer --><footer class="bg-gray-800 text-gray-300 mt-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+            <p class="text-lg font-semibold text-white">Erol Isildak</p>
+            <p class="mt-2 text-gray-400" data-en="Connect with me with one click." data-tr="Tek tıkla iletişime geçin.">Connect with me with one click.</p>
+            <div class="mt-6 flex justify-center items-center space-x-6">
+                <a href="mailto:ei@fruveg.de" class="text-gray-300 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    <span class="sr-only">Email</span>
+                </a>
+                <a href="https://www.linkedin.com/in/erol-isildak-softwaretester/" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+                    <span class="sr-only">LinkedIn</span>
+                </a>
+                <a href="https://github.com/eisildak" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.49.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.091-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.951 0-1.093.39-1.988 1.03-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.84a9.564 9.564 0 012.518.337c1.91-1.296 2.747-1.026 2.747-1.026.546 1.378.203 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.85-2.339 4.695-4.566 4.942.359.309.678.92.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.003 10.003 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd"></path></svg>
+                    <span class="sr-only">GitHub</span>
+                </a>
+            </div>
+            <p class="mt-8 text-sm text-gray-500">
+                &copy; 2025 Erol Isildak. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Dil değiştirme fonksiyonu
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-en]').forEach(element => {
+                if (lang === 'en') {
+                    element.textContent = element.dataset.en;
+                } else if (lang === 'tr') {
+                    element.textContent = element.dataset.tr;
+                }
+            });
+            document.querySelectorAll('[data-en-title]').forEach(element => {
+                if (lang === 'en') {
+                    element.setAttribute('title', element.dataset.enTitle);
+                } else if (lang === 'tr') {
+                    element.setAttribute('title', element.dataset.trTitle);
+                }
+            });
+            // Title Tag
+            const titleElement = document.querySelector('title');
+            if (lang === 'en') {
+                titleElement.textContent = titleElement.dataset.en;
+            } else if (lang === 'tr') {
+                titleElement.textContent = titleElement.dataset.tr;
+            }
+            // HTML lang attribute
+            document.documentElement.lang = lang;
+            
+            // Update footer copyright dynamically for Turkish
+            const footerCopyright = document.querySelector('footer p:last-child');
+            if (lang === 'tr') {
+                footerCopyright.innerHTML = '&copy; 2025 Erol Isildak. Tüm hakları saklıdır.';
+            } else {
+                footerCopyright.innerHTML = '&copy; 2025 Erol Isildak. All rights reserved.';
+            }
+
+            // Save selected language to localStorage
+            localStorage.setItem('selectedLanguage', lang);
+        }
+
+        // Sayfa yüklendiğinde dili ayarla
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'en'; // Varsayılan İngilizce
+            setLanguage(savedLanguage);
+            document.getElementById('language-switcher').value = savedLanguage;
+            document.getElementById('language-switcher-mobile').value = savedLanguage;
+        });
+
+        // Dil değiştiriciye event listener ekle (desktop)
+        document.getElementById('language-switcher').addEventListener('change', (event) => {
+            setLanguage(event.target.value);
+        });
+
+        // Dil değiştiriciye event listener ekle (mobile)
+        document.getElementById('language-switcher-mobile').addEventListener('change', (event) => {
+            setLanguage(event.target.value);
+        });
+
+        // Mobil menü toggle
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+            mobileMenuButton.setAttribute('aria-expanded', !expanded);
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuButton.querySelector('svg:nth-child(1)').classList.toggle('hidden'); // Hamburger icon
+            mobileMenuButton.querySelector('svg:nth-child(2)').classList.toggle('hidden'); // Close icon
+        });
+
+        // Mobil menü açıkken linke tıklanınca menüyü kapat
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                    mobileMenuButton.querySelector('svg:nth-child(1)').classList.remove('hidden');
+                    mobileMenuButton.querySelector('svg:nth-child(2)').classList.add('hidden');
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
