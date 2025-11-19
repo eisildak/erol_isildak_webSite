@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Install iOS App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-md w-full bg-white rounded-2xl shadow-2xl p-8">
+        <div class="text-center">
+            <!-- App Icon -->
+            <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl mx-auto mb-6 flex items-center justify-center shadow-lg">
+                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                </svg>
+            </div>
+            
+            <h1 class="text-3xl font-bold text-gray-900 mb-2" id="appName">NNY Map</h1>
+            <p class="text-gray-600 mb-8">Version 1.0.0</p>
+            
+            <!-- Install Button -->
+            <a href="#" id="installButton" class="block w-full bg-blue-600 text-white text-center py-4 px-6 rounded-xl font-semibold text-lg hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200">
+                <span class="flex items-center justify-center">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    Install Now
+                </span>
+            </a>
+            
+            <!-- Instructions -->
+            <div class="mt-8 text-left bg-blue-50 rounded-xl p-6">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">Installation Steps:</h2>
+                <ol class="space-y-3 text-sm text-gray-700">
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold mr-3 mt-0.5">1</span>
+                        <span>Tap the <strong>"Install Now"</strong> button above</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold mr-3 mt-0.5">2</span>
+                        <span>Tap <strong>"Install"</strong> in the popup dialog</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold mr-3 mt-0.5">3</span>
+                        <span>Go to <strong>Settings → General → VPN & Device Management</strong></span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-xs font-bold mr-3 mt-0.5">4</span>
+                        <span>Trust the developer profile and install the app</span>
+                    </li>
+                </ol>
+            </div>
+            
+            <!-- Warning -->
+            <div class="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                <div class="flex items-start">
+                    <svg class="w-5 h-5 text-yellow-600 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                    </svg>
+                    <p class="text-sm text-yellow-800">
+                        <strong>Note:</strong> This is an enterprise app. You must trust the developer profile in Settings before using it.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Back Button -->
+            <a href="index.html" class="mt-6 block text-gray-600 hover:text-gray-900 transition-colors">
+                <span class="flex items-center justify-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    Back to Home
+                </span>
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // Get app parameter from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const appId = urlParams.get('app');
+        
+        // App configurations
+        const apps = {
+            'nny-map': {
+                name: 'NNY Map',
+                manifestUrl: 'manifest.plist'
+            }
+        };
+        
+        // Set app details
+        if (apps[appId]) {
+            document.getElementById('appName').textContent = apps[appId].name;
+            const installButton = document.getElementById('installButton');
+            installButton.href = 'itms-services://?action=download-manifest&url=' + 
+                encodeURIComponent(window.location.origin + window.location.pathname.replace('install.html', '') + apps[appId].manifestUrl);
+        }
+    </script>
+</body>
+</html>

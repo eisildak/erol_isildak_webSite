@@ -407,11 +407,30 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     
-                    <!-- iOS Apps gelecekte buraya eklenecek -->
-                    <div class="bg-gradient-to-br from-gray-50 to-white rounded-lg shadow-lg overflow-hidden border-2 border-dashed border-gray-300 col-span-full">
-                        <div class="p-12 text-center">
-                            <svg class="w-20 h-20 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
-                            <p class="text-gray-500 text-lg" data-en="iOS apps coming soon..." data-tr="iOS uygulamaları yakında...">iOS apps coming soon...</p>
+                    <!-- iOS App 1: NNY Map -->
+                    <div class="bg-gradient-to-br from-gray-50 to-white rounded-lg shadow-lg overflow-hidden border border-gray-200 transform transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl">
+                        <div class="p-6">
+                            <div class="flex items-center justify-center mb-4">
+                                <svg class="w-16 h-16 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                            </div>
+                            <h4 class="text-xl font-semibold mb-2 text-center" data-en="NNY Map" data-tr="NNY Harita">NNY Map</h4>
+                            <p class="text-gray-600 mb-4 text-center text-sm" data-en="Interactive mapping application for navigation and location services" data-tr="Navigasyon ve konum servisleri için interaktif haritalama uygulaması">Interactive mapping application for navigation and location services</p>
+                            
+                            <!-- Install Button -->
+                            <a href="javascript:void(0)" onclick="installIOSApp('iOS_NNY_Map')" class="block w-full bg-gray-800 text-white text-center py-3 px-4 rounded-lg font-medium hover:bg-gray-900 transition-colors mb-4">
+                                <span class="flex items-center justify-center">
+                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                    <span data-en="Install App" data-tr="Uygulama Yükle">Install App</span>
+                                </span>
+                            </a>
+                            
+                            <!-- QR Code Button -->
+                            <button onclick="showQR('iOS_NNY_Map')" class="block w-full bg-gray-100 text-gray-800 text-center py-3 px-4 rounded-lg font-medium hover:bg-gray-200 transition-colors">
+                                <span class="flex items-center justify-center">
+                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
+                                    <span data-en="Show QR Code" data-tr="QR Kodu Göster">Show QR Code</span>
+                                </span>
+                            </button>
                         </div>
                     </div>
 
@@ -594,7 +613,8 @@
             // QR kodu için URL
             const appUrls = {
                 'Android_LocationMovement': window.location.origin + window.location.pathname.replace('index.html', '') + 'app/android/Android_LocationMovement.apk',
-                'NNY_Map': window.location.origin + window.location.pathname.replace('index.html', '') + 'app/android/nny-map.apk'
+                'NNY_Map': window.location.origin + window.location.pathname.replace('index.html', '') + 'app/android/nny-map.apk',
+                'iOS_NNY_Map': window.location.origin + window.location.pathname.replace('index.html', '') + 'install.html?app=nny-map'
             };
             
             // QR kodu oluştur
@@ -614,6 +634,17 @@
         function closeQR(event) {
             const modal = document.getElementById('qrModal');
             modal.classList.add('hidden');
+        }
+        
+        // iOS App yükleme fonksiyonu
+        function installIOSApp(appName) {
+            const installUrls = {
+                'iOS_NNY_Map': 'install.html?app=nny-map'
+            };
+            
+            if (installUrls[appName]) {
+                window.location.href = installUrls[appName];
+            }
         }
     </script>
 </body>
