@@ -521,6 +521,33 @@
                         </div>
                     </div>
 
+                    <!-- iOS App 2: Beacon Broadcaster Pro -->
+                    <div class="bg-gradient-to-br from-gray-50 to-white rounded-lg shadow-lg overflow-hidden border border-gray-200 transform transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl">
+                        <div class="p-6">
+                            <div class="flex items-center justify-center mb-4">
+                                <svg class="w-16 h-16 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path></svg>
+                            </div>
+                            <h4 class="text-xl font-semibold mb-2 text-center" data-en="Beacon Broadcaster Pro" data-tr="Beacon Broadcaster Pro" data-de="Beacon Broadcaster Pro" data-ar="Beacon Broadcaster Pro">Beacon Broadcaster Pro</h4>
+                            <p class="text-gray-600 mb-4 text-center text-sm" data-en="Professional beacon broadcasting application for iOS devices" data-tr="iOS cihazlar için profesyonel beacon yayın uygulaması" data-de="Professionelle Beacon-Broadcasting-Anwendung für iOS-Geräte" data-ar="تطبيق بث احترافي لأجهزة iOS">Professional beacon broadcasting application for iOS devices</p>
+                            
+                            <!-- App Store Button -->
+                            <a href="https://apps.apple.com/us/app/beacon-broadcaster-pro/id6758265287" target="_blank" rel="noopener noreferrer" class="block w-full bg-gray-800 text-white text-center py-3 px-4 rounded-lg font-medium hover:bg-gray-900 transition-colors mb-4">
+                                <span class="flex items-center justify-center">
+                                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                                    <span data-en="View on App Store" data-tr="App Store'da Görüntüle" data-de="Im App Store anzeigen" data-ar="عرض في App Store">View on App Store</span>
+                                </span>
+                            </a>
+                            
+                            <!-- QR Code Button -->
+                            <button onclick="showQR('iOS_Beacon_Broadcaster_Pro')" class="block w-full bg-gray-100 text-gray-800 text-center py-3 px-4 rounded-lg font-medium hover:bg-gray-200 transition-colors">
+                                <span class="flex items-center justify-center">
+                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
+                                    <span data-en="Show QR Code" data-tr="QR Kodu Göster" data-de="QR-Code anzeigen" data-ar="عرض رمز QR">Show QR Code</span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -835,7 +862,8 @@
             const appUrls = {
                 'Android_LocationMovement': window.location.origin + window.location.pathname.replace('index.html', '') + 'app/android/Android_LocationMovement.apk',
                 'NNY_Map': window.location.origin + window.location.pathname.replace('index.html', '') + 'app/android/nny-map.apk',
-                'iOS_NNY_Map': 'https://i.diawi.com/Xik3QJ'
+                'iOS_NNY_Map': 'https://i.diawi.com/Xik3QJ',
+                'iOS_Beacon_Broadcaster_Pro': 'https://apps.apple.com/us/app/beacon-broadcaster-pro/id6758265287'
             };
             
             // QR kodu oluştur
