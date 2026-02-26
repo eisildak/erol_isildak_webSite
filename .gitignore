@@ -1,2 +1,2 @@
 # Ignore Windows exe
-app/Broadcaster-app-windows/BeaconBroadcaster.exe
+# (removed BeaconBroadcaster.exe to add via Git LFS)
