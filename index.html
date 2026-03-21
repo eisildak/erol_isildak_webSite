@@ -100,9 +100,9 @@
 
     <!-- Ana İçerik Alanı --><main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <!-- Hero Bölümü --><header id="about" class="text-center py-16 sm:py-24">
+        <!-- Hero Bölümü --><header id="about" class="text-center py-8 sm:py-12">
             <div class="flex flex-col items-center justify-center">
-                <img src="assets/Gemini_Generated_Image_icjsxlicjsxlicjs.png" alt="Erol Isildak" class="w-64 h-64 object-cover rounded-full shadow-lg mb-8">
+                <img src="assets/Gemini_Generated_Image_icjsxlicjsxlicjs.png" alt="Erol Isildak" class="w-64 h-64 object-cover object-top rounded-full shadow-lg mb-8">
                 
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-gray-900 leading-tight">
                     Erol Isildak
@@ -273,54 +273,83 @@
             </div>
         </section>
 
-        <!-- Yetenekler Bölümü --><section id="skills" class="py-20 bg-white rounded-lg shadow-inner">
+        <!-- Yetenekler Bölümü --><section id="skills" class="py-20 bg-gradient-to-br from-gray-50 to-blue-50 rounded-lg">
             <h2 class="text-3xl font-bold tracking-tight text-center mb-12 flex items-center justify-center gap-3" data-en="Skills" data-tr="Yetenekler" data-de="Fähigkeiten" data-ar="المهارات">
                 <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4.636 4.636l-.707.707M3 12H2m15.364 8.364l-.707-.707M12 21v-1m-6.364-1.636l-.707-.707M3.464 21.071c-.754-.755-1.166-1.782-1.166-2.883v-5.234a4.01 4.01 0 011.053-2.61L9.11 3.298c.84-.841 2.148-.841 2.988 0l6.11 6.11a4.01 4.01 0 011.053 2.61v5.234c0 1.101-.412 2.128-1.166 2.883a4.01 4.01 0 01-2.883 1.166h-5.234a4.01 4.01 0 01-2.883-1.166z"></path></svg>
                 Skills
             </h2>
-            <div class="max-w-4xl mx-auto space-y-8">
-                <!-- Kategori 1: Testing Araçları --><div>
-                    <h3 class="text-xl font-semibold text-blue-600 mb-3" data-en="Testing Tools" data-tr="Testing Araçları" data-de="Test-Tools" data-ar="أدوات الاختبار">Testing Tools</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="skill-badge">Playwright</span>
+            <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+                <!-- Kategori 1: Testing Araçları -->
+                <div class="bg-white rounded-xl shadow-md border border-blue-100 p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2v-4M9 21H5a2 2 0 01-2-2v-4m0 0h18"></path></svg>
+                        </div>
+                        <h3 class="text-base font-bold text-gray-900" data-en="Testing Tools" data-tr="Test Araçları" data-de="Test-Tools" data-ar="أدوات الاختبار">Testing Tools</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
                         <span class="skill-badge">Cypress</span>
                         <span class="skill-badge">Appium</span>
-                        <span class="skill-badge">WebdriverIO</span>
                         <span class="skill-badge">Selenium</span>
+                        <span class="skill-badge">Playwright</span>
+                        <span class="skill-badge">WebdriverIO</span>
                         <span class="skill-badge">JIRA</span>
                         <span class="skill-badge">Test Rail</span>
                         <span class="skill-badge">Postman</span>
                     </div>
                 </div>
-                <!-- Kategori 2: Programlama --><div>
-                    <h3 class="text-xl font-semibold text-blue-600 mb-3" data-en="Programming" data-tr="Programlama" data-de="Programmierung" data-ar="البرمجة">Programming</h3>
-                    <div class="flex flex-wrap gap-3">
+                <!-- Kategori 2: Programlama -->
+                <div class="bg-white rounded-xl shadow-md border border-green-100 p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        </div>
+                        <h3 class="text-base font-bold text-gray-900" data-en="Programming" data-tr="Programlama" data-de="Programmierung" data-ar="البرمجة">Programming</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
                         <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">Java</span>
                         <span class="skill-badge">Swift</span>
                         <span class="skill-badge">Kotlin</span>
-                        <span class="skill-badge">Java</span>
-                        <span class="skill-badge">Python</span>
                     </div>
                 </div>
-                <!-- Kategori 3: Metodolojiler --><div>
-                    <h3 class="text-xl font-semibold text-blue-600 mb-3" data-en="Methodologies" data-tr="Metodolojiler" data-de="Methodologien" data-ar="المنهجيات">Methodologies</h3>
-                    <div class="flex flex-wrap gap-3">
+                <!-- Kategori 3: Metodolojiler -->
+                <div class="bg-white rounded-xl shadow-md border border-purple-100 p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path></svg>
+                        </div>
+                        <h3 class="text-base font-bold text-gray-900" data-en="Methodologies" data-tr="Metodolojiler" data-de="Methodologien" data-ar="المنهجيات">Methodologies</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
                         <span class="skill-badge">Agile</span>
                         <span class="skill-badge">Kanban</span>
                     </div>
                 </div>
-                <!-- Kategori 4: Diğer --><div>
-                    <h3 class="text-xl font-semibold text-blue-600 mb-3" data-en="Other Tools" data-tr="Diğer Araçlar" data-de="Andere Tools" data-ar="أدوات أخرى">Other Tools</h3>
-                    <div class="flex flex-wrap gap-3">
+                <!-- Kategori 4: Diğer Araçlar -->
+                <div class="bg-white rounded-xl shadow-md border border-orange-100 p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        </div>
+                        <h3 class="text-base font-bold text-gray-900" data-en="Other Tools" data-tr="Diğer Araçlar" data-de="Andere Tools" data-ar="أدوات أخرى">Other Tools</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
                         <span class="skill-badge">Charles Proxy</span>
                         <span class="skill-badge">Proxyman</span>
-                        <span class="skill-badge">Postman</span>
                         <span class="skill-badge">Git/GitHub</span>
+                        <span class="skill-badge">Postman</span>
                     </div>
                 </div>
-                <!-- Kategori 5: Diller --><div>
-                    <h3 class="text-xl font-semibold text-blue-600 mb-3" data-en="Languages" data-tr="Diller" data-de="Sprachen" data-ar="اللغات">Languages</h3>
-                    <div class="flex flex-wrap gap-3">
+                <!-- Kategori 5: Diller -->
+                <div class="bg-white rounded-xl shadow-md border border-teal-100 p-6 hover:shadow-lg transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-teal-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path></svg>
+                        </div>
+                        <h3 class="text-base font-bold text-gray-900" data-en="Languages" data-tr="Diller" data-de="Sprachen" data-ar="اللغات">Languages</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
                         <span class="skill-badge">English (C1)</span>
                         <span class="skill-badge">German (B1)</span>
                     </div>
@@ -749,8 +778,8 @@
                     <span class="sr-only">GitHub</span>
                 </a>
                 <a href="CV/Erol_Isildak_Resume_2026.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 transition-colors">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                    <span data-en="Download CV" data-tr="CV İndir" data-de="Lebenslauf" data-ar="تحميل CV">Download CV</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                    <span data-en="View CV" data-tr="CV Görüntüle" data-de="Lebenslauf anzeigen" data-ar="عرض السيرة الذاتية">View CV</span>
                 </a>
             </div>
             <p class="mt-8 text-sm text-gray-500">
