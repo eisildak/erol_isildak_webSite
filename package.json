@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "deploy:ionos": "./scripts/deploy-ionos.sh"
+  },
   "dependencies": {
     "qrcode": "^1.5.4"
   }

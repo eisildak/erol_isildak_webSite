@@ -1,2 +1,7 @@
 # Ignore Windows exe
 # (removed BeaconBroadcaster.exe to add via Git LFS)
+
+# Local secrets
+.env
+.env.local
+.env.*.local
