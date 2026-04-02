@@ -1,0 +1,807 @@
+const copyByLang = {
+    en: {
+        home: "Home",
+        experience: "Experience",
+        education: "Education",
+        projects: "Projects",
+        apps: "Apps",
+        contact: "Contact",
+        beaconPrivacy: "Beacon Privacy Policy",
+        footer: "Built with quality and test-driven precision.",
+        ctaContact: "Contact",
+        heroKicker: "Senior Software Engineer in Test",
+        heroTitleMain: "Bridging quality and",
+        heroTitleAccent: "engineering",
+        heroLead: "Over 7 years in QA with a focus on robust automation for web and mobile, plus ISO 9001 Lead Auditor discipline for process excellence.",
+        seeProjects: "See Projects",
+        yearsQa: "Years QA",
+        manualCut: "Manual effort cut",
+        projectsCount: "Projects",
+        currentFocus: "Current Focus",
+        currentFocusText: "Scaling test architecture with Cypress, Playwright, Appium and data-driven reporting pipelines.",
+        webAutomation: "Web Automation",
+        mobileQa: "Mobile QA",
+        quickNav: "Quick Navigation",
+        expTimeline: "Experience Timeline",
+        expTimelineText: "Role history, responsibilities and outcomes.",
+        featuredProjects: "Featured Projects",
+        seeAllGithubProjects: "See all GitHub projects",
+        featuredProjectsText: "Selected QA, automation and product work.",
+        appsDownloads: "Apps and Downloads",
+        appsDownloadsText: "Android, iOS, desktop releases and links.",
+        openPlayStore: "Open Play Store",
+        downloadApk: "Download APK",
+        openAppStore: "Open App Store",
+        downloadExe: "Download EXE",
+        contactCardPhoneTitle: "Phone",
+        callNow: "Call Now",
+        sendEmail: "Send Email",
+        openLinkedin: "Open LinkedIn",
+        openGithub: "Open GitHub",
+        viewCv: "View CV",
+        downloadCv: "Download CV",
+        contactTitle: "Contact",
+        educationPageTitle: "Education and Certifications",
+        educationTitle: "Education",
+        certificationsTitle: "Certifications",
+        eduUni1: "Nuh Naci Yazgan University",
+        eduUni1Degree: "Associate Degree in Computer Programming",
+        eduUni1Date: "Dec 2025",
+        eduUni1Desc: "Specialized in software development, testing, and quality assurance. Also served as part-time visiting faculty member.",
+        eduUni2: "Anadolu University",
+        eduUni2Degree: "Bachelor of Business Administration",
+        eduUni2Date: "June 2021",
+        eduUni3: "Istanbul Technical University",
+        eduUni3Degree: "Bachelor of Arts",
+        eduUni3Date: "July 2013",
+        cert1: "ISTQB Foundation Level Certificate",
+        cert2: "ISO9001/22000 Lead Auditor Certificate",
+        cert3: "German Language B2 Certificate",
+        cert4: "ISO 13485 Medical Devices Quality Management System",
+        viewCertificate: "View Certificate",
+        expLegacyRole1Title: "Software Engineer in Test",
+        expLegacyRole1Meta: "Pointr Deep Location Company, England | OCT '23 - Present",
+        expLegacyRole1Bullet1: "Promoted to Software Engineer in Test to lead and oversee comprehensive mobile testing across Android and iOS platforms.",
+        expLegacyRole1Bullet2: "Developed and maintained a scalable automation framework using Cypress and JavaScript, ensuring high application stability.",
+        expLegacyRole1Bullet3: "Led mobile testing initiatives utilizing Charles Proxy and Proxyman for advanced network analysis, API debugging, and performance optimization.",
+        expLegacyRole1Bullet4: "Optimized workflow efficiency by implementing Agile/Kanban methodologies and automating daily smoke tests via JIRA, significantly reducing manual regression time.",
+        expLegacyRole2Title: "QA Test Engineer (Manual and Automation)",
+        expLegacyRole2Meta: "Optimum7, USA | MAY '22 - OCTOBER '23",
+        expLegacyRole2Bullet1: "Designed and implemented a Manual Test Framework for E-commerce platforms such as Volusion, BigCommerce, and Shopify.",
+        expLegacyRole2Bullet2: "Conducted critical testing for store setup, tax, and shipping migrations, ensuring seamless transitions.",
+        expLegacyRole3Title: "QA Test Engineer (Manual and Automation)",
+        expLegacyRole3Meta: "FrachtPilot GmbH, Frankfurt | DECEMBER '21 - MAY '22",
+        expLegacyRole3Bullet1: "Built and managed a Manual and Automation Test Framework from scratch, utilizing JIRA for test case management and defect logging.",
+        expLegacyRole3Bullet2: "Developed comprehensive Test Plans, Test Cases, and End-to-End Scenarios based on user stories.",
+        expLegacyRole4Title: "Quality Manager / Lead Auditor",
+        expLegacyRole4Meta: "Fruveg GmbH, Frankfurt | DECEMBER '18 - DECEMBER '21",
+        expLegacyRole4Bullet1: "Established the Quality Department, successfully achieving ISO 9001 and ISO 22000 certifications.",
+        privacyTitle: "Privacy Policy",
+        privacyApp: "Beacon Broadcaster App",
+        privacyDataCollectionTitle: "Data Collection",
+        privacyDataCollectionDesc: "Beacon Broadcaster does not collect, store, or transmit any personal data. The app operates entirely on your device.",
+        privacyBluetoothTitle: "Bluetooth Usage",
+        privacyBluetoothDesc: "This app uses Bluetooth technology to broadcast iBeacon signals. Beacon UUID, major, minor, and related parameters are configured locally on your device and are not shared with external servers.",
+        privacyLocationTitle: "Location Services",
+        privacyLocationDesc: "Location services may be required by iOS for Bluetooth beacon broadcasting. However, no location data is collected, stored, or transmitted by this application.",
+        privacyThirdPartyTitle: "Third-Party Services",
+        privacyThirdPartyDesc: "This app does not integrate with third-party analytics, advertising, or tracking services.",
+        privacyStorageTitle: "Data Storage",
+        privacyStorageDesc: "All beacon configuration settings are stored locally on your device using UserDefaults. This data never leaves your device.",
+        privacyChildrenTitle: "Children's Privacy",
+        privacyChildrenDesc: "This app does not knowingly collect information from children under the age of 13.",
+        privacyChangesTitle: "Changes to Privacy Policy",
+        privacyChangesDesc: "We may update this Privacy Policy from time to time. Any updates will be posted on this page with an updated revision date.",
+        privacyContactTitle: "Contact",
+        privacyContactDescPrefix: "If you have any questions about this Privacy Policy, please contact:",
+        privacyLastUpdated: "Last updated: January 27, 2026",
+        backToHome: "Back to Home",
+        expPageTitle: "Experience",
+        projPageTitle: "Featured Projects",
+        expRole1Title: "Software Engineer in Test",
+        expRole1Meta: "Pointr Deep Location Company, England | Oct 2023 - Present",
+        expRole1Desc: "Leading Android and iOS quality strategy, maintaining scalable Cypress automation and advanced network diagnostics using Charles Proxy and Proxyman.",
+        expRole2Title: "QA Test Engineer",
+        expRole2Meta: "Optimum7, USA | May 2022 - Oct 2023",
+        expRole2Desc: "Delivered manual and automation quality operations across Shopify and BigCommerce migrations and ecommerce feature releases.",
+        expRole3Title: "QA Test Engineer",
+        expRole3Meta: "FrachtPilot GmbH, Germany | Dec 2021 - May 2022",
+        expRole3Desc: "Built test frameworks from scratch, structured end-to-end scenarios and established quality workflows in agile delivery cycles.",
+        expRole4Title: "Quality Manager / Lead Auditor",
+        expRole4Meta: "Fruveg GmbH, Germany | Dec 2018 - Dec 2021",
+        expRole4Desc: "Established the quality department and led successful ISO 9001 and ISO 22000 certification programs.",
+        projCard1Title: "Beacon Broadcaster Pro",
+        projCard1Meta: "Flutter, Dart, BLE, Cross-platform",
+        projCard1Desc: "A beacon broadcasting app targeting Android, iOS, macOS and Windows with practical protocols for real-world proximity scenarios.",
+        projCard2Title: "Indoor Mapping QA Program",
+        projCard2Meta: "Appium, Selenium, Performance Testing",
+        projCard2Desc: "Comprehensive test strategy for high-precision indoor location experiences across devices and operating systems.",
+        projCard3Title: "E-commerce Migration Validation",
+        projCard3Meta: "Shopify, BigCommerce, Test Planning",
+        projCard3Desc: "End-to-end migration quality gates for store setup, taxation, shipping and critical checkout flows.",
+        projCard4Title: "Open Source QA Utilities",
+        projCard4Meta: "GitHub, Swift, JavaScript",
+        projCard4Desc: "Public repositories and test helpers, including location simulation and automation-focused tooling.",
+        appCard1Title: "Android - Beacon Broadcaster Pro",
+        appCard1Meta: "Google Play",
+        appCard1Desc: "Beacon broadcasting app with practical control and deployment options.",
+        appCard2Title: "Android - NNY Map",
+        appCard2Meta: "APK",
+        appCard2Desc: "Interactive map application package.",
+        appCard3Title: "iOS - Beacon Broadcaster Pro",
+        appCard3Meta: "App Store",
+        appCard3Desc: "iOS release for beacon broadcasting workflows.",
+        appCard4Title: "Windows - Beacon Broadcaster Desktop",
+        appCard4Meta: "EXE",
+        appCard4Desc: "Desktop utility for broadcasting beacon signals on Windows.",
+        contactCardEmailTitle: "Email",
+        contactCardLinkedinTitle: "LinkedIn",
+        contactCardLinkedinDesc: "Professional profile and background.",
+        contactCardGithubTitle: "GitHub",
+        contactCardGithubDesc: "Open-source projects and experiments.",
+        contactCardNstechTitle: "NSTech",
+        contactCardNstechDesc: "Consultancy profile, services, and company work highlights.",
+        visitNSTech: "Visit NSTech",
+        contactCardResumeTitle: "Resume",
+        contactCardResumeDesc: "Updated CV in PDF format."
+    },
+    tr: {
+        home: "Ana Sayfa",
+        experience: "Deneyim",
+        education: "Egitim",
+        projects: "Projeler",
+        apps: "Uygulamalar",
+        contact: "Iletisim",
+        beaconPrivacy: "Beacon Gizlilik Politikasi",
+        footer: "Kalite odakli ve test disipliniyle gelistirildi.",
+        ctaContact: "Iletisim",
+        heroKicker: "Kidemli Test Yazilim Muhendisi",
+        heroTitleMain: "Kalite ile",
+        heroTitleAccent: "muhendisligi birlestiriyorum",
+        heroLead: "7+ yillik QA deneyimi ile web ve mobilde guclu otomasyon yapilari kuruyor, ISO 9001 Lead Auditor disiplinini teknik kaliteye tasiyorum.",
+        seeProjects: "Projeleri Gor",
+        yearsQa: "Yil QA",
+        manualCut: "Manuel Is Azalimi",
+        projectsCount: "Proje",
+        currentFocus: "Guncel Odak",
+        currentFocusText: "Cypress, Playwright, Appium ve veri odakli raporlama ile test mimarisini olceklendiriyorum.",
+        webAutomation: "Web Otomasyonu",
+        mobileQa: "Mobil QA",
+        quickNav: "Hizli Gecis",
+        expTimeline: "Deneyim Cizelgesi",
+        expTimelineText: "Rol gecmisi, sorumluluklar ve ciktilar.",
+        featuredProjects: "One Cikan Projeler",
+        seeAllGithubProjects: "Tum GitHub Projelerini Gor",
+        featuredProjectsText: "QA, otomasyon ve urun odakli secili calismalar.",
+        appsDownloads: "Uygulamalar ve Indirmeler",
+        appsDownloadsText: "Android, iOS ve masaustu surum baglantilari.",
+        openPlayStore: "Play Store Ac",
+        downloadApk: "APK Indir",
+        openAppStore: "App Store Ac",
+        downloadExe: "EXE Indir",
+        contactCardPhoneTitle: "Telefon",
+        callNow: "Ara",
+        sendEmail: "E-posta Gonder",
+        openLinkedin: "LinkedIn Ac",
+        openGithub: "GitHub Ac",
+        viewCv: "CV Gor",
+        downloadCv: "CV Indir",
+        contactTitle: "Iletisim",
+        educationPageTitle: "Egitim ve Sertifikalar",
+        educationTitle: "Egitim",
+        certificationsTitle: "Sertifikalar",
+        eduUni1: "Nuh Naci Yazgan Universitesi",
+        eduUni1Degree: "Bilgisayar Programciligi On Lisans",
+        eduUni1Date: "Aralik 2025",
+        eduUni1Desc: "Yazilim gelistirme, test ve kalite guvence alanlarinda uzmanlasti. Ayrica yari zamanli misafir ogretim gorevlisi olarak calisti.",
+        eduUni2: "Anadolu Universitesi",
+        eduUni2Degree: "Isletme Lisans",
+        eduUni2Date: "Haziran 2021",
+        eduUni3: "Istanbul Teknik Universitesi",
+        eduUni3Degree: "Sanat Lisans",
+        eduUni3Date: "Temmuz 2013",
+        cert1: "ISTQB Foundation Level Sertifikasi",
+        cert2: "ISO9001/22000 Lead Auditor Certificate",
+        cert3: "German Language B2 Certificate",
+        cert4: "ISO 13485 Medical Devices Quality Management System",
+        viewCertificate: "Sertifikayi Gor",
+        expLegacyRole1Title: "Test Yazilim Muhendisi",
+        expLegacyRole1Meta: "Pointr Deep Location Company, Ingiltere | EKI '23 - Simdi",
+        expLegacyRole1Bullet1: "Android ve iOS platformlarinda kapsamli mobil testleri yonetmek uzere Software Engineer in Test rolune terfi etti.",
+        expLegacyRole1Bullet2: "Cypress ve JavaScript kullanarak olceklenebilir bir otomasyon framework'u gelistirdi ve surdurdu, uygulama stabilitesini artirdi.",
+        expLegacyRole1Bullet3: "Charles Proxy ve Proxyman ile ileri seviye ag analizi, API hata ayiklama ve performans optimizasyonu icin mobil test calismalarina liderlik etti.",
+        expLegacyRole1Bullet4: "Agile/Kanban metodolojileri ve JIRA uzerinden gunluk smoke test otomasyonu ile is akisi verimliligini artirdi, manuel regresyon suresini onemli olcude azaltti.",
+        expLegacyRole2Title: "QA Test Muhendisi (Manuel ve Otomasyon)",
+        expLegacyRole2Meta: "Optimum7, ABD | MAYIS '22 - EKIM '23",
+        expLegacyRole2Bullet1: "Volusion, BigCommerce ve Shopify gibi e-ticaret platformlari icin Manuel Test Framework'u tasarladi ve uyguladi.",
+        expLegacyRole2Bullet2: "Magaza kurulumu, vergi ve kargo gecisleri icin kritik testler yuruterek sorunsuz gecis sagladi.",
+        expLegacyRole3Title: "QA Test Muhendisi (Manuel ve Otomasyon)",
+        expLegacyRole3Meta: "FrachtPilot GmbH, Frankfurt | ARALIK '21 - MAYIS '22",
+        expLegacyRole3Bullet1: "JIRA ile test senaryosu yonetimi ve hata takibi yaparak sifirdan Manuel ve Otomasyon Test Framework'u kurdu ve yonetti.",
+        expLegacyRole3Bullet2: "Kullanici hikayelerine dayali kapsamli Test Planlari, Test Caseleri ve Uctan Uca Senaryolar gelistirdi.",
+        expLegacyRole4Title: "Kalite Yonetici / Bas Denetci",
+        expLegacyRole4Meta: "Fruveg GmbH, Frankfurt | ARALIK '18 - ARALIK '21",
+        expLegacyRole4Bullet1: "Kalite Departmanini kurdu, ISO 9001 ve ISO 22000 sertifikalarini basariyla aldi.",
+        privacyTitle: "Gizlilik Politikasi",
+        privacyApp: "Beacon Broadcaster Uygulamasi",
+        privacyDataCollectionTitle: "Veri Toplama",
+        privacyDataCollectionDesc: "Beacon Broadcaster hicbir kisisel veriyi toplamaz, saklamaz veya iletmez. Uygulama tamamen cihazinizda calisir.",
+        privacyBluetoothTitle: "Bluetooth Kullanimi",
+        privacyBluetoothDesc: "Bu uygulama iBeacon sinyali yayinlamak icin Bluetooth teknolojisini kullanir. UUID, major, minor ve ilgili parametreler cihazinizda yerel olarak ayarlanir ve harici sunucularla paylasilmaz.",
+        privacyLocationTitle: "Konum Servisleri",
+        privacyLocationDesc: "iOS'ta beacon yayinlamak icin konum servisleri gerekebilir. Ancak bu uygulama konum verisini toplamaz, saklamaz veya iletmez.",
+        privacyThirdPartyTitle: "Ucuncu Parti Servisler",
+        privacyThirdPartyDesc: "Bu uygulama ucuncu parti analiz, reklam veya takip servisleriyle entegre degildir.",
+        privacyStorageTitle: "Veri Saklama",
+        privacyStorageDesc: "Tum beacon ayarlari cihazinizda UserDefaults ile yerel olarak saklanir. Bu veriler cihaziniz disina cikmaz.",
+        privacyChildrenTitle: "Cocuklarin Gizliligi",
+        privacyChildrenDesc: "Bu uygulama 13 yas altindaki cocuklardan bilerek bilgi toplamaz.",
+        privacyChangesTitle: "Politika Degisiklikleri",
+        privacyChangesDesc: "Bu Gizlilik Politikasini zaman zaman guncelleyebiliriz. Guncellemeler bu sayfada yayinlanir.",
+        privacyContactTitle: "Iletisim",
+        privacyContactDescPrefix: "Bu Gizlilik Politikasi ile ilgili sorulariniz icin iletisime gecin:",
+        privacyLastUpdated: "Son guncelleme: 27 Ocak 2026",
+        backToHome: "Ana Sayfaya Don",
+        expPageTitle: "Deneyim",
+        projPageTitle: "One Cikan Projeler",
+        expRole1Title: "Test Yazilim Muhendisi",
+        expRole1Meta: "Pointr Deep Location Company, Ingiltere | Eki 2023 - Simdi",
+        expRole1Desc: "Android ve iOS kalite stratejisini yonetiyor, olceklenebilir Cypress otomasyonu ve gelismis ag analizleri yapiyorum.",
+        expRole2Title: "QA Test Muhendisi",
+        expRole2Meta: "Optimum7, ABD | May 2022 - Eki 2023",
+        expRole2Desc: "Shopify ve BigCommerce gecislerinde manuel ve otomasyon kalite operasyonlari yurutuldu.",
+        expRole3Title: "QA Test Muhendisi",
+        expRole3Meta: "FrachtPilot GmbH, Almanya | Ara 2021 - May 2022",
+        expRole3Desc: "Sifirdan test frameworkleri kuruldu ve uctan uca senaryolar yapilandirildi.",
+        expRole4Title: "Kalite Yonetici / Bas Denetci",
+        expRole4Meta: "Fruveg GmbH, Almanya | Ara 2018 - Ara 2021",
+        expRole4Desc: "Kalite departmani kuruldu, ISO 9001 ve ISO 22000 sertifikasyonlari basariyla yonetildi.",
+        projCard1Title: "Beacon Broadcaster Pro",
+        projCard1Meta: "Flutter, Dart, BLE, Coklu Platform",
+        projCard1Desc: "Android, iOS, macOS ve Windows icin beacon yayin uygulamasi.",
+        projCard2Title: "Indoor Mapping QA Programi",
+        projCard2Meta: "Appium, Selenium, Performans Testi",
+        projCard2Desc: "Yuksek hassasiyetli konum deneyimi icin kapsamli test stratejisi.",
+        projCard3Title: "E-ticaret Gecis Dogrulamasi",
+        projCard3Meta: "Shopify, BigCommerce, Test Planlama",
+        projCard3Desc: "Kurulum, vergi, kargo ve checkout akislarinda uctan uca kalite kapilari.",
+        projCard4Title: "Acik Kaynak QA Araclari",
+        projCard4Meta: "GitHub, Swift, JavaScript",
+        projCard4Desc: "Konum simulasyonu ve otomasyon odakli acik kaynak yardimci projeler.",
+        appCard1Title: "Android - Beacon Broadcaster Pro",
+        appCard1Meta: "Google Play",
+        appCard1Desc: "Beacon yayinlama icin pratik kontrol ve dagitim secenekleri.",
+        appCard2Title: "Android - NNY Map",
+        appCard2Meta: "APK",
+        appCard2Desc: "Etkilesimli harita uygulamasi paketi.",
+        appCard3Title: "iOS - Beacon Broadcaster Pro",
+        appCard3Meta: "App Store",
+        appCard3Desc: "Beacon yayin senaryolari icin iOS surumu.",
+        appCard4Title: "Windows - Beacon Broadcaster Desktop",
+        appCard4Meta: "EXE",
+        appCard4Desc: "Windows icin masaustu beacon yayin yardimcisi.",
+        contactCardEmailTitle: "E-posta",
+        contactCardLinkedinTitle: "LinkedIn",
+        contactCardLinkedinDesc: "Profesyonel profil ve gecmis.",
+        contactCardGithubTitle: "GitHub",
+        contactCardGithubDesc: "Acik kaynak projeler ve denemeler.",
+        contactCardNstechTitle: "NSTech",
+        contactCardNstechDesc: "Danismanlik profili, hizmetler ve sirket calisma basliklari.",
+        visitNSTech: "NSTech'i Ziyaret Et",
+        contactCardResumeTitle: "Ozgecmis",
+        contactCardResumeDesc: "Guncel CV PDF formati."
+    },
+    de: {
+        home: "Startseite",
+        experience: "Erfahrung",
+        education: "Ausbildung",
+        projects: "Projekte",
+        apps: "Apps",
+        contact: "Kontakt",
+        beaconPrivacy: "Beacon Datenschutzrichtlinie",
+        footer: "Mit Qualitaet und testgetriebener Praezision erstellt.",
+        ctaContact: "Kontakt",
+        heroKicker: "Senior Software Engineer in Test",
+        heroTitleMain: "Ich verbinde Qualitaet und",
+        heroTitleAccent: "Engineering",
+        heroLead: "Mehr als 7 Jahre QA-Erfahrung mit Fokus auf skalierbare Web- und Mobile-Automatisierung sowie ISO-9001-Lead-Auditor-Disziplin.",
+        seeProjects: "Projekte ansehen",
+        yearsQa: "Jahre QA",
+        manualCut: "Weniger manuelle Arbeit",
+        projectsCount: "Projekte",
+        currentFocus: "Aktueller Fokus",
+        currentFocusText: "Testarchitektur mit Cypress, Playwright, Appium und datengetriebenem Reporting skalieren.",
+        webAutomation: "Web-Automatisierung",
+        mobileQa: "Mobile QA",
+        quickNav: "Schnellnavigation",
+        expTimeline: "Erfahrungsuebersicht",
+        expTimelineText: "Rollenverlauf, Verantwortungen und Ergebnisse.",
+        featuredProjects: "Ausgewaehlte Projekte",
+        seeAllGithubProjects: "Alle GitHub-Projekte ansehen",
+        featuredProjectsText: "Ausgewaehlte QA-, Automatisierungs- und Produktarbeit.",
+        appsDownloads: "Apps und Downloads",
+        appsDownloadsText: "Android-, iOS- und Desktop-Links.",
+        openPlayStore: "Play Store oeffnen",
+        downloadApk: "APK herunterladen",
+        openAppStore: "App Store oeffnen",
+        downloadExe: "EXE herunterladen",
+        contactCardPhoneTitle: "Telefon",
+        callNow: "Jetzt anrufen",
+        sendEmail: "E-Mail senden",
+        openLinkedin: "LinkedIn oeffnen",
+        openGithub: "GitHub oeffnen",
+        viewCv: "Lebenslauf ansehen",
+        downloadCv: "Lebenslauf herunterladen",
+        contactTitle: "Kontakt",
+        educationPageTitle: "Ausbildung und Zertifikate",
+        educationTitle: "Ausbildung",
+        certificationsTitle: "Zertifikate",
+        eduUni1: "Nuh Naci Yazgan Universitaet",
+        eduUni1Degree: "Associate Degree in Computer Programming",
+        eduUni1Date: "Dezember 2025",
+        eduUni1Desc: "Spezialisierung auf Softwareentwicklung, Testen und Qualitaetssicherung. Zudem als Teilzeit-Gastdozent taetig.",
+        eduUni2: "Anadolu Universitaet",
+        eduUni2Degree: "Bachelor in Betriebswirtschaft",
+        eduUni2Date: "Juni 2021",
+        eduUni3: "Technische Universitaet Istanbul",
+        eduUni3Degree: "Bachelor of Arts",
+        eduUni3Date: "Juli 2013",
+        cert1: "ISTQB Foundation Level Certificate",
+        cert2: "ISO9001/22000 Lead Auditor Certificate",
+        cert3: "German Language B2 Certificate",
+        cert4: "ISO 13485 Medical Devices Quality Management System",
+        viewCertificate: "Zertifikat ansehen",
+        expLegacyRole1Title: "Software Engineer in Test",
+        expLegacyRole1Meta: "Pointr Deep Location Company, England | OKT '23 - Heute",
+        expLegacyRole1Bullet1: "Befordert zum Software Engineer in Test, um umfassende mobile Tests fuer Android und iOS zu leiten.",
+        expLegacyRole1Bullet2: "Entwicklung und Wartung eines skalierbaren Automatisierungs-Frameworks mit Cypress und JavaScript zur Sicherstellung hoher Stabilitaet.",
+        expLegacyRole1Bullet3: "Leitung mobiler Testinitiativen mit Charles Proxy und Proxyman fuer Netzwerkanalyse, API-Debugging und Performance-Optimierung.",
+        expLegacyRole1Bullet4: "Optimierung der Workflow-Effizienz durch Agile/Kanban und taegliche Smoke-Test-Automatisierung via JIRA, wodurch manuelle Regression deutlich reduziert wurde.",
+        expLegacyRole2Title: "QA Test Engineer (Manuell und Automatisierung)",
+        expLegacyRole2Meta: "Optimum7, USA | MAI '22 - OKTOBER '23",
+        expLegacyRole2Bullet1: "Entwurf und Implementierung eines manuellen Test-Frameworks fuer E-Commerce-Plattformen wie Volusion, BigCommerce und Shopify.",
+        expLegacyRole2Bullet2: "Durchfuehrung kritischer Tests fuer Shop-Setup, Steuer- und Versandmigrationen zur Sicherstellung reibungsloser Uebergaenge.",
+        expLegacyRole3Title: "QA Test Engineer (Manuell und Automatisierung)",
+        expLegacyRole3Meta: "FrachtPilot GmbH, Frankfurt | DEZEMBER '21 - MAI '22",
+        expLegacyRole3Bullet1: "Aufbau und Verwaltung eines manuellen und automatisierten Test-Frameworks von Grund auf mit JIRA fuer Testfall- und Defect-Management.",
+        expLegacyRole3Bullet2: "Entwicklung umfassender Testplaene, Testfaelle und End-to-End-Szenarien auf Basis von User Stories.",
+        expLegacyRole4Title: "Quality Manager / Lead Auditor",
+        expLegacyRole4Meta: "Fruveg GmbH, Frankfurt | DEZEMBER '18 - DEZEMBER '21",
+        expLegacyRole4Bullet1: "Aufbau der Qualitaetsabteilung und erfolgreiche ISO 9001- und ISO 22000-Zertifizierungen.",
+        privacyTitle: "Datenschutzrichtlinie",
+        privacyApp: "Beacon Broadcaster App",
+        privacyDataCollectionTitle: "Datenerhebung",
+        privacyDataCollectionDesc: "Beacon Broadcaster sammelt, speichert oder uebertraegt keine personenbezogenen Daten. Die App arbeitet vollstaendig auf Ihrem Geraet.",
+        privacyBluetoothTitle: "Bluetooth-Nutzung",
+        privacyBluetoothDesc: "Diese App nutzt Bluetooth zur Aussendung von iBeacon-Signalen. UUID, Major, Minor und weitere Parameter werden lokal konfiguriert und nicht an externe Server uebermittelt.",
+        privacyLocationTitle: "Ortungsdienste",
+        privacyLocationDesc: "Fuer Beacon-Broadcasting unter iOS koennen Ortungsdienste erforderlich sein. Es werden jedoch keine Standortdaten erhoben, gespeichert oder uebertragen.",
+        privacyThirdPartyTitle: "Drittanbieter-Dienste",
+        privacyThirdPartyDesc: "Diese App integriert keine Drittanbieter fuer Analytics, Werbung oder Tracking.",
+        privacyStorageTitle: "Datenspeicherung",
+        privacyStorageDesc: "Saemtliche Beacon-Konfigurationen werden lokal auf Ihrem Geraet mit UserDefaults gespeichert. Diese Daten verlassen Ihr Geraet nicht.",
+        privacyChildrenTitle: "Datenschutz fuer Kinder",
+        privacyChildrenDesc: "Diese App erhebt wissentlich keine Daten von Kindern unter 13 Jahren.",
+        privacyChangesTitle: "Aenderungen der Datenschutzrichtlinie",
+        privacyChangesDesc: "Wir koennen diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Aenderungen werden auf dieser Seite veroeffentlicht.",
+        privacyContactTitle: "Kontakt",
+        privacyContactDescPrefix: "Bei Fragen zu dieser Datenschutzrichtlinie kontaktieren Sie bitte:",
+        privacyLastUpdated: "Zuletzt aktualisiert: 27. Januar 2026",
+        backToHome: "Zurueck zur Startseite",
+        expPageTitle: "Erfahrung",
+        projPageTitle: "Ausgewaehlte Projekte",
+        expRole1Title: "Software Engineer in Test",
+        expRole1Meta: "Pointr Deep Location Company, England | Okt 2023 - Heute",
+        expRole1Desc: "Leitung der Android- und iOS-Qualitaetsstrategie mit skalierbarer Cypress-Automatisierung und Netzwerkdiagnostik.",
+        expRole2Title: "QA Test Engineer",
+        expRole2Meta: "Optimum7, USA | Mai 2022 - Okt 2023",
+        expRole2Desc: "Manuelle und automatisierte Qualitaetssicherung fuer Shopify- und BigCommerce-Migrationen.",
+        expRole3Title: "QA Test Engineer",
+        expRole3Meta: "FrachtPilot GmbH, Deutschland | Dez 2021 - Mai 2022",
+        expRole3Desc: "Aufbau von Test-Frameworks von Grund auf und Strukturierung von End-to-End-Szenarien.",
+        expRole4Title: "Quality Manager / Lead Auditor",
+        expRole4Meta: "Fruveg GmbH, Deutschland | Dez 2018 - Dez 2021",
+        expRole4Desc: "Aufbau der Qualitaetsabteilung und erfolgreiche ISO-9001/22000-Zertifizierungen.",
+        projCard1Title: "Beacon Broadcaster Pro",
+        projCard1Meta: "Flutter, Dart, BLE, Cross-Platform",
+        projCard1Desc: "Beacon-Broadcasting-App fuer Android, iOS, macOS und Windows.",
+        projCard2Title: "Indoor Mapping QA Programm",
+        projCard2Meta: "Appium, Selenium, Performance-Tests",
+        projCard2Desc: "Umfassende Teststrategie fuer hochpraezise Indoor-Standorterlebnisse.",
+        projCard3Title: "E-Commerce Migrationsvalidierung",
+        projCard3Meta: "Shopify, BigCommerce, Testplanung",
+        projCard3Desc: "End-to-End-Qualitaetspruefungen fuer Setup, Steuern, Versand und Checkout.",
+        projCard4Title: "Open-Source QA Utilities",
+        projCard4Meta: "GitHub, Swift, JavaScript",
+        projCard4Desc: "Oeffentliche Repositories und QA-Hilfswerkzeuge fuer Automatisierung.",
+        appCard1Title: "Android - Beacon Broadcaster Pro",
+        appCard1Meta: "Google Play",
+        appCard1Desc: "Beacon-App mit praktischen Steuer- und Deployment-Optionen.",
+        appCard2Title: "Android - NNY Map",
+        appCard2Meta: "APK",
+        appCard2Desc: "Interaktive Kartenanwendung als Paket.",
+        appCard3Title: "iOS - Beacon Broadcaster Pro",
+        appCard3Meta: "App Store",
+        appCard3Desc: "iOS-Version fuer Beacon-Broadcasting-Workflows.",
+        appCard4Title: "Windows - Beacon Broadcaster Desktop",
+        appCard4Meta: "EXE",
+        appCard4Desc: "Desktop-Tool fuer Beacon-Broadcasting unter Windows.",
+        contactCardEmailTitle: "E-Mail",
+        contactCardLinkedinTitle: "LinkedIn",
+        contactCardLinkedinDesc: "Professionelles Profil und Hintergrund.",
+        contactCardGithubTitle: "GitHub",
+        contactCardGithubDesc: "Open-Source-Projekte und Experimente.",
+        contactCardNstechTitle: "NSTech",
+        contactCardNstechDesc: "Beratungsprofil, Services und Unternehmens-Highlights.",
+        visitNSTech: "NSTech besuchen",
+        contactCardResumeTitle: "Lebenslauf",
+        contactCardResumeDesc: "Aktueller Lebenslauf im PDF-Format."
+    },
+    ar: {
+        home: "الصفحة الرئيسية",
+        experience: "الخبرة",
+        education: "التعليم",
+        projects: "المشاريع",
+        apps: "التطبيقات",
+        contact: "اتصال",
+        beaconPrivacy: "سياسة خصوصية Beacon",
+        footer: "تم بناؤه بجودة عالية ودقة مدفوعة بالاختبارات.",
+        ctaContact: "اتصال",
+        heroKicker: "مهندس برمجيات اختبار اول",
+        heroTitleMain: "اربط الجودة مع",
+        heroTitleAccent: "الهندسة",
+        heroLead: "اكثر من 7 سنوات خبرة في الجودة مع تركيز على اتمتة الويب والجوال ومنهجية ISO 9001 Lead Auditor.",
+        seeProjects: "عرض المشاريع",
+        yearsQa: "سنوات QA",
+        manualCut: "تقليل العمل اليدوي",
+        projectsCount: "مشاريع",
+        currentFocus: "التركيز الحالي",
+        currentFocusText: "توسيع بنية الاختبار باستخدام Cypress وPlaywright وAppium وتقارير مدفوعة بالبيانات.",
+        webAutomation: "اتمتة الويب",
+        mobileQa: "جودة الجوال",
+        quickNav: "تنقل سريع",
+        expTimeline: "المسار المهني",
+        expTimelineText: "الادوار والمسؤوليات والنتائج.",
+        featuredProjects: "مشاريع مميزة",
+        seeAllGithubProjects: "عرض كل مشاريع GitHub",
+        featuredProjectsText: "اعمال مختارة في الجودة والاتمتة والمنتج.",
+        appsDownloads: "التطبيقات والتنزيلات",
+        appsDownloadsText: "روابط Android وiOS وسطح المكتب.",
+        openPlayStore: "فتح Play Store",
+        downloadApk: "تحميل APK",
+        openAppStore: "فتح App Store",
+        downloadExe: "تحميل EXE",
+        contactCardPhoneTitle: "الهاتف",
+        callNow: "اتصل الان",
+        sendEmail: "ارسال بريد",
+        openLinkedin: "فتح LinkedIn",
+        openGithub: "فتح GitHub",
+        viewCv: "عرض السيرة الذاتية",
+        downloadCv: "تحميل السيرة الذاتية",
+        contactTitle: "اتصال",
+        educationPageTitle: "التعليم والشهادات",
+        educationTitle: "التعليم",
+        certificationsTitle: "الشهادات",
+        eduUni1: "جامعة نوح ناجي يازجان",
+        eduUni1Degree: "درجة مساعد في برمجة الحاسوب",
+        eduUni1Date: "ديسمبر 2025",
+        eduUni1Desc: "تخصص في تطوير البرمجيات والاختبار وضمان الجودة، كما عمل محاضرا زائرا بدوام جزئي.",
+        eduUni2: "جامعة الاناضول",
+        eduUni2Degree: "بكالوريوس ادارة اعمال",
+        eduUni2Date: "يونيو 2021",
+        eduUni3: "جامعة اسطنبول التقنية",
+        eduUni3Degree: "بكالوريوس فنون",
+        eduUni3Date: "يوليو 2013",
+        cert1: "ISTQB Foundation Level Certificate",
+        cert2: "ISO9001/22000 Lead Auditor Certificate",
+        cert3: "German Language B2 Certificate",
+        cert4: "ISO 13485 Medical Devices Quality Management System",
+        viewCertificate: "عرض الشهادة",
+        expLegacyRole1Title: "مهندس برمجيات في الاختبار",
+        expLegacyRole1Meta: "Pointr Deep Location Company, England | اكتوبر '23 - حتى الان",
+        expLegacyRole1Bullet1: "تمت ترقيته الى مهندس برمجيات في الاختبار لقيادة اختبارات الجوال الشاملة على Android وiOS.",
+        expLegacyRole1Bullet2: "طور وحافظ على اطار اتمتة قابل للتوسع باستخدام Cypress وJavaScript لضمان استقرار عال للتطبيق.",
+        expLegacyRole1Bullet3: "قاد مبادرات اختبار الجوال باستخدام Charles Proxy وProxyman لتحليل الشبكة وتصحيح واجهات API وتحسين الاداء.",
+        expLegacyRole1Bullet4: "حسن كفاءة سير العمل عبر Agile/Kanban واتوماسيون اختبارات Smoke اليومية عبر JIRA مما خفض وقت الانحدار اليدوي بشكل واضح.",
+        expLegacyRole2Title: "مهندس اختبار QA (يدوي واتمتة)",
+        expLegacyRole2Meta: "Optimum7, USA | مايو '22 - اكتوبر '23",
+        expLegacyRole2Bullet1: "صمم ونفذ اطار اختبار يدوي لمنصات التجارة الالكترونية مثل Volusion وBigCommerce وShopify.",
+        expLegacyRole2Bullet2: "نفذ اختبارات حرجة لاعداد المتجر والضرائب وترحيل الشحن لضمان انتقال سلس.",
+        expLegacyRole3Title: "مهندس اختبار QA (يدوي واتمتة)",
+        expLegacyRole3Meta: "FrachtPilot GmbH, Frankfurt | ديسمبر '21 - مايو '22",
+        expLegacyRole3Bullet1: "بنى وادار اطار اختبار يدوي واتمتة من الصفر مستخدما JIRA لادارة حالات الاختبار وتتبع العيوب.",
+        expLegacyRole3Bullet2: "طور خطط اختبار شاملة وحالات اختبار وسيناريوهات شاملة بناء على قصص المستخدم.",
+        expLegacyRole4Title: "مدير جودة / مدقق رئيسي",
+        expLegacyRole4Meta: "Fruveg GmbH, Frankfurt | ديسمبر '18 - ديسمبر '21",
+        expLegacyRole4Bullet1: "اسس قسم الجودة وحقق شهادتي ISO 9001 وISO 22000 بنجاح.",
+        privacyTitle: "سياسة الخصوصية",
+        privacyApp: "تطبيق Beacon Broadcaster",
+        privacyDataCollectionTitle: "جمع البيانات",
+        privacyDataCollectionDesc: "لا يقوم Beacon Broadcaster بجمع او تخزين او نقل اي بيانات شخصية. يعمل التطبيق بالكامل على جهازك.",
+        privacyBluetoothTitle: "استخدام البلوتوث",
+        privacyBluetoothDesc: "يستخدم التطبيق تقنية البلوتوث لبث اشارات iBeacon. يتم ضبط UUID وMajor وMinor وباقي المعلمات محليا على جهازك ولا تتم مشاركتها مع خوادم خارجية.",
+        privacyLocationTitle: "خدمات الموقع",
+        privacyLocationDesc: "قد تتطلب iOS خدمات الموقع لبث beacon عبر البلوتوث، لكن التطبيق لا يجمع او يخزن او يرسل اي بيانات موقع.",
+        privacyThirdPartyTitle: "خدمات الطرف الثالث",
+        privacyThirdPartyDesc: "هذا التطبيق لا يتكامل مع اي خدمات تحليلات او اعلانات او تتبع من طرف ثالث.",
+        privacyStorageTitle: "تخزين البيانات",
+        privacyStorageDesc: "يتم حفظ جميع اعدادات beacon محليا على جهازك باستخدام UserDefaults. هذه البيانات لا تغادر جهازك.",
+        privacyChildrenTitle: "خصوصية الاطفال",
+        privacyChildrenDesc: "لا يجمع هذا التطبيق عمدا اي معلومات من الاطفال دون سن 13 عاما.",
+        privacyChangesTitle: "التغييرات على سياسة الخصوصية",
+        privacyChangesDesc: "قد نقوم بتحديث سياسة الخصوصية من وقت لاخر. سيتم نشر اي تحديث على هذه الصفحة.",
+        privacyContactTitle: "التواصل",
+        privacyContactDescPrefix: "اذا كان لديك اي سؤال حول سياسة الخصوصية، يرجى التواصل عبر:",
+        privacyLastUpdated: "اخر تحديث: 27 يناير 2026",
+        backToHome: "العودة الى الرئيسية",
+        expPageTitle: "الخبرة",
+        projPageTitle: "مشاريع مميزة",
+        expRole1Title: "مهندس برمجيات في الاختبار",
+        expRole1Meta: "Pointr Deep Location Company, England | اكتوبر 2023 - حتى الان",
+        expRole1Desc: "قيادة استراتيجية الجودة لتطبيقات Android وiOS مع اتمتة Cypress وتحليلات الشبكة المتقدمة.",
+        expRole2Title: "مهندس اختبار QA",
+        expRole2Meta: "Optimum7, USA | مايو 2022 - اكتوبر 2023",
+        expRole2Desc: "تنفيذ عمليات جودة يدوية واتوماتيكية لانتقالات Shopify وBigCommerce.",
+        expRole3Title: "مهندس اختبار QA",
+        expRole3Meta: "FrachtPilot GmbH, Germany | ديسمبر 2021 - مايو 2022",
+        expRole3Desc: "بناء اطر اختبار من الصفر وتنظيم سيناريوهات شاملة.",
+        expRole4Title: "مدير جودة / مدقق رئيسي",
+        expRole4Meta: "Fruveg GmbH, Germany | ديسمبر 2018 - ديسمبر 2021",
+        expRole4Desc: "تاسيس قسم الجودة وقيادة شهادات ISO 9001 وISO 22000 بنجاح.",
+        projCard1Title: "Beacon Broadcaster Pro",
+        projCard1Meta: "Flutter, Dart, BLE, متعدد المنصات",
+        projCard1Desc: "تطبيق بث beacon يعمل على Android وiOS وmacOS وWindows.",
+        projCard2Title: "برنامج جودة الخرائط الداخلية",
+        projCard2Meta: "Appium, Selenium, اختبارات اداء",
+        projCard2Desc: "استراتيجية اختبار شاملة لتجارب تحديد المواقع الداخلية عالية الدقة.",
+        projCard3Title: "تحقق انتقال التجارة الالكترونية",
+        projCard3Meta: "Shopify, BigCommerce, تخطيط اختبار",
+        projCard3Desc: "ضوابط جودة شاملة للاعداد والضرائب والشحن ومسارات الدفع.",
+        projCard4Title: "ادوات QA مفتوحة المصدر",
+        projCard4Meta: "GitHub, Swift, JavaScript",
+        projCard4Desc: "مستودعات عامة وادوات مساعدة للاتمتة وضبط المواقع.",
+        appCard1Title: "Android - Beacon Broadcaster Pro",
+        appCard1Meta: "Google Play",
+        appCard1Desc: "تطبيق بث beacon بخيارات تحكم ونشر عملية.",
+        appCard2Title: "Android - NNY Map",
+        appCard2Meta: "APK",
+        appCard2Desc: "حزمة تطبيق خرائط تفاعلية.",
+        appCard3Title: "iOS - Beacon Broadcaster Pro",
+        appCard3Meta: "App Store",
+        appCard3Desc: "اصدار iOS لسير عمل بث beacon.",
+        appCard4Title: "Windows - Beacon Broadcaster Desktop",
+        appCard4Meta: "EXE",
+        appCard4Desc: "اداة سطح مكتب لبث beacon على Windows.",
+        contactCardEmailTitle: "البريد الالكتروني",
+        contactCardLinkedinTitle: "LinkedIn",
+        contactCardLinkedinDesc: "الملف المهني والخلفية.",
+        contactCardGithubTitle: "GitHub",
+        contactCardGithubDesc: "مشاريع مفتوحة المصدر وتجارب.",
+        contactCardNstechTitle: "NSTech",
+        contactCardNstechDesc: "ملف استشاري وخدمات ونبذة عن اعمال الشركة.",
+        visitNSTech: "زيارة NSTech",
+        contactCardResumeTitle: "السيرة الذاتية",
+        contactCardResumeDesc: "احدث سيرة ذاتية بصيغة PDF."
+    }
+};
+
+const titleByPage = {
+    home: {
+        en: "Erol Isildak | Senior Software Engineer in Test",
+        tr: "Erol Isildak | Kidemli Test Yazilim Muhendisi",
+        de: "Erol Isildak | Senior Software Engineer in Test",
+        ar: "Erol Isildak | مهندس برمجيات اختبار اول"
+    },
+    experience: {
+        en: "Experience | Erol Isildak",
+        tr: "Deneyim | Erol Isildak",
+        de: "Erfahrung | Erol Isildak",
+        ar: "الخبرة | Erol Isildak"
+    },
+    education: {
+        en: "Education and Certifications | Erol Isildak",
+        tr: "Egitim ve Sertifikalar | Erol Isildak",
+        de: "Ausbildung und Zertifikate | Erol Isildak",
+        ar: "التعليم والشهادات | Erol Isildak"
+    },
+    privacy: {
+        en: "Beacon Privacy Policy | Erol Isildak",
+        tr: "Beacon Gizlilik Politikasi | Erol Isildak",
+        de: "Beacon Datenschutzrichtlinie | Erol Isildak",
+        ar: "سياسة خصوصية Beacon | Erol Isildak"
+    },
+    projects: {
+        en: "Projects | Erol Isildak",
+        tr: "Projeler | Erol Isildak",
+        de: "Projekte | Erol Isildak",
+        ar: "المشاريع | Erol Isildak"
+    },
+    apps: {
+        en: "Apps | Erol Isildak",
+        tr: "Uygulamalar | Erol Isildak",
+        de: "Apps | Erol Isildak",
+        ar: "التطبيقات | Erol Isildak"
+    },
+    contact: {
+        en: "Contact | Erol Isildak",
+        tr: "Iletisim | Erol Isildak",
+        de: "Kontakt | Erol Isildak",
+        ar: "اتصال | Erol Isildak"
+    }
+};
+
+const descriptionByPage = {
+    home: {
+        en: "Senior Software Engineer in Test portfolio of Erol Isildak. QA leadership, mobile and web automation, and quality-driven engineering.",
+        tr: "Erol Isildak'in Kidemli Test Yazilim Muhendisi portfoyu. QA liderligi, mobil ve web otomasyonu, kalite odakli muhendislik.",
+        de: "Portfolio von Erol Isildak als Senior Software Engineer in Test. QA-Leadership, Mobile- und Web-Automatisierung.",
+        ar: "ملف Erol Isildak كمهندس برمجيات اختبار اول: قيادة الجودة واتوماسيون الويب والجوال."
+    },
+    experience: {
+        en: "Experience timeline of Erol Isildak across QA engineering, automation architecture, and quality management roles.",
+        tr: "Erol Isildak'in QA muhendisligi, otomasyon mimarisi ve kalite yonetimi rollerindeki deneyim gecmisi.",
+        de: "Erfahrungsprofil von Erol Isildak in QA-Engineering, Automatisierung und Qualitaetsmanagement.",
+        ar: "الخبرات المهنية لـ Erol Isildak في هندسة الجودة واتمتة الاختبار وادارة الجودة."
+    },
+    education: {
+        en: "Education and certifications of Erol Isildak including formal education and quality certifications.",
+        tr: "Erol Isildak'in egitim gecmisi ve kalite odakli sertifikalari.",
+        de: "Ausbildung und Zertifizierungen von Erol Isildak.",
+        ar: "التعليم والشهادات المهنية لـ Erol Isildak."
+    },
+    privacy: {
+        en: "Privacy policy for Beacon Broadcaster applications.",
+        tr: "Beacon Broadcaster uygulamalari icin gizlilik politikasi.",
+        de: "Datenschutzrichtlinie fuer Beacon Broadcaster Anwendungen.",
+        ar: "سياسة خصوصية لتطبيقات Beacon Broadcaster."
+    },
+    projects: {
+        en: "Featured QA and automation projects by Erol Isildak including mobile testing, ecommerce validation, and BLE products.",
+        tr: "Erol Isildak'in mobil test, e-ticaret dogrulama ve BLE urunlerini iceren one cikan QA ve otomasyon projeleri.",
+        de: "Ausgewaehlte QA- und Automatisierungsprojekte von Erol Isildak, inklusive Mobile-Tests und E-Commerce-Validierung.",
+        ar: "مشاريع QA واتمتة مميزة لـ Erol Isildak تشمل اختبار الجوال والتحقق من التجارة الالكترونية."
+    },
+    apps: {
+        en: "App download center for Erol Isildak projects across Android, iOS, and Windows.",
+        tr: "Erol Isildak projeleri icin Android, iOS ve Windows uygulama indirme merkezi.",
+        de: "Download-Zentrum fuer Erol-Isildak-Projekte auf Android, iOS und Windows.",
+        ar: "مركز تنزيل تطبيقات مشاريع Erol Isildak على Android وiOS وWindows."
+    },
+    contact: {
+        en: "Contact Erol Isildak for Senior QA, Software Engineer in Test, and test automation opportunities.",
+        tr: "Kidemli QA, Test Yazilim Muhendisi ve test otomasyon firsatlari icin Erol Isildak ile iletisime gecin.",
+        de: "Kontaktieren Sie Erol Isildak fuer Senior-QA- und Testautomatisierungsrollen.",
+        ar: "تواصل مع Erol Isildak لفرص Senior QA وهندسة الاختبار واتمتة الاختبارات."
+    }
+};
+
+const supportedLangs = ["en", "tr", "de", "ar"];
+
+function setMetaContent(selector, value) {
+    const el = document.querySelector(selector);
+    if (el && value) {
+        el.setAttribute("content", value);
+    }
+}
+
+function getLangFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get("lang");
+    if (lang && supportedLangs.includes(lang)) {
+        return lang;
+    }
+    return null;
+}
+
+function getLang() {
+    const langFromUrl = getLangFromUrl();
+    if (langFromUrl) {
+        return langFromUrl;
+    }
+
+    const stored = localStorage.getItem("selectedLanguage");
+    if (stored && supportedLangs.includes(stored)) {
+        return stored;
+    }
+
+    return "en";
+}
+
+function updateLangInUrl(lang) {
+    if (!supportedLangs.includes(lang)) {
+        return;
+    }
+    const url = new URL(window.location.href);
+    url.searchParams.set("lang", lang);
+    window.history.replaceState({}, "", url.toString());
+}
+
+function setLang(lang) {
+    localStorage.setItem("selectedLanguage", lang);
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        const langCopy = copyByLang[lang] || copyByLang.en;
+        if (langCopy[key]) {
+            el.textContent = langCopy[key];
+        }
+    });
+
+    const switcher = document.querySelector("#lang-switcher");
+    if (switcher) {
+        switcher.value = lang;
+    }
+
+    const pageKey = document.body.getAttribute("data-page");
+    if (pageKey && titleByPage[pageKey]) {
+        const localizedTitle = titleByPage[pageKey][lang] || titleByPage[pageKey].en;
+        document.title = localizedTitle;
+        setMetaContent('meta[property="og:title"]', localizedTitle);
+        setMetaContent('meta[name="twitter:title"]', localizedTitle);
+    }
+
+    if (pageKey && descriptionByPage[pageKey]) {
+        const localizedDescription = descriptionByPage[pageKey][lang] || descriptionByPage[pageKey].en;
+        setMetaContent('meta[name="description"]', localizedDescription);
+        setMetaContent('meta[property="og:description"]', localizedDescription);
+        setMetaContent('meta[name="twitter:description"]', localizedDescription);
+    }
+}
+
+function initMobileMenu() {
+    const btn = document.querySelector("#mobile-toggle");
+    const panel = document.querySelector("#mobile-panel");
+    if (!btn || !panel) {
+        return;
+    }
+
+    btn.addEventListener("click", () => {
+        panel.classList.toggle("open");
+    });
+}
+
+function initLanguage() {
+    const lang = getLang();
+    setLang(lang);
+    updateLangInUrl(lang);
+    const switcher = document.querySelector("#lang-switcher");
+    if (switcher) {
+        switcher.addEventListener("change", (event) => {
+            const nextLang = event.target.value;
+            setLang(nextLang);
+            updateLangInUrl(nextLang);
+        });
+    }
+}
+
+function initLegacyHashRedirects() {
+    const map = {
+        "#experience": "experience.html",
+        "#education": "education.html",
+        "#projects": "projects.html",
+        "#apps": "apps.html",
+        "#contact": "contact.html",
+        "#skills": "experience.html"
+    };
+
+    const isHomePath = window.location.pathname.endsWith("index.html") || window.location.pathname === "/";
+    if (isHomePath && map[window.location.hash]) {
+        window.location.href = map[window.location.hash];
+    }
+}
+
+function initDomainRedirect() {
+    if (window.location.hostname === "eisildak.github.io") {
+        const target = "https://erolisildak.com" + window.location.pathname + window.location.hash;
+        window.location.replace(target);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    initDomainRedirect();
+    initLegacyHashRedirects();
+    initMobileMenu();
+    initLanguage();
+});

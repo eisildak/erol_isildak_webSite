@@ -3,83 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beacon Broadcaster - Privacy Policy</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Beacon Privacy Policy | Erol Isildak</title>
+    <meta name="description" content="Privacy policy for Beacon Broadcaster applications.">
+    <meta property="og:title" content="Beacon Privacy Policy | Erol Isildak">
+    <meta property="og:description" content="Privacy policy for Beacon Broadcaster applications.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://erolisildak.com/beacon-privacy.html">
+    <meta property="og:image" content="https://erolisildak.com/assets/Gemini_Generated_Image_icjsxlicjsxlicjs.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Beacon Privacy Policy | Erol Isildak">
+    <meta name="twitter:description" content="Privacy policy for Beacon Broadcaster applications.">
+    <meta name="twitter:image" content="https://erolisildak.com/assets/Gemini_Generated_Image_icjsxlicjsxlicjs.png">
+    <link rel="canonical" href="https://erolisildak.com/beacon-privacy.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/site/site.css">
 </head>
-<body class="bg-gray-50 text-gray-900">
-    <div class="max-w-4xl mx-auto px-4 py-12">
-        <h1 class="text-4xl font-bold mb-8 text-center">Privacy Policy</h1>
-        <h2 class="text-2xl font-semibold mb-4 text-blue-600">Beacon Broadcaster App</h2>
-        
-        <div class="bg-white rounded-lg shadow-lg p-8 space-y-6">
-            <section>
-                <h3 class="text-xl font-semibold mb-3">Data Collection</h3>
-                <p class="text-gray-700">
-                    Beacon Broadcaster does not collect, store, or transmit any personal data. The app operates entirely on your device.
-                </p>
-            </section>
+<body data-page="privacy">
+    <nav class="top-nav">
+        <div class="site-shell">
+            <div class="top-nav-inner">
+                <a class="brand" href="index.html">Erol Isildak</a>
+                <div class="menu">
+                    <a href="index.html" data-i18n="home">Home</a>
+                    <a href="experience.html" data-i18n="experience">Experience</a>
+                    <a href="education.html" data-i18n="education">Education</a>
+                    <a href="projects.html" data-i18n="projects">Projects</a>
+                    <a href="apps.html" data-i18n="apps">Apps</a>
+                    <a href="contact.html" data-i18n="contact">Contact</a>
+                    <select id="lang-switcher" class="lang-select" aria-label="Language selector">
+                        <option value="en">EN</option>
+                        <option value="tr">TR</option>
+                        <option value="de">DE</option>
+                        <option value="ar">AR</option>
+                    </select>
+                </div>
+                <button id="mobile-toggle" class="mobile-toggle" type="button" aria-label="Toggle menu">☰</button>
+            </div>
+            <div id="mobile-panel" class="mobile-panel">
+                <a href="index.html" data-i18n="home">Home</a>
+                <a href="experience.html" data-i18n="experience">Experience</a>
+                <a href="education.html" data-i18n="education">Education</a>
+                <a href="projects.html" data-i18n="projects">Projects</a>
+                <a href="apps.html" data-i18n="apps">Apps</a>
+                <a href="contact.html" data-i18n="contact">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-            <section>
-                <h3 class="text-xl font-semibold mb-3">Bluetooth Usage</h3>
-                <p class="text-gray-700">
-                    This app uses Bluetooth technology to broadcast iBeacon signals. The beacon UUID, major, minor, and other parameters 
-                    are configured locally on your device and are not shared with any external servers.
-                </p>
-            </section>
+    <main class="site-shell section">
+        <h1 class="section-title" data-i18n="privacyTitle">Privacy Policy</h1>
+        <p class="item-text" style="margin-bottom: 1rem;" data-i18n="privacyApp">Beacon Broadcaster App</p>
 
+        <div class="card" style="display: grid; gap: 1rem;">
             <section>
-                <h3 class="text-xl font-semibold mb-3">Location Services</h3>
-                <p class="text-gray-700">
-                    Location services may be required by iOS for Bluetooth beacon broadcasting. However, no location data is collected, 
-                    stored, or transmitted by this application.
-                </p>
+                <div class="item-title" data-i18n="privacyDataCollectionTitle">Data Collection</div>
+                <p class="item-text" data-i18n="privacyDataCollectionDesc">Beacon Broadcaster does not collect, store, or transmit any personal data. The app operates entirely on your device.</p>
             </section>
-
             <section>
-                <h3 class="text-xl font-semibold mb-3">Third-Party Services</h3>
-                <p class="text-gray-700">
-                    This app does not integrate with any third-party analytics, advertising, or tracking services.
-                </p>
+                <div class="item-title" data-i18n="privacyBluetoothTitle">Bluetooth Usage</div>
+                <p class="item-text" data-i18n="privacyBluetoothDesc">This app uses Bluetooth technology to broadcast iBeacon signals. Beacon UUID, major, minor, and related parameters are configured locally on your device and are not shared with external servers.</p>
             </section>
-
             <section>
-                <h3 class="text-xl font-semibold mb-3">Data Storage</h3>
-                <p class="text-gray-700">
-                    All beacon configuration settings are stored locally on your device using UserDefaults. 
-                    This data never leaves your device.
-                </p>
+                <div class="item-title" data-i18n="privacyLocationTitle">Location Services</div>
+                <p class="item-text" data-i18n="privacyLocationDesc">Location services may be required by iOS for Bluetooth beacon broadcasting. However, no location data is collected, stored, or transmitted by this application.</p>
             </section>
-
             <section>
-                <h3 class="text-xl font-semibold mb-3">Children's Privacy</h3>
-                <p class="text-gray-700">
-                    This app does not knowingly collect any information from children under the age of 13.
-                </p>
+                <div class="item-title" data-i18n="privacyThirdPartyTitle">Third-Party Services</div>
+                <p class="item-text" data-i18n="privacyThirdPartyDesc">This app does not integrate with third-party analytics, advertising, or tracking services.</p>
             </section>
-
             <section>
-                <h3 class="text-xl font-semibold mb-3">Changes to Privacy Policy</h3>
-                <p class="text-gray-700">
-                    We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated revision date.
-                </p>
+                <div class="item-title" data-i18n="privacyStorageTitle">Data Storage</div>
+                <p class="item-text" data-i18n="privacyStorageDesc">All beacon configuration settings are stored locally on your device using UserDefaults. This data never leaves your device.</p>
             </section>
-
             <section>
-                <h3 class="text-xl font-semibold mb-3">Contact</h3>
-                <p class="text-gray-700">
-                    If you have any questions about this Privacy Policy, please contact us at: 
-                    <a href="mailto:erol.isildak@pointr.tech" class="text-blue-600 hover:underline">erol.isildak@pointr.tech</a>
-                </p>
+                <div class="item-title" data-i18n="privacyChildrenTitle">Children's Privacy</div>
+                <p class="item-text" data-i18n="privacyChildrenDesc">This app does not knowingly collect information from children under the age of 13.</p>
             </section>
-
-            <p class="text-sm text-gray-500 mt-8 pt-6 border-t border-gray-200">
-                Last updated: January 27, 2026
-            </p>
+            <section>
+                <div class="item-title" data-i18n="privacyChangesTitle">Changes to Privacy Policy</div>
+                <p class="item-text" data-i18n="privacyChangesDesc">We may update this Privacy Policy from time to time. Any updates will be posted on this page with an updated revision date.</p>
+            </section>
+            <section>
+                <div class="item-title" data-i18n="privacyContactTitle">Contact</div>
+                <p class="item-text"><span data-i18n="privacyContactDescPrefix">If you have any questions about this Privacy Policy, please contact:</span> <a href="mailto:erol.isildak@pointr.tech">erol.isildak@pointr.tech</a></p>
+            </section>
+            <p class="item-text" style="margin: 0;" data-i18n="privacyLastUpdated">Last updated: January 27, 2026</p>
         </div>
 
-        <div class="text-center mt-8">
-            <a href="index.html" class="text-blue-600 hover:underline">← Back to Home</a>
+        <div class="section-cta">
+            <a href="index.html" class="btn btn-secondary" data-i18n="backToHome">Back to Home</a>
         </div>
-    </div>
+    </main>
+
+    <footer class="footer">
+        <div class="site-shell">
+            <p data-i18n="footer">Built with quality and test-driven precision.</p>
+            <p>© 2026 Erol Isildak</p>
+            <p class="footer-legal"><a href="https://erolisildak.com/beacon-privacy.html" data-i18n="beaconPrivacy">Beacon Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script src="assets/site/site.js"></script>
 </body>
 </html>
