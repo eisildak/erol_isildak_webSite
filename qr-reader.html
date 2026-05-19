@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>QR Code Reader | Erol Isildak</title>
+  <meta name="description" content="Real-time QR code and barcode reader. Scan multiple codes at once using your camera.">
+  <meta property="og:title" content="QR Code Reader | Erol Isildak">
+  <meta property="og:description" content="Real-time QR code and barcode reader built with Python + OpenCV.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://erolisildak.com/qr-reader.html">
+  <meta property="og:image" content="https://erolisildak.com/assets/Gemini_Generated_Image_icjsxlicjsxlicjs.png">
+  <link rel="canonical" href="https://erolisildak.com/qr-reader.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site/site.css">
+  <style>
+    /* ── QR Reader page-specific styles ── */
+    .qr-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+      aspect-ratio: 4/3;
+      background: #000;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,.35);
+    }
+    #qr-video, #qr-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    #qr-canvas { pointer-events: none; }
+
+    /* Corner brackets */
+    .qr-frame {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .qr-frame::before, .qr-frame::after,
+    .qr-frame span::before, .qr-frame span::after {
+      content: '';
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      border-color: #fff;
+      border-style: solid;
+      border-width: 0;
+      opacity: .85;
+    }
+    .qr-frame::before  { top:16px;    left:16px;  border-top-width:3px;    border-left-width:3px; }
+    .qr-frame::after   { top:16px;    right:16px; border-top-width:3px;    border-right-width:3px; }
+    .qr-frame span::before { bottom:16px; left:16px;  border-bottom-width:3px; border-left-width:3px; }
+    .qr-frame span::after  { bottom:16px; right:16px; border-bottom-width:3px; border-right-width:3px; }
+
+    /* Scan line animation */
+    .scan-line {
+      position: absolute;
+      left: 10%; right: 10%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #7c3aed, transparent);
+      animation: scanMove 2.2s ease-in-out infinite;
+      border-radius: 2px;
+    }
+    @keyframes scanMove { 0%,100%{top:15%} 50%{top:80%} }
+
+    /* Status badge */
+    .qr-status {
+      position: absolute;
+      bottom: 14px; left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,.6);
+      color: #fff;
+      font-size: .75rem;
+      padding: 4px 14px;
+      border-radius: 999px;
+      backdrop-filter: blur(6px);
+      white-space: nowrap;
+    }
+
+    /* Controls row */
+    .qr-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 18px;
+    }
+
+    /* Result list */
+    .qr-results {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 320px;
+      overflow-y: auto;
+    }
+    .qr-result-item {
+      background: var(--surface, #f8f7ff);
+      border: 1px solid var(--border, #e5e0f5);
+      border-left: 4px solid #7c3aed;
+      border-radius: 10px;
+      padding: 12px 16px;
+      animation: fadeUp .2s ease;
+    }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
+    .qr-result-data {
+      font-weight: 700;
+      font-size: .95rem;
+      word-break: break-all;
+    }
+    .qr-result-data a { color: #7c3aed; text-decoration: underline; }
+    .qr-result-meta {
+      font-size: .78rem;
+      color: var(--text-muted, #888);
+      margin-top: 4px;
+    }
+    .badge-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #7c3aed;
+      color: #fff;
+      border-radius: 999px;
+      min-width: 26px;
+      height: 26px;
+      padding: 0 8px;
+      font-size: .8rem;
+      font-weight: 700;
+      margin-left: 8px;
+    }
+
+    .empty-note {
+      color: var(--text-muted, #aaa);
+      font-size: .88rem;
+      text-align: center;
+      padding: 16px 0;
+    }
+
+    .section-flex {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+    .section-flex h2 { margin: 0; font-size: 1.05rem; }
+
+    .copy-btn {
+      font-size: .72rem;
+      padding: 2px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--border, #ddd);
+      background: transparent;
+      cursor: pointer;
+      margin-left: auto;
+      color: inherit;
+    }
+    .copy-btn:active { opacity: .6; }
+
+    @media (max-width: 520px) {
+      .qr-wrapper { aspect-ratio: 3/4; }
+    }
+  </style>
+</head>
+<body data-page="links">
+
+  <nav class="top-nav">
+    <div class="site-shell">
+      <div class="top-nav-inner">
+        <a class="brand" href="index.html">Erol Isildak</a>
+        <div class="menu">
+          <a href="index.html"       data-i18n="home">Home</a>
+          <a href="experience.html"  data-i18n="experience">Experience</a>
+          <a href="education.html"   data-i18n="education">Education</a>
+          <a href="projects.html"    data-i18n="projects">Projects</a>
+          <a href="apps.html"        data-i18n="apps">Apps</a>
+          <a class="active" href="links.html" data-i18n="links">Links</a>
+          <a href="contact.html"     data-i18n="contact">Contact</a>
+          <select id="lang-switcher" class="lang-select" aria-label="Language selector">
+            <option value="en">EN</option>
+            <option value="tr">TR</option>
+            <option value="de">DE</option>
+            <option value="ar">AR</option>
+          </select>
+        </div>
+        <button id="mobile-toggle" class="mobile-toggle" type="button" aria-label="Toggle menu">☰</button>
+      </div>
+      <div id="mobile-panel" class="mobile-panel">
+        <a href="index.html"      data-i18n="home">Home</a>
+        <a href="experience.html" data-i18n="experience">Experience</a>
+        <a href="education.html"  data-i18n="education">Education</a>
+        <a href="projects.html"   data-i18n="projects">Projects</a>
+        <a href="apps.html"       data-i18n="apps">Apps</a>
+        <a href="links.html"      data-i18n="links">Links</a>
+        <a href="contact.html"    data-i18n="contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="site-shell section">
+    <h1 class="section-title">QR Code Reader</h1>
+    <p class="item-text" style="margin-bottom:28px">
+      Real-time QR code &amp; barcode scanner — runs entirely in your browser, no installation needed.
+      Multiple codes are detected simultaneously.
+    </p>
+
+    <div class="card" style="margin-bottom:24px">
+
+      <!-- Camera view -->
+      <div class="qr-wrapper">
+        <video id="qr-video" autoplay playsinline muted></video>
+        <canvas id="qr-canvas"></canvas>
+        <div class="qr-frame"><span></span></div>
+        <div class="scan-line" id="scanLine"></div>
+        <div class="qr-status" id="qrStatus">Camera off</div>
+      </div>
+
+      <!-- Controls -->
+      <div class="qr-controls">
+        <button id="btnStart" class="btn btn-primary">▶ Start Camera</button>
+        <button id="btnStop"  class="btn btn-secondary" disabled>⏹ Stop</button>
+        <button id="btnFlip"  class="btn" style="display:none">🔄 Flip</button>
+        <select id="camSelect" style="padding:8px 12px;border-radius:8px;font-size:.85rem;border:1px solid var(--border,#ddd);background:var(--surface,#fff)"></select>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="card">
+      <div class="section-flex">
+        <h2>Detected Codes</h2>
+        <span class="badge-count" id="badge">0</span>
+        <button class="copy-btn" id="btnCopyAll" title="Copy all to clipboard">Copy all</button>
+      </div>
+      <ul class="qr-results" id="resultList">
+        <li class="empty-note" id="emptyNote">Scan a QR code to see results here.</li>
+      </ul>
+    </div>
+
+    <p style="margin-top:20px;font-size:.82rem;color:var(--text-muted,#aaa);text-align:center">
+      ← <a href="links.html">Back to Links</a>
+      &nbsp;·&nbsp;
+      Built with Python + OpenCV (backend) / BarcodeDetector API (browser)
+    </p>
+  </main>
+
+  <footer class="footer">
+    <div class="site-shell">
+      <p data-i18n="footer">Built with quality and test-driven precision.</p>
+      <p>© 2026 Erol Isildak</p>
+      <p class="footer-legal">
+        <a href="https://erolisildak.com/beacon-privacy.html" data-i18n="beaconPrivacy">Beacon Privacy Policy</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- jsQR fallback (loaded lazily only if BarcodeDetector unavailable) -->
+  <script>
+  "use strict";
+
+  /* ── Elements ── */
+  const video      = document.getElementById("qr-video");
+  const canvas     = document.getElementById("qr-canvas");
+  const ctx        = canvas.getContext("2d");
+  const btnStart   = document.getElementById("btnStart");
+  const btnStop    = document.getElementById("btnStop");
+  const btnFlip    = document.getElementById("btnFlip");
+  const btnCopyAll = document.getElementById("btnCopyAll");
+  const camSelect  = document.getElementById("camSelect");
+  const resultList = document.getElementById("resultList");
+  const badge      = document.getElementById("badge");
+  const qrStatus   = document.getElementById("qrStatus");
+  const emptyNote  = document.getElementById("emptyNote");
+
+  /* ── State ── */
+  let stream       = null;
+  let rafId        = null;
+  let detector     = null;   // BarcodeDetector or jsQR wrapper
+  let jsqrLib      = null;   // lazy-loaded jsQR
+  let facing       = "environment";
+  const seen       = new Map();  // data → timestamp
+
+  /* ── Detector setup ── */
+  async function initDetector() {
+    if ("BarcodeDetector" in window) {
+      const formats = await BarcodeDetector.getSupportedFormats().catch(() => ["qr_code"]);
+      detector = new BarcodeDetector({ formats });
+      return;
+    }
+    // Fallback: load jsQR from CDN
+    await new Promise((resolve, reject) => {
+      const s = document.createElement("script");
+      s.src = "https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js";
+      s.onload = resolve; s.onerror = reject;
+      document.head.appendChild(s);
+    });
+    jsqrLib = window.jsQR;
+    detector = { type: "jsqr" };
+  }
+
+  /* ── Detect from frame ── */
+  async function detect(imgData) {
+    if (!detector) return [];
+    if (detector.type === "jsqr") {
+      const result = jsqrLib(imgData.data, imgData.width, imgData.height);
+      if (!result) return [];
+      return [{ rawValue: result.data, format: "qr_code", location: result.location }];
+    }
+    return detector.detect(canvas).catch(() => []);
+  }
+
+  /* ── Camera ── */
+  async function startCamera() {
+    await initDetector();
+    const deviceId = camSelect.value;
+    const constraints = {
+      video: deviceId ? { deviceId: { exact: deviceId } } : { facingMode: facing },
+      audio: false,
+    };
+    try {
+      stream = await navigator.mediaDevices.getUserMedia(constraints);
+      video.srcObject = stream;
+      await video.play();
+      btnStart.disabled = true;
+      btnStop.disabled  = false;
+      qrStatus.textContent = "Scanning…";
+      await populateCameras();
+      // Show flip button on touch devices
+      if (navigator.maxTouchPoints > 0) btnFlip.style.display = "";
+      rafId = requestAnimationFrame(loop);
+    } catch (e) {
+      alert("Camera error: " + e.message);
+    }
+  }
+
+  function stopCamera() {
+    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+    if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; }
+    video.srcObject = null;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    btnStart.disabled = false;
+    btnStop.disabled  = true;
+    qrStatus.textContent = "Camera off";
+  }
+
+  async function flipCamera() {
+    facing = facing === "environment" ? "user" : "environment";
+    camSelect.value = "";
+    stopCamera();
+    await startCamera();
+  }
+
+  async function populateCameras() {
+    try {
+      const devices = await navigator.mediaDevices.enumerateDevices();
+      camSelect.innerHTML = "";
+      devices.filter(d => d.kind === "videoinput").forEach((d, i) => {
+        const o = document.createElement("option");
+        o.value = d.deviceId;
+        o.textContent = d.label || `Camera ${i + 1}`;
+        camSelect.appendChild(o);
+      });
+    } catch (_) {}
+  }
+
+  /* ── Main loop ── */
+  async function loop() {
+    if (!stream) return;
+    if (video.readyState >= 2) {
+      canvas.width  = video.videoWidth;
+      canvas.height = video.videoHeight;
+      ctx.drawImage(video, 0, 0);
+
+      const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const results = await detect(imgData);
+
+      drawOverlay(results);
+      results.forEach(r => addResult(r.rawValue, r.format));
+
+      qrStatus.textContent = results.length
+        ? `✔ ${results.length} code${results.length > 1 ? "s" : ""} detected`
+        : "Scanning…";
+    }
+    rafId = requestAnimationFrame(loop);
+  }
+
+  /* ── Canvas overlay ── */
+  function drawOverlay(results) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = "#7c3aed";
+    ctx.lineWidth   = 3;
+    ctx.fillStyle   = "rgba(124,58,237,.15)";
+    results.forEach(r => {
+      const loc = r.cornerPoints || r.boundingBox;
+      if (r.cornerPoints && r.cornerPoints.length === 4) {
+        const pts = r.cornerPoints;
+        ctx.beginPath();
+        ctx.moveTo(pts[0].x, pts[0].y);
+        pts.slice(1).forEach(p => ctx.lineTo(p.x, p.y));
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+      }
+    });
+  }
+
+  /* ── Result list ── */
+  function addResult(data, format) {
+    if (seen.has(data)) return;
+    const ts = new Date().toLocaleTimeString();
+    seen.set(data, ts);
+    emptyNote.style.display = "none";
+
+    const li = document.createElement("li");
+    li.className = "qr-result-item";
+    const isURL = /^https?:\/\//i.test(data);
+    li.innerHTML = `
+      <div class="qr-result-data">
+        ${isURL
+          ? `<a href="${esc(data)}" target="_blank" rel="noopener noreferrer">${esc(data)}</a>`
+          : esc(data)}
+      </div>
+      <div class="qr-result-meta">${esc(format.toUpperCase())} &nbsp;·&nbsp; ${ts}</div>`;
+    resultList.prepend(li);
+    badge.textContent = seen.size;
+  }
+
+  /* ── Copy all ── */
+  btnCopyAll.addEventListener("click", () => {
+    if (!seen.size) return;
+    const text = [...seen.keys()].join("\n");
+    navigator.clipboard.writeText(text).then(() => {
+      btnCopyAll.textContent = "Copied!";
+      setTimeout(() => btnCopyAll.textContent = "Copy all", 1800);
+    });
+  });
+
+  /* ── XSS guard ── */
+  function esc(s) {
+    return String(s)
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+
+  /* ── Events ── */
+  btnStart.addEventListener("click", startCamera);
+  btnStop.addEventListener("click", stopCamera);
+  btnFlip.addEventListener("click", flipCamera);
+
+  /* ── Init ── */
+  populateCameras();
+  </script>
+
+  <script src="assets/site/site.js"></script>
+</body>
+</html>
