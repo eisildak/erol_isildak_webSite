@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "deploy:ionos": "./scripts/deploy-ionos.sh"
+    "deploy:ionos": "./scripts/deploy-ionos.sh",
+    "update-gpschanger": "cp /Users/erol/Documents/erol/GPS_Changer/build/GPSChanger.zip app/ios/GPSChanger.zip && echo 'GPSChanger.zip updated'"
   },
   "dependencies": {
     "qrcode": "^1.5.4"
