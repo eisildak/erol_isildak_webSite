@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kitap Takası — Kullanıcı Hikayeleri</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f0f2f5;
+      padding: 32px 20px 56px;
+      color: #1a1a2e;
+    }
+
+    .page-title {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 4px;
+    }
+    .page-sub {
+      text-align: center;
+      font-size: 12px;
+      color: #868e96;
+      margin-bottom: 32px;
+    }
+
+    /* ── epic labels ── */
+    .epic-label {
+      max-width: 1060px;
+      margin: 0 auto 12px;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.1px;
+      padding: 5px 12px;
+      border-radius: 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .epic-wrapper {
+      max-width: 1060px;
+      margin: 0 auto 36px;
+    }
+    .epic-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .epic-badge {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+    .epic-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1a1a2e;
+    }
+
+    /* ── story grid ── */
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 16px;
+    }
+
+    /* ── story card ── */
+    .story-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border-top: 4px solid transparent;
+      transition: box-shadow 0.15s;
+    }
+    .story-card:hover {
+      box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+    }
+
+    .card-header {
+      padding: 12px 16px 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .story-id {
+      font-size: 10px;
+      font-weight: 700;
+      color: #adb5bd;
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+    .priority-badge {
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 9px;
+      white-space: nowrap;
+    }
+    .p-high   { background: #ffe3e3; color: #c92a2a; }
+    .p-medium { background: #fff3bf; color: #856404; }
+    .p-low    { background: #d3f9d8; color: #1e7e34; }
+
+    .card-body {
+      padding: 10px 16px 14px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .story-text {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #212529;
+    }
+    .story-text .role  { font-weight: 700; color: inherit; }
+    .story-text .goal  { font-style: italic; }
+    .story-text .reason { color: #495057; }
+
+    /* acceptance criteria */
+    .ac-title {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: #868e96;
+      margin-bottom: 5px;
+    }
+    .ac-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .ac-list li {
+      font-size: 11.5px;
+      color: #495057;
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.45;
+    }
+    .ac-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #2f9e44;
+      font-size: 10px;
+      top: 1px;
+    }
+
+    /* story points */
+    .card-footer {
+      padding: 8px 16px 10px;
+      border-top: 1px solid #f1f3f5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .sp-badge {
+      font-size: 10px;
+      font-weight: 700;
+      background: #e7f5ff;
+      color: #1864ab;
+      padding: 2px 8px;
+      border-radius: 9px;
+    }
+    .tag {
+      font-size: 9.5px;
+      background: #f1f3f5;
+      color: #495057;
+      padding: 2px 7px;
+      border-radius: 8px;
+      display: inline-block;
+    }
+    .tags { display: flex; gap: 4px; flex-wrap: wrap; }
+
+    /* ── summary table ── */
+    .summary-wrap {
+      max-width: 1060px;
+      margin: 0 auto 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+      overflow: hidden;
+    }
+    .summary-header {
+      background: #1a1a2e;
+      padding: 12px 20px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+    table.sum {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    table.sum th {
+      background: #f4f6f9;
+      padding: 7px 14px;
+      text-align: left;
+      color: #495057;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    table.sum td {
+      padding: 7px 14px;
+      border-bottom: 1px solid #f1f3f5;
+      color: #333;
+    }
+    table.sum tr:last-child td { border-bottom: none; }
+    table.sum tr:nth-child(even) td { background: #fafafa; }
+
+    .page-footer {
+      text-align: center;
+      font-size: 11px;
+      color: #adb5bd;
+      margin-top: 12px;
+    }
+
+    @media print {
+      body { background: #fff; padding: 0; }
+      .story-card { box-shadow: none; border: 1px solid #e0e0e0; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-title">Kitap Takası — Kullanıcı Hikayeleri</div>
+<p class="page-sub">Toplam 15 hikaye · 3 Epic · Öncelik &amp; Kabul Kriterleri ile · 30 Mayıs 2026</p>
+
+<!-- ================================================================== -->
+<!-- EPIC 1 — KİMLİK DOĞRULAMA                                          -->
+<!-- ================================================================== -->
+<div class="epic-wrapper">
+  <div class="epic-header">
+    <div class="epic-badge" style="background:#d0ebff;color:#1864ab;">Epic 1</div>
+    <div class="epic-title">🔐 Kimlik Doğrulama &amp; Hesap Yönetimi</div>
+  </div>
+  <div class="story-grid">
+
+    <!-- US-01 -->
+    <div class="story-card" style="border-top-color:#1971c2;">
+      <div class="card-header">
+        <span class="story-id">US-01</span>
+        <span class="priority-badge p-high">Yüksek Öncelik</span>
+      </div>
+      <div class="card-body">
+        <div class="story-text">
+          <span class="role">Bir öğrenci olarak,</span>
+          platforma <span class="goal">e-posta, telefon ve adres bilgilerimle hızlıca kayıt olabilmek</span> istiyorum
+          <span class="reason">ki sistemde kendi kitaplığımı oluşturabileyim ve diğer kullanıcılarla takas yapabileyim.</span>
+        </div>
+        <div>
+          <div class="ac-title">Kabul Kriterleri</div>
+          <ul class="ac-list">
+            <li>Kullanıcı adı, şifre, e-posta, telefon ve adres alanları zorunludur.</li>
+            <li>Kullanıcı adı sistemde zaten varsa "kullanıcı adı alınmış" hatası gösterilir.</li>
+            <li>Şifre bcrypt (salt round 12) ile hashlenerek saklanır; düz metin saklanmaz.</li>
+            <li>Kayıt başarılıysa kullanıcı otomatik olarak Ana Sayfa'ya yönlendirilir.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="sp-badge">5 SP</span>
+        <div class="tags"><span class="tag">Register.jsx</span><span class="tag">POST /api/register</span></div>
+      </div>
+    </div>
+
+    <!-- US-02 -->
+    <div class="story-card" style="border-top-color:#1971c2;">
+      <div class="card-header">
+        <span class="story-id">US-02</span>
+        <span class="priority-badge p-high">Yüksek Öncelik</span>
+      </div>
+      <div class="card-body">
+        <div class="story-text">
+          <span class="role">Kayıtlı bir kullanıcı olarak,</span>
+          kullanıcı adı ve şifremle <span class="goal">güvenli biçimde giriş yapabilmek</span> istiyorum
+          <span class="reason">ki kişisel kitaplığıma ve takas isteklerime ulaşabileyim.</span>
+        </div>
+        <div>
+          <div class="ac-title">Kabul Kriterleri</div>
+          <ul class="ac-list">
+            <li>Doğru kullanıcı adı + şifre ile giriş yapıldığında oturum açılır.</li>
+            <li>Yanlış kimlik bilgilerinde açıklayıcı hata mesajı gösterilir.</li>
+            <li>Giriş sonrasında kullanıcıya özgü içerik (userId bazlı) gösterilir.</li>
+            <li>Şifre karşılaştırması bcrypt.compare ile yapılır.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="sp-badge">3 SP</span>
+        <div class="tags"><span class="tag">Login.jsx</span><span class="tag">POST /api/verifyUser</span></div>
+      </div>
+    </div>
+
+    <!-- US-03 -->
+    <div class="story-card" style="border-top-color:#1971c2;">
+      <div class="card-header">
+        <span class="story-id">US-03</span>
+        <span class="priority-badge p-medium">Orta Öncelik</span>
+      </div>
+      <div class="card-body">
+        <div class="story-text">
+          <span class="role">Giriş yapmış bir kullanıcı olarak,</span>
+          <span class="goal">oturumu güvenle kapatabilmek</span> istiyorum
+          <span class="reason">ki başkası cihazımı kullandığında hesabıma erişilemesin.</span>
+        </div>
+        <div>
+          <div class="ac-title">Kabul Kriterleri</div>
+          <ul class="ac-list">
+            <li>"Çıkış Yap" tıklandığında uygulama durumu sıfırlanır (loggedIn: false).</li>
+            <li>Çıkış sonrası kullanıcı Ana Sayfa'ya yönlendirilir.</li>
+            <li>Oturum kapatma sonrası korumalı sayfalara erişim engellenir.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="sp-badge">2 SP</span>
+        <div class="tags"><span class="tag">Nav.jsx</span><span class="tag">logOut prop</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================================================================== -->
+<!-- EPIC 2 — KİTAP YÖNETİMİ                                           -->
+<!-- ================================================================== -->
+<div class="epic-wrapper">
+  <div class="epic-header">
+    <div class="epic-badge" style="background:#d3f9d8;color:#1e7e34;">Epic 2</div>
+    <div class="epic-title">📚 Kişisel Kitaplık Yönetimi</div>
+  </div>
+  <div class="story-grid">
+
+    <!-- US-04 -->
+    <div class="story-card" style="border-top-color:#2f9e44;">
+      <div class="card-header">
+        <span class="story-id">US-04</span>
+        <span class="priority-badge p-high">Yüksek Öncelik</span>
+      </div>
+      <div class="card-body">
+        <div class="story-text">
+          <span class="role">Bir öğrenci olarak,</span>
+          dönem sonu elimde kalan ders kitaplarını <span class="goal">ISBN numarasıyla platforma ekleyebilmek</span> istiyorum
+          <span class="reason">ki başlık, yazar ve tür bilgilerini manuel girmek zorunda kalmadan kitabımı hızlıca listeleyebileyim.</span>
+        </div>
+        <div>
+          <div class="ac-title">Kabul Kriterleri</div>
+          <ul class="ac-list">
+            <li>ISBN girildiğinde Google Books API'den başlık, yazar ve tür otomatik doldurulur.</li>
+            <li>Kitap veritabanında zaten varsa tekrar eklenmez (duplicate önlenir).</li>
+            <li>Ekleme sonrası "Kitaplarım" listesi anında güncellenir.</li>
+            <li>API erişilemezse hata mesajı gösterilir ve işlem iptal edilir.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="sp-badge">8 SP</span>
+        <div class="tags"><span class="tag">MyPage.jsx</span><span class="tag">POST /api/addOldBook</span><span class="tag">Google Books API</span></div>
+      </div>
+    </div>
+
+    <!-- US-05 -->
+    <div class="story-card" style="border-top-color:#2f9e44;">
+      <div class="card-header">
+        <span class="story-id">US-05</span>
+        <span class="priority-badge p-high">Yüksek Öncelik</span>
+      </div>
+      <div class="card-body">
+        <div class="story-text">
+          <span class="role">Bir kullanıcı olarak,</span>
+          ISBN'ini bilmediğim kitapları <span class="goal">başlık, yazar ve durum bilgisiyle manuel olarak ekleyebilmek</span> istiyorum
+          <span class="reason">ki eski veya baskısı nadir bulunan kitaplarımı da takas listeme koyabileyim.</span>
+        </div>
+        <div>
+          <div class="ac-title">Kabul Kriterleri</div>
+          <ul class="ac-list">
+            <li>Başlık ve yazar alanları zorunludur; ISBN isteğe bağlıdır.</li>
+            <li>ISBN girilmezse sistem otomatik benzersiz bir tanımlayıcı üretir.</li>
+            <li>Kitap durumu (Sıfır Gibi / İyi / Orta) seçimi zorunludur.</li>
+            <li>Ekleme sonrası form sıfırlanır ve liste yenilenir.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="sp-badge">5 SP</span>
+        <div class="tags"><span class="tag">MyPage.jsx</span><span class="tag">POST /api/addManualBook</span></div>
+      </div>
+    </div>
+
+    <!-- US-06 -->
+    <div class="story-card" style="border-top-color:#2f9e44;">
+      <div class="card-header">
+        <span class="story-id">US-06</span>
+        <span class="priority-badge p-high">Yüksek Öncelik</span>
+      </div>
+      <div class="card-body">
+        <div class="story-text">
+          <span class="role">Bir kullanıcı olarak,</span>
+          kitaplığımdaki tüm kitapları <span class="goal">başlık, yazar, durum ve ISBN bilgileriyle listeleyebilmek</span> istiyorum
+          <span class="reason">ki hangi kitaplarımın takas için açık olduğunu hızlıca görebileyim.</span>
+        </div>
+        <div>
+          <div class="ac-title">Kabul Kriterleri</div>
+          <ul class="ac-list">
+            <li>Sayfa açıldığında yalnızca giriş yapan kullanıcıya ait kitaplar gösterilir.</li>
+            <li>Her satırda başlık, yazar, ISBN ve durum rozeti yer alır.</li>
+            <li>Kitaplık boşsa "Henüz kitap eklenmedi" bilgi mesajı gösterilir.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="sp-badge">3 SP</span>
+        <div class="tags"><span class="tag">MyPage.jsx</span><span class="tag">GET /api/getMyOldBookList/:userId</span></div>
+      </div>
+    </div>
+
+    <!-- US-07 -->
+    <div class="story-card" style="border-top-color:#2f9e44;">
+      <div class="card-header">
+        <span class="story-id">US-07</span>
+        <span class="priority-badge p-medium">Orta Öncelik</span>
+      </div>
+      <div class="card-body">
+        <div class="story-text">
+          <span class="role">Bir kullanıcı olarak,</span>
+          kitaplığımdan istemediğim bir kitabı <span class="goal">tek tıkla silebilmek</span> istiyorum
+          <span class="reason">ki listem güncel kalsın ve diğer kullanıcılar artık mevcut olmayan kitapları görmesin.</span>
+        </div>
+        <div>
+          <div class="ac-title">Kabul Kriterleri</div>
+          <ul class="ac-list">
+            <li>Sil butonu yalnızca o satırdaki kitabı kaldırır; diğerleri etkilenmez.</li>
+            <li>Silme işlemi geri alınamaz; onay diyaloğu gösterilir.</li>
+            <li>İşlem sonrası liste sunucudan yeniden çekilir.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="sp-badge">3 SP</span>
+        <div class="tags"><span class="tag">MyBookRow.jsx</span><span class="tag">POST /api/deleteOldBook</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================================================================== -->
+<!-- EPIC 3 — ARAMA & TAKAS                                             -->
+<!-- ================================================================== -->
+<div class="epic-wrapper">
+  <div class="epic-header">
+    <div class="epic-badge" style="background:#fff3bf;color:#856404;">Epic 3</div>
+    <div class="epic-title">🔄 Kitap Arama &amp; Takas Süreci</div>
+  </div>
+  <div class="story-grid">
+
+    <!-- US-08 -->
+    <div class="story-card" style="border-top-color:#e67700;">
+      <div class="card-header">
+        <span class="story-id">US-08</span>
+        <span class="priority-badge p-high">Yüksek Öncelik</span>
+      </div>
+      <div class="card-body">
+        <div class="story-text">
+          <span class="role">Bir öğrenci olarak,</span>
+          ihtiyacım olan ders kitabını <span class="goal">başlığına göre aratıp toplulukta kimin listelediğini görebilmek</span> istiyorum
+          <span class="reason">ki kitabı satın almak yerine takas yoluyla temin edebileyim.</span>
+        </div>
+        <div>
+          <div class="ac-title">Kabul Kriterleri</div>
+          <ul class="ac-list">
+            <li>Arama kutusu regex destekli kısmi eşleşme yapar (büyük/küçük harf duyarsız).</li>
+            <li>Sonuçlarda kitabın başlık, yazar, durum ve sahibinin kullanıcı adı gösterilir.</li>
+            <li>Kullanıcı kendi listelediği kitapları sonuçlarda görmez.</li>
+            <li>Hiç sonuç yoksa "Eşleşen kitap bulunamadı" mesajı gösterilir.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="sp-badge">5 SP</span>
+        <div class="tags"><span class="tag">Search.jsx</span><span class="tag">POST /api/findOldBook</span></div>
+      </div>
+    </div>
+
+    <!-- US-09 -->
+    <div class="story-card" style="border-top-color:#e67700;">
+      <div class="card-header">
+        <span class="story-id">US-09</span>
+        <span class="priority-badge p-high">Yüksek Öncelik</span>
+      </div>
+      <div class="card-body">
+        <div class="story-text">
+          <span class="role">Bir kullanıcı olarak,</span>
+          beğendiğim bir kitap için <span class="goal">takas talebi göndererek kitabın sahibine haber verebilmek</span> istiyorum
+          <span class="reason">ki takas sürecini e-posta veya telefon aramadan bağımsız olarak platform üzerinden yönetilebilsin.</span>
+        </div>
+        <div>
+          <div class="ac-title">Kabul Kriterleri</div>
+          <ul class="ac-list">
+            <li>"İste" butonuna basıldığında users_books tablosundaki requester alanı güncellenir.</li>
+            <li>Bir kitap için yalnızca bir talep açık olabilir.</li>
+            <li>Talep sonrası ilgili satırdaki buton devre dışı bırakılır veya durum etiketi değişir.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="sp-badge">5 SP</span>
+        <div class="tags"><span class="tag">SearchBookRow.jsx</span><span class="tag">POST /api/requestBook</span></div>
+      </div>
+    </div>
+
+    <!-- US-10 -->
+    <div class="story-card" style="border-top-color:#e67700;">
+      <div class="card-header">
+        <span class="story-id">US-10</span>
+        <span class="priority-badge p-high">Yüksek Öncelik</span>
+      </div>
+      <div class="card-body">
+        <div class="story-text">
+          <span class="role">Bir kitap sahibi olarak,</span>
+          kitabıma yapılan takas taleplerini <span class="goal">"Gelen İstekler" ekranında görüp kabul veya reddedebilemk</span> istiyorum
+          <span class="reason">ki kime vereceğimi kontrol edebileyim ve istemediğim talepleri reddedebiliyeyim.</span>
+        </div>
+        <div>
+          <div class="ac-title">Kabul Kriterleri</div>
+          <ul class="ac-list">
+            <li>Gelen İstekler listesinde talep edenin kullanıcı adı ve e-postası gösterilir.</li>
+            <li>"Kabul Et" tıklandığında POST /api/acceptRequest çağrılır.</li>
+            <li>Kabul sonrasında ilgili talep "Gelen İstekler" listesinden kalkar.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="sp-badge">5 SP</span>
+        <div class="tags"><span class="tag">Exchange.jsx</span><span class="tag">GET /api/getIncomingInfo/:userId</span></div>
+      </div>
+    </div>
+
+    <!-- US-11 -->
+    <div class="story-card" style="border-top-color:#e67700;">
+      <div class="card-header">
+        <span class="story-id">US-11</span>
+        <span class="priority-badge p-medium">Orta Öncelik</span>
+      </div>
+      <div class="card-body">
+        <div class="story-text">
+          <span class="role">Bir kullanıcı olarak,</span>
+          gönderdiğim takas taleplerini <span class="goal">"Giden İstekler" ekranında takip edebilmek</span> istiyorum
+          <span class="reason">ki hangi kitaplar için beklediğimi ve talebimin kabul edilip edilmediğini görebileyim.</span>
+        </div>
+        <div>
+          <div class="ac-title">Kabul Kriterleri</div>
+          <ul class="ac-list">
+            <li>Giden İstekler listesinde kitap adı, sahibinin adı ve e-postası yer alır.</li>
+            <li>Talep durumu (Bekleniyor / Kabul Edildi) rozet olarak gösterilir.</li>
+            <li>Kabul edilen taleplerde "Kargola" butonu aktif hale gelir.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="sp-badge">3 SP</span>
+        <div class="tags"><span class="tag">Exchange.jsx</span><span class="tag">GET /api/getOutgoingInfo/:userId</span></div>
+      </div>
+    </div>
+
+    <!-- US-12 -->
+    <div class="story-card" style="border-top-color:#e67700;">
+      <div class="card-header">
+        <span class="story-id">US-12</span>
+        <span class="priority-badge p-medium">Orta Öncelik</span>
+      </div>
+      <div class="card-body">
+        <div class="story-text">
+          <span class="role">Bir kullanıcı olarak,</span>
+          talebim kabul edilen kitabı karşı tarafa gönderdiğimde <span class="goal">kargo durumunu "Gönderildi" olarak işaretleyebilmek</span> istiyorum
+          <span class="reason">ki takas sürecinin tamamlandığı her iki tarafça da görülebilsin.</span>
+        </div>
+        <div>
+          <div class="ac-title">Kabul Kriterleri</div>
+          <ul class="ac-list">
+            <li>"Kargola" butonu yalnızca talebin kabul edilmesinin ardından aktif olur.</li>
+            <li>Onay diyaloğu gösterilir; işlem geri alınamaz olarak vurgulanır.</li>
+            <li>İşlem sonrası POST /api/shipped çağrılır ve kayıt güncellenir.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="sp-badge">3 SP</span>
+        <div class="tags"><span class="tag">ExchangeRow.jsx</span><span class="tag">POST /api/shipped</span></div>
+      </div>
+    </div>
+
+    <!-- US-13 -->
+    <div class="story-card" style="border-top-color:#c92a2a;">
+      <div class="card-header">
+        <span class="story-id">US-13</span>
+        <span class="priority-badge p-medium">Orta Öncelik</span>
+      </div>
+      <div class="card-body">
+        <div class="story-text">
+          <span class="role">Bir kullanıcı olarak,</span>
+          platforma giriş yapmadan önce <span class="goal">uygulamanın nasıl çalıştığını Ana Sayfa'dan görebilmek</span> istiyorum
+          <span class="reason">ki kayıt olmaya karar vermeden önce platformun değerini anlayabileyim.</span>
+        </div>
+        <div>
+          <div class="ac-title">Kabul Kriterleri</div>
+          <ul class="ac-list">
+            <li>Misafir kullanıcılara landing ekranı ve Giriş / Kayıt Ol linkleri gösterilir.</li>
+            <li>Korumalı sayfalara (Kitaplarım, Arama, Takas) misafir erişimi engellenir.</li>
+            <li>Navigasyon çubuğu giriş durumuna göre farklı öğeler gösterir.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="sp-badge">2 SP</span>
+        <div class="tags"><span class="tag">Root.jsx</span><span class="tag">Nav.jsx</span><span class="tag">loggedIn state</span></div>
+      </div>
+    </div>
+
+    <!-- US-14 -->
+    <div class="story-card" style="border-top-color:#c92a2a;">
+      <div class="card-header">
+        <span class="story-id">US-14</span>
+        <span class="priority-badge p-low">Düşük Öncelik</span>
+      </div>
+      <div class="card-body">
+        <div class="story-text">
+          <span class="role">Bir kullanıcı olarak,</span>
+          var olmayan bir URL'e gittiğimde <span class="goal">anlamlı bir "Sayfa Bulunamadı" ekranı görmek</span> istiyorum
+          <span class="reason">ki uygulamanın çöktüğünü sanmayıp yanlış bir bağlantıya tıkladığımı anlayabileyim.</span>
+        </div>
+        <div>
+          <div class="ac-title">Kabul Kriterleri</div>
+          <ul class="ac-list">
+            <li>Tanımsız her rotada NotFound bileşeni render edilir.</li>
+            <li>Ana sayfaya dönüş bağlantısı yer alır.</li>
+            <li>Sayfa başlığı "404 — Sayfa Bulunamadı" olarak güncellenir.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="sp-badge">1 SP</span>
+        <div class="tags"><span class="tag">NotFound.jsx</span><span class="tag">React Router</span></div>
+      </div>
+    </div>
+
+    <!-- US-15 -->
+    <div class="story-card" style="border-top-color:#c92a2a;">
+      <div class="card-header">
+        <span class="story-id">US-15</span>
+        <span class="priority-badge p-low">Düşük Öncelik</span>
+      </div>
+      <div class="card-body">
+        <div class="story-text">
+          <span class="role">Bir geliştirici olarak,</span>
+          API uç noktalarının ve React bileşenlerinin <span class="goal">otomatik birim testleriyle doğrulanmasını</span> istiyorum
+          <span class="reason">ki yeni özellik eklendiğinde mevcut işlevlerin bozulmadığından emin olabileyim.</span>
+        </div>
+        <div>
+          <div class="ac-title">Kabul Kriterleri</div>
+          <ul class="ac-list">
+            <li>Backend için Supertest ile en az 5 API uç noktası test edilir.</li>
+            <li>Frontend için @testing-library/react ile temel bileşen render testleri yazılır.</li>
+            <li>npm test komutu başarıyla tamamlanır; hata sayısı 0 olur.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="sp-badge">8 SP</span>
+        <div class="tags"><span class="tag">Jest</span><span class="tag">Supertest</span><span class="tag">__tests__/</span></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================================================================== -->
+<!-- ÖZET TABLOSU                                                        -->
+<!-- ================================================================== -->
+<div class="summary-wrap">
+  <div class="summary-header">📋 Kullanıcı Hikayeleri Özet Tablosu</div>
+  <table class="sum">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Başlık</th>
+        <th>Epic</th>
+        <th>Öncelik</th>
+        <th>Story Points</th>
+        <th>İlgili Bileşen / Endpoint</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>US-01</td><td>Platforma kayıt olma</td><td>Epic 1 – Kimlik</td><td><span class="priority-badge p-high">Yüksek</span></td><td>5</td><td>Register.jsx · POST /api/register</td></tr>
+      <tr><td>US-02</td><td>Güvenli giriş yapma</td><td>Epic 1 – Kimlik</td><td><span class="priority-badge p-high">Yüksek</span></td><td>3</td><td>Login.jsx · POST /api/verifyUser</td></tr>
+      <tr><td>US-03</td><td>Oturum kapatma</td><td>Epic 1 – Kimlik</td><td><span class="priority-badge p-medium">Orta</span></td><td>2</td><td>Nav.jsx · logOut prop</td></tr>
+      <tr><td>US-04</td><td>ISBN ile kitap ekleme</td><td>Epic 2 – Kitaplık</td><td><span class="priority-badge p-high">Yüksek</span></td><td>8</td><td>MyPage.jsx · POST /api/addOldBook</td></tr>
+      <tr><td>US-05</td><td>Manuel kitap ekleme</td><td>Epic 2 – Kitaplık</td><td><span class="priority-badge p-high">Yüksek</span></td><td>5</td><td>MyPage.jsx · POST /api/addManualBook</td></tr>
+      <tr><td>US-06</td><td>Kitaplığı listeleme</td><td>Epic 2 – Kitaplık</td><td><span class="priority-badge p-high">Yüksek</span></td><td>3</td><td>MyPage.jsx · GET /api/getMyOldBookList</td></tr>
+      <tr><td>US-07</td><td>Kitap silme</td><td>Epic 2 – Kitaplık</td><td><span class="priority-badge p-medium">Orta</span></td><td>3</td><td>MyBookRow.jsx · POST /api/deleteOldBook</td></tr>
+      <tr><td>US-08</td><td>Başlığa göre kitap arama</td><td>Epic 3 – Takas</td><td><span class="priority-badge p-high">Yüksek</span></td><td>5</td><td>Search.jsx · POST /api/findOldBook</td></tr>
+      <tr><td>US-09</td><td>Takas talebi gönderme</td><td>Epic 3 – Takas</td><td><span class="priority-badge p-high">Yüksek</span></td><td>5</td><td>SearchBookRow.jsx · POST /api/requestBook</td></tr>
+      <tr><td>US-10</td><td>Gelen istekleri yönetme</td><td>Epic 3 – Takas</td><td><span class="priority-badge p-high">Yüksek</span></td><td>5</td><td>Exchange.jsx · GET /api/getIncomingInfo</td></tr>
+      <tr><td>US-11</td><td>Giden istekleri takip etme</td><td>Epic 3 – Takas</td><td><span class="priority-badge p-medium">Orta</span></td><td>3</td><td>Exchange.jsx · GET /api/getOutgoingInfo</td></tr>
+      <tr><td>US-12</td><td>Kargo durumu bildirimi</td><td>Epic 3 – Takas</td><td><span class="priority-badge p-medium">Orta</span></td><td>3</td><td>ExchangeRow.jsx · POST /api/shipped</td></tr>
+      <tr><td>US-13</td><td>Misafir landing ekranı</td><td>Epic 3 – Takas</td><td><span class="priority-badge p-medium">Orta</span></td><td>2</td><td>Root.jsx · Nav.jsx</td></tr>
+      <tr><td>US-14</td><td>404 Sayfa Bulunamadı</td><td>Epic 3 – Takas</td><td><span class="priority-badge p-low">Düşük</span></td><td>1</td><td>NotFound.jsx</td></tr>
+      <tr><td>US-15</td><td>Otomatik birim testleri</td><td>Epic 3 – Takas</td><td><span class="priority-badge p-low">Düşük</span></td><td>8</td><td>Jest · Supertest · __tests__/</td></tr>
+      <tr style="background:#f4f6f9; font-weight:700;">
+        <td colspan="4" style="text-align:right; padding-right:20px;">Toplam Story Points:</td>
+        <td>61 SP</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p class="page-footer">Kitap Takası v2.1 &nbsp;·&nbsp; 15 Kullanıcı Hikayesi · 3 Epic · 61 Story Points &nbsp;·&nbsp; 30 Mayıs 2026</p>
+
+</body>
+</html>

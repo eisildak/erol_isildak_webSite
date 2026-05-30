@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kitap Takası — UI Mockuplar (SCRUM-14 & SCRUM-15)</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #e9ecef;
+      padding: 32px 20px 48px;
+      color: #1a1a2e;
+    }
+
+    /* ── page header ── */
+    .page-title {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 4px;
+    }
+    .page-sub {
+      text-align: center;
+      font-size: 12px;
+      color: #868e96;
+      margin-bottom: 36px;
+    }
+
+    /* ── section labels ── */
+    .section-label {
+      max-width: 1200px;
+      margin: 0 auto 14px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #495057;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-left: 4px solid #e63946;
+      padding-left: 10px;
+    }
+
+    /* ── screen row ── */
+    .screens-row {
+      max-width: 1200px;
+      margin: 0 auto 44px;
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* ── single phone frame ── */
+    .phone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .phone-label {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #495057;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .phone-sub {
+      font-size: 10px;
+      color: #adb5bd;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .frame {
+      width: 220px;
+      height: 420px;
+      background: #fff;
+      border-radius: 28px;
+      border: 3px solid #343a40;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    }
+
+    /* status bar */
+    .status-bar {
+      height: 22px;
+      background: #1a1a2e;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12px;
+      flex-shrink: 0;
+    }
+    .status-bar span { font-size: 8px; color: #ced4da; }
+
+    /* top nav bar */
+    .top-nav {
+      background: #1a1a2e;
+      padding: 7px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .top-nav .logo {
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.3px;
+    }
+    .top-nav .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .top-nav .hamburger span {
+      width: 16px;
+      height: 2px;
+      background: #fff;
+      border-radius: 1px;
+      display: block;
+    }
+    .top-nav .nav-links {
+      display: flex;
+      gap: 8px;
+    }
+    .top-nav .nav-links a {
+      font-size: 8px;
+      color: #adb5bd;
+      text-decoration: none;
+    }
+    .top-nav .nav-links a.active {
+      color: #fff;
+      border-bottom: 1.5px solid #e63946;
+      padding-bottom: 1px;
+    }
+
+    /* screen content */
+    .screen-content {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+      background: #f8f9fa;
+    }
+
+    /* bottom nav bar */
+    .bottom-nav {
+      height: 48px;
+      background: #fff;
+      border-top: 1.5px solid #dee2e6;
+      display: flex;
+      align-items: stretch;
+      flex-shrink: 0;
+    }
+    .bnav-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+    .bnav-item .icon { font-size: 16px; line-height: 1; }
+    .bnav-item .label { font-size: 7.5px; color: #868e96; }
+    .bnav-item.active .icon { filter: none; }
+    .bnav-item.active .label { color: #1a1a2e; font-weight: 700; }
+    .bnav-item.active { border-top: 2px solid #e63946; margin-top: -2px; }
+
+    /* ── helpers ── */
+    .wf-box {
+      background: #e9ecef;
+      border: 1.5px dashed #adb5bd;
+      border-radius: 4px;
+    }
+    .wf-line { background: #dee2e6; border-radius: 2px; height: 8px; }
+    .wf-line.short { width: 55%; }
+    .wf-line.medium { width: 75%; }
+    .wf-line.full { width: 100%; }
+    .wf-input {
+      height: 26px;
+      background: #fff;
+      border: 1.5px solid #ced4da;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+    }
+    .wf-input span {
+      font-size: 8px;
+      color: #adb5bd;
+    }
+    .wf-btn {
+      height: 24px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8.5px;
+      font-weight: 700;
+    }
+    .wf-btn.primary { background: #1a1a2e; color: #fff; }
+    .wf-btn.secondary { background: #e9ecef; color: #495057; border: 1px solid #ced4da; }
+    .wf-btn.danger { background: #fff5f5; color: #c92a2a; border: 1px solid #ffa8a8; }
+    .wf-btn.success { background: #ebfbee; color: #2f9e44; border: 1px solid #8ce99a; }
+
+    /* FAB */
+    .fab {
+      position: absolute;
+      bottom: 8px;
+      right: 10px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #e63946;
+      color: #fff;
+      font-size: 20px;
+      line-height: 34px;
+      text-align: center;
+      box-shadow: 0 3px 8px rgba(230,57,70,0.45);
+      font-weight: 300;
+    }
+
+    /* drawer overlay */
+    .drawer {
+      position: absolute;
+      top: 0; left: 0;
+      width: 160px;
+      height: 100%;
+      background: #fff;
+      box-shadow: 4px 0 16px rgba(0,0,0,0.2);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+    }
+    .drawer-header {
+      background: #1a1a2e;
+      padding: 12px 14px;
+    }
+    .drawer-header .avatar {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: #e63946;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; color: #fff; font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .drawer-header .dname { font-size: 10px; color: #fff; font-weight: 600; }
+    .drawer-header .demail { font-size: 8px; color: #adb5bd; }
+    .drawer-item {
+      padding: 9px 14px;
+      font-size: 9.5px;
+      color: #343a40;
+      border-bottom: 1px solid #f1f3f5;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .drawer-item.active { background: #f0f4ff; color: #1971c2; font-weight: 600; }
+    .drawer-item .di-icon { font-size: 13px; }
+
+    /* cards */
+    .card-item {
+      background: #fff;
+      border-radius: 6px;
+      padding: 7px 9px;
+      margin: 0 8px 6px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-thumb {
+      width: 28px; height: 38px;
+      background: #dee2e6;
+      border-radius: 3px;
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+    }
+    .card-info { flex: 1; display: flex; flex-direction: column; gap: 3px; overflow: hidden; }
+    .card-info .ct { font-size: 8.5px; font-weight: 600; color: #212529; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .card-info .ca { font-size: 7.5px; color: #868e96; }
+    .card-badge {
+      font-size: 7px;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 8px;
+    }
+    .badge-new { background: #d3f9d8; color: #2f9e44; }
+    .badge-good { background: #d0ebff; color: #1971c2; }
+    .badge-mid { background: #fff3bf; color: #e67700; }
+
+    /* section header inside screen */
+    .screen-section {
+      background: #f1f3f5;
+      padding: 4px 10px;
+      font-size: 8px;
+      font-weight: 700;
+      color: #495057;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      border-bottom: 1px solid #e9ecef;
+    }
+
+    /* annotation arrows */
+    .annotation {
+      margin-top: 10px;
+      width: 220px;
+    }
+    .ann-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      margin-bottom: 5px;
+    }
+    .ann-bullet {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: #e63946;
+      color: #fff;
+      font-size: 8px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .ann-text {
+      font-size: 9.5px;
+      color: #495057;
+      line-height: 1.45;
+    }
+
+    /* modal overlay */
+    .modal-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.40);
+      display: flex;
+      align-items: flex-end;
+      z-index: 20;
+    }
+    .modal-sheet {
+      width: 100%;
+      background: #fff;
+      border-radius: 14px 14px 0 0;
+      padding: 12px 12px 14px;
+    }
+    .modal-handle {
+      width: 32px; height: 3px;
+      background: #dee2e6;
+      border-radius: 2px;
+      margin: 0 auto 10px;
+    }
+    .modal-title {
+      font-size: 10px;
+      font-weight: 700;
+      color: #212529;
+      margin-bottom: 8px;
+    }
+
+    /* search result row */
+    .result-row {
+      background: #fff;
+      border-bottom: 1px solid #f1f3f5;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .result-row .rinfo { flex: 1; }
+    .result-row .rinfo .rt { font-size: 8.5px; font-weight: 600; color: #212529; }
+    .result-row .rinfo .ra { font-size: 7.5px; color: #868e96; }
+
+    /* exchange row */
+    .ex-row {
+      background: #fff;
+      margin: 0 8px 5px;
+      border-radius: 6px;
+      padding: 7px 9px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .ex-row .ex-title { font-size: 8.5px; font-weight: 600; color: #212529; }
+    .ex-row .ex-sub { font-size: 7.5px; color: #868e96; margin-bottom: 5px; }
+    .ex-actions { display: flex; gap: 5px; }
+
+    /* toast snackbar */
+    .snackbar {
+      position: absolute;
+      bottom: 56px;
+      left: 8px; right: 8px;
+      background: #343a40;
+      color: #fff;
+      font-size: 8px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      text-align: center;
+      z-index: 30;
+    }
+
+    /* landing hero */
+    .hero {
+      background: linear-gradient(160deg, #1a1a2e 0%, #16213e 100%);
+      padding: 20px 12px 16px;
+      text-align: center;
+    }
+    .hero .hero-icon { font-size: 36px; margin-bottom: 6px; }
+    .hero h2 { font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .hero p { font-size: 8px; color: #adb5bd; line-height: 1.5; }
+
+    /* stats strip */
+    .stats-strip {
+      display: flex;
+      border-top: 1px solid #f1f3f5;
+    }
+    .stat-cell {
+      flex: 1;
+      text-align: center;
+      padding: 6px 4px;
+      border-right: 1px solid #f1f3f5;
+    }
+    .stat-cell:last-child { border-right: none; }
+    .stat-cell .sv { font-size: 13px; font-weight: 700; color: #1a1a2e; }
+    .stat-cell .sl { font-size: 7px; color: #868e96; }
+
+    /* footer bar */
+    .page-footer {
+      text-align: center;
+      font-size: 11px;
+      color: #adb5bd;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-title">Kitap Takası — UI Mockuplar</div>
+<p class="page-sub">SCRUM-14 · Ana Sayfa &amp; BottomNavigationBar &nbsp;|&nbsp; SCRUM-15 · İçerik Sayfaları &amp; Etkileşimli Alanlar · 30 Mayıs 2026</p>
+
+<!-- ================================================================== -->
+<!-- SECTION 1 — AUTH SCREENS (Login / Register)                        -->
+<!-- ================================================================== -->
+<div class="section-label">Kimlik Doğrulama Ekranları</div>
+<div class="screens-row">
+
+  <!-- ── LOGIN ── -->
+  <div class="phone">
+    <div class="phone-label">Giriş Yap</div>
+    <div class="phone-sub">Login.jsx</div>
+    <div class="frame">
+      <div class="status-bar"><span>9:41</span><span>📶 🔋</span></div>
+      <div class="top-nav">
+        <div class="logo">📚 Kitap Takası</div>
+        <div class="nav-links"><a href="#">Giriş</a><a href="#">Kayıt Ol</a></div>
+      </div>
+      <div class="screen-content" style="padding:20px 14px 0; display:flex; flex-direction:column; gap:10px; background:#fff;">
+        <div style="text-align:center; padding:10px 0 6px;">
+          <div style="font-size:32px;">🔐</div>
+          <div style="font-size:12px; font-weight:700; color:#1a1a2e; margin-top:4px;">Hesabına Giriş Yap</div>
+        </div>
+        <div class="wf-input"><span>Kullanıcı adı</span></div>
+        <div class="wf-input"><span>Şifre ••••••</span></div>
+        <div class="wf-btn primary">Giriş Yap</div>
+        <div style="text-align:center; font-size:8px; color:#adb5bd; margin-top:4px;">Hesabın yok mu? <span style="color:#1971c2;">Kayıt Ol</span></div>
+        <div style="background:#fff3bf; border-radius:4px; padding:6px 8px; margin-top:6px;">
+          <div style="font-size:7.5px; color:#856404;">⚠️ Hatalı kullanıcı adı veya şifre durumunda hata mesajı gösterilir.</div>
+        </div>
+      </div>
+    </div>
+    <div class="annotation">
+      <div class="ann-item"><div class="ann-bullet">1</div><div class="ann-text">Form validasyon — boş alan bırakılamaz</div></div>
+      <div class="ann-item"><div class="ann-bullet">2</div><div class="ann-text">Başarısız girişte inline hata mesajı</div></div>
+    </div>
+  </div>
+
+  <!-- ── REGISTER ── -->
+  <div class="phone">
+    <div class="phone-label">Kayıt Ol</div>
+    <div class="phone-sub">Register.jsx</div>
+    <div class="frame">
+      <div class="status-bar"><span>9:41</span><span>📶 🔋</span></div>
+      <div class="top-nav">
+        <div class="logo">📚 Kitap Takası</div>
+        <div class="nav-links"><a href="#">Giriş</a><a href="#">Kayıt Ol</a></div>
+      </div>
+      <div class="screen-content" style="padding:12px 14px 0; display:flex; flex-direction:column; gap:7px; background:#fff; overflow-y:auto;">
+        <div style="text-align:center; font-size:11px; font-weight:700; color:#1a1a2e; margin-bottom:2px;">Yeni Hesap Oluştur</div>
+        <div class="wf-input"><span>Kullanıcı adı</span></div>
+        <div class="wf-input"><span>Şifre</span></div>
+        <div class="wf-input"><span>E-posta</span></div>
+        <div class="wf-input"><span>Telefon</span></div>
+        <div class="wf-input"><span>Adres</span></div>
+        <div class="wf-btn primary" style="margin-top:4px;">Kayıt Ol</div>
+        <div style="text-align:center; font-size:8px; color:#adb5bd;">Zaten hesabın var mı? <span style="color:#1971c2;">Giriş Yap</span></div>
+      </div>
+    </div>
+    <div class="annotation">
+      <div class="ann-item"><div class="ann-bullet">3</div><div class="ann-text">5 zorunlu alan — tümü NN (not null)</div></div>
+      <div class="ann-item"><div class="ann-bullet">4</div><div class="ann-text">Şifre bcrypt (salt 12) ile hashlenip saklanır</div></div>
+    </div>
+  </div>
+
+  <!-- ── LANDING (Root) ── -->
+  <div class="phone">
+    <div class="phone-label">Ana Sayfa (Giriş Sonrası)</div>
+    <div class="phone-sub">Root.jsx</div>
+    <div class="frame">
+      <div class="status-bar"><span>9:41</span><span>📶 🔋</span></div>
+      <div class="top-nav">
+        <div class="logo">📚 Kitap Takası</div>
+        <div class="nav-links">
+          <a href="#" class="active">Ana Sayfa</a>
+          <a href="#">Kitaplarım</a>
+          <a href="#">Çıkış</a>
+        </div>
+      </div>
+      <div class="screen-content">
+        <div class="hero">
+          <div class="hero-icon">📖</div>
+          <h2>Kitaplarını Takas Et!</h2>
+          <p>Binlerce kitap, sıfır para.<br>İkinci el kitabını listele, başkasının<br>kitabını iste.</p>
+        </div>
+        <div class="stats-strip">
+          <div class="stat-cell"><div class="sv">24</div><div class="sl">Kitap</div></div>
+          <div class="stat-cell"><div class="sv">12</div><div class="sl">Kullanıcı</div></div>
+          <div class="stat-cell"><div class="sv">8</div><div class="sl">Takas</div></div>
+        </div>
+        <div style="padding:10px 12px; display:flex; flex-direction:column; gap:6px;">
+          <div class="wf-btn primary">Kitap Ara →</div>
+          <div class="wf-btn secondary">Kitaplığıma Ekle</div>
+        </div>
+      </div>
+      <div class="bottom-nav">
+        <div class="bnav-item active"><div class="icon">🏠</div><div class="label">Ana Sayfa</div></div>
+        <div class="bnav-item"><div class="icon">📚</div><div class="label">Kitaplarım</div></div>
+        <div class="bnav-item"><div class="icon">🔍</div><div class="label">Ara</div></div>
+        <div class="bnav-item"><div class="icon">🔄</div><div class="label">Takas</div></div>
+      </div>
+    </div>
+    <div class="annotation">
+      <div class="ann-item"><div class="ann-bullet">5</div><div class="ann-text">BottomNavigationBar — 4 sekme (SCRUM-14)</div></div>
+      <div class="ann-item"><div class="ann-bullet">6</div><div class="ann-text">Aktif sekme koyu + üst çizgi ile işaretlenir</div></div>
+      <div class="ann-item"><div class="ann-bullet">7</div><div class="ann-text">İstatistik kartları dinamik API verisi</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ================================================================== -->
+<!-- SECTION 2 — MY PAGE & FAB                                          -->
+<!-- ================================================================== -->
+<div class="section-label">Kitaplarım Sayfası — FAB ile Kitap Ekleme (SCRUM-15)</div>
+<div class="screens-row">
+
+  <!-- ── MY PAGE default ── -->
+  <div class="phone">
+    <div class="phone-label">Kitaplarım (Liste)</div>
+    <div class="phone-sub">MyPage.jsx</div>
+    <div class="frame">
+      <div class="status-bar"><span>9:41</span><span>📶 🔋</span></div>
+      <div class="top-nav">
+        <div class="logo">📚 Kitap Takası</div>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </div>
+      <div class="screen-content">
+        <div class="screen-section">Kitaplığım</div>
+        <div style="height:8px;"></div>
+        <div class="card-item">
+          <div class="card-thumb">📘</div>
+          <div class="card-info">
+            <div class="ct">Suç ve Ceza</div>
+            <div class="ca">Fyodor Dostoyevski</div>
+            <div style="display:flex; gap:4px; margin-top:2px;">
+              <span class="card-badge badge-new">Sıfır Gibi</span>
+            </div>
+          </div>
+          <div class="wf-btn danger" style="width:30px; padding:0; font-size:10px;">🗑</div>
+        </div>
+        <div class="card-item">
+          <div class="card-thumb">📗</div>
+          <div class="card-info">
+            <div class="ct">Kürk Mantolu Madonna</div>
+            <div class="ca">Sabahattin Ali</div>
+            <div style="display:flex; gap:4px; margin-top:2px;">
+              <span class="card-badge badge-good">İyi</span>
+            </div>
+          </div>
+          <div class="wf-btn danger" style="width:30px; padding:0; font-size:10px;">🗑</div>
+        </div>
+        <div class="card-item">
+          <div class="card-thumb">📙</div>
+          <div class="card-info">
+            <div class="ct">1984</div>
+            <div class="ca">George Orwell</div>
+            <div style="display:flex; gap:4px; margin-top:2px;">
+              <span class="card-badge badge-mid">Orta</span>
+            </div>
+          </div>
+          <div class="wf-btn danger" style="width:30px; padding:0; font-size:10px;">🗑</div>
+        </div>
+        <div class="fab">+</div>
+      </div>
+      <div class="bottom-nav">
+        <div class="bnav-item"><div class="icon">🏠</div><div class="label">Ana Sayfa</div></div>
+        <div class="bnav-item active"><div class="icon">📚</div><div class="label">Kitaplarım</div></div>
+        <div class="bnav-item"><div class="icon">🔍</div><div class="label">Ara</div></div>
+        <div class="bnav-item"><div class="icon">🔄</div><div class="label">Takas</div></div>
+      </div>
+    </div>
+    <div class="annotation">
+      <div class="ann-item"><div class="ann-bullet">1</div><div class="ann-text">Her satırda durum rozeti (Sıfır Gibi / İyi / Orta)</div></div>
+      <div class="ann-item"><div class="ann-bullet">2</div><div class="ann-text">🗑 butonu → DELETE /api/deleteOldBook</div></div>
+      <div class="ann-item"><div class="ann-bullet">3</div><div class="ann-text">FAB (+) → Bottom Sheet açılır (SCRUM-15)</div></div>
+    </div>
+  </div>
+
+  <!-- ── MY PAGE + Bottom Sheet (Add Book) ── -->
+  <div class="phone">
+    <div class="phone-label">Kitap Ekle — Bottom Sheet</div>
+    <div class="phone-sub">FAB → Modal Sheet (SCRUM-15)</div>
+    <div class="frame">
+      <div class="status-bar"><span>9:41</span><span>📶 🔋</span></div>
+      <div class="top-nav">
+        <div class="logo">📚 Kitap Takası</div>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </div>
+      <div class="screen-content" style="position:relative;">
+        <!-- dimmed background -->
+        <div style="padding:8px; opacity:0.3;">
+          <div class="card-item"><div class="card-thumb">📘</div><div class="card-info"><div class="ct">Suç ve Ceza</div><div class="ca">Dostoyevski</div></div></div>
+          <div class="card-item"><div class="card-thumb">📗</div><div class="card-info"><div class="ct">Kürk Mantolu Madonna</div><div class="ca">S. Ali</div></div></div>
+        </div>
+        <div class="modal-overlay">
+          <div class="modal-sheet">
+            <div class="modal-handle"></div>
+            <div class="modal-title">📖 Kitap Ekle</div>
+            <div style="display:flex; flex-direction:column; gap:7px;">
+              <div class="wf-input"><span>Başlık *</span></div>
+              <div class="wf-input"><span>Yazar *</span></div>
+              <div class="wf-input"><span>ISBN (isteğe bağlı)</span></div>
+              <div style="background:#f1f3f5; border-radius:4px; padding:4px 8px;">
+                <div style="font-size:7.5px; color:#495057; margin-bottom:4px;">Kitap Durumu</div>
+                <div style="display:flex; gap:4px;">
+                  <div style="flex:1; background:#d3f9d8; border:1.5px solid #2f9e44; border-radius:3px; text-align:center; font-size:7.5px; padding:3px 0; color:#2f9e44; font-weight:600;">Sıfır Gibi</div>
+                  <div style="flex:1; background:#f8f9fa; border:1px solid #dee2e6; border-radius:3px; text-align:center; font-size:7.5px; padding:3px 0; color:#868e96;">İyi</div>
+                  <div style="flex:1; background:#f8f9fa; border:1px solid #dee2e6; border-radius:3px; text-align:center; font-size:7.5px; padding:3px 0; color:#868e96;">Orta</div>
+                </div>
+              </div>
+              <div style="display:flex; gap:6px; margin-top:2px;">
+                <div class="wf-btn secondary" style="flex:1;">İptal</div>
+                <div class="wf-btn primary" style="flex:1;">Ekle ✓</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-nav">
+        <div class="bnav-item"><div class="icon">🏠</div><div class="label">Ana Sayfa</div></div>
+        <div class="bnav-item active"><div class="icon">📚</div><div class="label">Kitaplarım</div></div>
+        <div class="bnav-item"><div class="icon">🔍</div><div class="label">Ara</div></div>
+        <div class="bnav-item"><div class="icon">🔄</div><div class="label">Takas</div></div>
+      </div>
+    </div>
+    <div class="annotation">
+      <div class="ann-item"><div class="ann-bullet">4</div><div class="ann-text">Bottom Sheet — drag handle + backdrop karartma</div></div>
+      <div class="ann-item"><div class="ann-bullet">5</div><div class="ann-text">Durum chip seçici (tek seçim)</div></div>
+      <div class="ann-item"><div class="ann-bullet">6</div><div class="ann-text">POST /api/addManualBook çağrısı</div></div>
+    </div>
+  </div>
+
+  <!-- ── MY PAGE + Snackbar ── -->
+  <div class="phone">
+    <div class="phone-label">Kitap Eklendi — Snackbar</div>
+    <div class="phone-sub">Başarı bildirimi (SCRUM-15)</div>
+    <div class="frame">
+      <div class="status-bar"><span>9:41</span><span>📶 🔋</span></div>
+      <div class="top-nav">
+        <div class="logo">📚 Kitap Takası</div>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </div>
+      <div class="screen-content" style="position:relative;">
+        <div class="screen-section">Kitaplığım</div>
+        <div style="height:6px;"></div>
+        <div class="card-item">
+          <div class="card-thumb">📘</div>
+          <div class="card-info"><div class="ct">Suç ve Ceza</div><div class="ca">Dostoyevski</div><div style="margin-top:2px;"><span class="card-badge badge-new">Sıfır Gibi</span></div></div>
+          <div class="wf-btn danger" style="width:30px;padding:0;font-size:10px;">🗑</div>
+        </div>
+        <div class="card-item" style="border:1.5px solid #2f9e44; background:#f6fff8;">
+          <div class="card-thumb">📗</div>
+          <div class="card-info"><div class="ct" style="color:#2f9e44;">Yeni Kitap ✓</div><div class="ca">Sabahattin Ali</div><div style="margin-top:2px;"><span class="card-badge badge-good">İyi</span></div></div>
+          <div class="wf-btn danger" style="width:30px;padding:0;font-size:10px;">🗑</div>
+        </div>
+        <div class="fab">+</div>
+        <div class="snackbar">✅ Kitap başarıyla eklendi!</div>
+      </div>
+      <div class="bottom-nav">
+        <div class="bnav-item"><div class="icon">🏠</div><div class="label">Ana Sayfa</div></div>
+        <div class="bnav-item active"><div class="icon">📚</div><div class="label">Kitaplarım</div></div>
+        <div class="bnav-item"><div class="icon">🔍</div><div class="label">Ara</div></div>
+        <div class="bnav-item"><div class="icon">🔄</div><div class="label">Takas</div></div>
+      </div>
+    </div>
+    <div class="annotation">
+      <div class="ann-item"><div class="ann-bullet">7</div><div class="ann-text">Snackbar — 3 sn sonra otomatik kapanır</div></div>
+      <div class="ann-item"><div class="ann-bullet">8</div><div class="ann-text">Yeni eklenen kart yeşil border ile vurgulanır</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ================================================================== -->
+<!-- SECTION 3 — SEARCH PAGE                                            -->
+<!-- ================================================================== -->
+<div class="section-label">Kitap Arama Sayfası (SCRUM-15)</div>
+<div class="screens-row">
+
+  <!-- ── SEARCH empty ── -->
+  <div class="phone">
+    <div class="phone-label">Kitap Ara (Boş)</div>
+    <div class="phone-sub">Search.jsx</div>
+    <div class="frame">
+      <div class="status-bar"><span>9:41</span><span>📶 🔋</span></div>
+      <div class="top-nav">
+        <div class="logo">📚 Kitap Takası</div>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </div>
+      <div class="screen-content" style="padding:12px 12px 0;">
+        <div style="display:flex; gap:6px; margin-bottom:10px;">
+          <div class="wf-input" style="flex:1;"><span>Kitap başlığı ara...</span></div>
+          <div class="wf-btn primary" style="width:36px; font-size:13px; flex-shrink:0;">🔍</div>
+        </div>
+        <div style="text-align:center; padding:30px 16px; color:#adb5bd;">
+          <div style="font-size:36px; margin-bottom:8px;">📭</div>
+          <div style="font-size:9px;">Başlık girerek toplulukta mevcut kitapları bulabilirsiniz.</div>
+        </div>
+      </div>
+      <div class="bottom-nav">
+        <div class="bnav-item"><div class="icon">🏠</div><div class="label">Ana Sayfa</div></div>
+        <div class="bnav-item"><div class="icon">📚</div><div class="label">Kitaplarım</div></div>
+        <div class="bnav-item active"><div class="icon">🔍</div><div class="label">Ara</div></div>
+        <div class="bnav-item"><div class="icon">🔄</div><div class="label">Takas</div></div>
+      </div>
+    </div>
+    <div class="annotation">
+      <div class="ann-item"><div class="ann-bullet">1</div><div class="ann-text">Boş durum illüstrasyonu ve yardım metni</div></div>
+    </div>
+  </div>
+
+  <!-- ── SEARCH results ── -->
+  <div class="phone">
+    <div class="phone-label">Arama Sonuçları</div>
+    <div class="phone-sub">Search.jsx — sonuç listesi</div>
+    <div class="frame">
+      <div class="status-bar"><span>9:41</span><span>📶 🔋</span></div>
+      <div class="top-nav">
+        <div class="logo">📚 Kitap Takası</div>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </div>
+      <div class="screen-content">
+        <div style="padding:8px 10px; display:flex; gap:6px;">
+          <div class="wf-input" style="flex:1; background:#e9ecef;"><span style="color:#212529;">1984</span></div>
+          <div class="wf-btn primary" style="width:36px; font-size:13px; flex-shrink:0;">🔍</div>
+        </div>
+        <div style="padding:0 10px 4px; font-size:8px; color:#868e96;">3 sonuç bulundu</div>
+        <div class="result-row">
+          <div class="card-thumb" style="width:24px;height:32px;font-size:12px;">📕</div>
+          <div class="rinfo">
+            <div class="rt">1984</div>
+            <div class="ra">George Orwell &nbsp;·&nbsp; <span class="card-badge badge-new" style="font-size:7px;">Sıfır Gibi</span></div>
+            <div class="ra" style="margin-top:1px;">👤 ahmet_k</div>
+          </div>
+          <div class="wf-btn success" style="width:38px; font-size:8px;">İste</div>
+        </div>
+        <div class="result-row">
+          <div class="card-thumb" style="width:24px;height:32px;font-size:12px;">📗</div>
+          <div class="rinfo">
+            <div class="rt">1984 (İngilizce)</div>
+            <div class="ra">George Orwell &nbsp;·&nbsp; <span class="card-badge badge-good" style="font-size:7px;">İyi</span></div>
+            <div class="ra" style="margin-top:1px;">👤 zeynep_b</div>
+          </div>
+          <div class="wf-btn success" style="width:38px; font-size:8px;">İste</div>
+        </div>
+        <div class="result-row">
+          <div class="card-thumb" style="width:24px;height:32px;font-size:12px;">📘</div>
+          <div class="rinfo">
+            <div class="rt">1984 Yorumu</div>
+            <div class="ra">Çeşitli &nbsp;·&nbsp; <span class="card-badge badge-mid" style="font-size:7px;">Orta</span></div>
+            <div class="ra" style="margin-top:1px;">👤 can_y</div>
+          </div>
+          <div class="wf-btn success" style="width:38px; font-size:8px;">İste</div>
+        </div>
+      </div>
+      <div class="bottom-nav">
+        <div class="bnav-item"><div class="icon">🏠</div><div class="label">Ana Sayfa</div></div>
+        <div class="bnav-item"><div class="icon">📚</div><div class="label">Kitaplarım</div></div>
+        <div class="bnav-item active"><div class="icon">🔍</div><div class="label">Ara</div></div>
+        <div class="bnav-item"><div class="icon">🔄</div><div class="label">Takas</div></div>
+      </div>
+    </div>
+    <div class="annotation">
+      <div class="ann-item"><div class="ann-bullet">2</div><div class="ann-text">Regex tabanlı başlık arama</div></div>
+      <div class="ann-item"><div class="ann-bullet">3</div><div class="ann-text">"İste" → POST /api/requestBook çağrısı</div></div>
+      <div class="ann-item"><div class="ann-bullet">4</div><div class="ann-text">Kendi kitapların listeye gelmez (filtre)</div></div>
+    </div>
+  </div>
+
+  <!-- ── SEARCH + Drawer ── -->
+  <div class="phone">
+    <div class="phone-label">Gezinti Çekmecesi (Drawer)</div>
+    <div class="phone-sub">Hamburger → Drawer (SCRUM-15)</div>
+    <div class="frame">
+      <div class="status-bar"><span>9:41</span><span>📶 🔋</span></div>
+      <div class="top-nav">
+        <div class="logo">📚 Kitap Takası</div>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </div>
+      <div class="screen-content" style="position:relative;">
+        <!-- dimmed content -->
+        <div style="padding:8px; opacity:0.25;">
+          <div class="wf-input"><span>Kitap başlığı ara...</span></div>
+        </div>
+        <!-- Drawer -->
+        <div class="drawer">
+          <div class="drawer-header">
+            <div class="avatar">A</div>
+            <div class="dname">ahmet_kullanici</div>
+            <div class="demail">ahmet@example.com</div>
+          </div>
+          <div class="drawer-item active"><span class="di-icon">🏠</span>Ana Sayfa</div>
+          <div class="drawer-item"><span class="di-icon">📚</span>Kitaplarım</div>
+          <div class="drawer-item"><span class="di-icon">🔍</span>Kitap Ara</div>
+          <div class="drawer-item"><span class="di-icon">🔄</span>Takas İsteklerim</div>
+          <div style="flex:1;"></div>
+          <div class="drawer-item" style="color:#c92a2a;"><span class="di-icon">🚪</span>Çıkış Yap</div>
+        </div>
+        <!-- overlay -->
+        <div style="position:absolute;inset:0;background:rgba(0,0,0,0.35);z-index:9;"></div>
+      </div>
+      <div class="bottom-nav">
+        <div class="bnav-item"><div class="icon">🏠</div><div class="label">Ana Sayfa</div></div>
+        <div class="bnav-item"><div class="icon">📚</div><div class="label">Kitaplarım</div></div>
+        <div class="bnav-item active"><div class="icon">🔍</div><div class="label">Ara</div></div>
+        <div class="bnav-item"><div class="icon">🔄</div><div class="label">Takas</div></div>
+      </div>
+    </div>
+    <div class="annotation">
+      <div class="ann-item"><div class="ann-bullet">5</div><div class="ann-text">Drawer — soldan sürgü, backdrop tıklanınca kapanır</div></div>
+      <div class="ann-item"><div class="ann-bullet">6</div><div class="ann-text">Kullanıcı adı + e-posta header'da gösterilir</div></div>
+      <div class="ann-item"><div class="ann-bullet">7</div><div class="ann-text">Aktif sayfa maviye boyalı drawer öğesi</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ================================================================== -->
+<!-- SECTION 4 — EXCHANGE PAGE                                          -->
+<!-- ================================================================== -->
+<div class="section-label">Takas İstekleri Sayfası (SCRUM-15)</div>
+<div class="screens-row">
+
+  <!-- ── EXCHANGE incoming ── -->
+  <div class="phone">
+    <div class="phone-label">Gelen İstekler</div>
+    <div class="phone-sub">Exchange.jsx — incomingRequests</div>
+    <div class="frame">
+      <div class="status-bar"><span>9:41</span><span>📶 🔋</span></div>
+      <div class="top-nav">
+        <div class="logo">📚 Kitap Takası</div>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </div>
+      <div class="screen-content">
+        <!-- Tab bar -->
+        <div style="display:flex; border-bottom:2px solid #e9ecef; background:#fff;">
+          <div style="flex:1;text-align:center;padding:7px 0;font-size:8.5px;font-weight:700;color:#1a1a2e;border-bottom:2px solid #e63946;margin-bottom:-2px;">Gelen (2)</div>
+          <div style="flex:1;text-align:center;padding:7px 0;font-size:8.5px;color:#868e96;">Giden (1)</div>
+        </div>
+        <div style="height:6px;"></div>
+        <div class="ex-row">
+          <div class="ex-title">Suç ve Ceza</div>
+          <div class="ex-sub">İsteyen: zeynep_b &nbsp;·&nbsp; zeynep@example.com</div>
+          <div class="ex-actions">
+            <div class="wf-btn success" style="flex:1; font-size:7.5px;">✓ Kabul Et</div>
+            <div class="wf-btn danger" style="flex:1; font-size:7.5px;">✕ Reddet</div>
+          </div>
+        </div>
+        <div class="ex-row">
+          <div class="ex-title">Kürk Mantolu Madonna</div>
+          <div class="ex-sub">İsteyen: can_y &nbsp;·&nbsp; can@example.com</div>
+          <div class="ex-actions">
+            <div class="wf-btn success" style="flex:1; font-size:7.5px;">✓ Kabul Et</div>
+            <div class="wf-btn danger" style="flex:1; font-size:7.5px;">✕ Reddet</div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-nav">
+        <div class="bnav-item"><div class="icon">🏠</div><div class="label">Ana Sayfa</div></div>
+        <div class="bnav-item"><div class="icon">📚</div><div class="label">Kitaplarım</div></div>
+        <div class="bnav-item"><div class="icon">🔍</div><div class="label">Ara</div></div>
+        <div class="bnav-item active"><div class="icon">🔄</div><div class="label">Takas</div></div>
+      </div>
+    </div>
+    <div class="annotation">
+      <div class="ann-item"><div class="ann-bullet">1</div><div class="ann-text">Tab bar — Gelen / Giden sekme geçişi</div></div>
+      <div class="ann-item"><div class="ann-bullet">2</div><div class="ann-text">"Kabul Et" → POST /api/acceptRequest</div></div>
+    </div>
+  </div>
+
+  <!-- ── EXCHANGE outgoing ── -->
+  <div class="phone">
+    <div class="phone-label">Giden İstekler</div>
+    <div class="phone-sub">Exchange.jsx — outgoingRequests</div>
+    <div class="frame">
+      <div class="status-bar"><span>9:41</span><span>📶 🔋</span></div>
+      <div class="top-nav">
+        <div class="logo">📚 Kitap Takası</div>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </div>
+      <div class="screen-content">
+        <div style="display:flex; border-bottom:2px solid #e9ecef; background:#fff;">
+          <div style="flex:1;text-align:center;padding:7px 0;font-size:8.5px;color:#868e96;">Gelen (2)</div>
+          <div style="flex:1;text-align:center;padding:7px 0;font-size:8.5px;font-weight:700;color:#1a1a2e;border-bottom:2px solid #e63946;margin-bottom:-2px;">Giden (1)</div>
+        </div>
+        <div style="height:6px;"></div>
+        <div class="ex-row">
+          <div class="ex-title">1984</div>
+          <div class="ex-sub">Sahip: ahmet_k &nbsp;·&nbsp; ahmet@example.com</div>
+          <div style="margin-top:4px; display:flex; gap:5px; align-items:center;">
+            <span style="background:#fff3bf;color:#e67700;font-size:7px;padding:2px 6px;border-radius:8px;font-weight:700;">⏳ Onay Bekleniyor</span>
+            <div class="wf-btn primary" style="font-size:7.5px; padding:0 8px; height:20px;">📦 Kargola</div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-nav">
+        <div class="bnav-item"><div class="icon">🏠</div><div class="label">Ana Sayfa</div></div>
+        <div class="bnav-item"><div class="icon">📚</div><div class="label">Kitaplarım</div></div>
+        <div class="bnav-item"><div class="icon">🔍</div><div class="label">Ara</div></div>
+        <div class="bnav-item active"><div class="icon">🔄</div><div class="label">Takas</div></div>
+      </div>
+    </div>
+    <div class="annotation">
+      <div class="ann-item"><div class="ann-bullet">3</div><div class="ann-text">Durum rozeti — Onay Bekleniyor / Kabul Edildi</div></div>
+      <div class="ann-item"><div class="ann-bullet">4</div><div class="ann-text">"Kargola" → POST /api/shipped</div></div>
+    </div>
+  </div>
+
+  <!-- ── EXCHANGE kargo confirm ── -->
+  <div class="phone">
+    <div class="phone-label">Kargo Onay Diyaloğu</div>
+    <div class="phone-sub">Shipped confirm modal (SCRUM-15)</div>
+    <div class="frame">
+      <div class="status-bar"><span>9:41</span><span>📶 🔋</span></div>
+      <div class="top-nav">
+        <div class="logo">📚 Kitap Takası</div>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </div>
+      <div class="screen-content" style="position:relative;">
+        <div style="padding:8px; opacity:0.25;">
+          <div class="ex-row"><div class="ex-title">1984</div><div class="ex-sub">ahmet_k</div></div>
+        </div>
+        <!-- confirm dialog -->
+        <div style="position:absolute;inset:0;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;z-index:20;">
+          <div style="background:#fff;border-radius:10px;padding:16px 14px;width:170px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.2);">
+            <div style="font-size:26px;margin-bottom:6px;">📦</div>
+            <div style="font-size:10px;font-weight:700;color:#1a1a2e;margin-bottom:4px;">Kargo Gönderildi mi?</div>
+            <div style="font-size:8px;color:#868e96;margin-bottom:10px;">Bu işlem geri alınamaz. Kitabı karşı tarafa gönderdiğinizi onaylıyor musunuz?</div>
+            <div style="display:flex;gap:6px;">
+              <div class="wf-btn secondary" style="flex:1;font-size:8px;">İptal</div>
+              <div class="wf-btn primary" style="flex:1;font-size:8px;">Evet, Gönderdim</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-nav">
+        <div class="bnav-item"><div class="icon">🏠</div><div class="label">Ana Sayfa</div></div>
+        <div class="bnav-item"><div class="icon">📚</div><div class="label">Kitaplarım</div></div>
+        <div class="bnav-item"><div class="icon">🔍</div><div class="label">Ara</div></div>
+        <div class="bnav-item active"><div class="icon">🔄</div><div class="label">Takas</div></div>
+      </div>
+    </div>
+    <div class="annotation">
+      <div class="ann-item"><div class="ann-bullet">5</div><div class="ann-text">Center dialog — yıkıcı işlem öncesi onay</div></div>
+      <div class="ann-item"><div class="ann-bullet">6</div><div class="ann-text">Onaydan sonra takas tamamlandı durumuna geçer</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ================================================================== -->
+<!-- COMPONENT MAP                                                       -->
+<!-- ================================================================== -->
+<div class="section-label" style="margin-top:8px;">Bileşen — Ekran Haritası</div>
+<div style="max-width:900px; margin:0 auto; background:#fff; border-radius:10px; padding:20px 24px; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 220" font-family="'Segoe UI',Arial,sans-serif" style="width:100%;height:auto;">
+    <!-- background -->
+    <rect width="860" height="220" fill="#f8f9fa" rx="6"/>
+
+    <!-- App.jsx -->
+    <rect x="360" y="10" width="140" height="32" rx="5" fill="#1a1a2e"/>
+    <text x="430" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">App.jsx</text>
+    <text x="430" y="42" text-anchor="middle" font-size="8" fill="#adb5bd">loggedIn · userId state</text>
+
+    <!-- Nav -->
+    <rect x="10" y="75" width="110" height="28" rx="4" fill="#495057"/>
+    <text x="65" y="93" text-anchor="middle" font-size="10" fill="#fff">Nav.jsx</text>
+    <!-- Root -->
+    <rect x="135" y="75" width="90" height="28" rx="4" fill="#1971c2"/>
+    <text x="180" y="93" text-anchor="middle" font-size="10" fill="#fff">Root.jsx</text>
+    <!-- Login -->
+    <rect x="240" y="75" width="80" height="28" rx="4" fill="#1971c2"/>
+    <text x="280" y="93" text-anchor="middle" font-size="10" fill="#fff">Login.jsx</text>
+    <!-- Register -->
+    <rect x="335" y="75" width="88" height="28" rx="4" fill="#1971c2"/>
+    <text x="379" y="93" text-anchor="middle" font-size="10" fill="#fff">Register.jsx</text>
+    <!-- MyPage -->
+    <rect x="438" y="75" width="88" height="28" rx="4" fill="#2f9e44"/>
+    <text x="482" y="93" text-anchor="middle" font-size="10" fill="#fff">MyPage.jsx</text>
+    <!-- Search -->
+    <rect x="540" y="75" width="80" height="28" rx="4" fill="#e67700"/>
+    <text x="580" y="93" text-anchor="middle" font-size="10" fill="#fff">Search.jsx</text>
+    <!-- Exchange -->
+    <rect x="635" y="75" width="95" height="28" rx="4" fill="#c92a2a"/>
+    <text x="682" y="93" text-anchor="middle" font-size="10" fill="#fff">Exchange.jsx</text>
+    <!-- NotFound -->
+    <rect x="745" y="75" width="90" height="28" rx="4" fill="#868e96"/>
+    <text x="790" y="93" text-anchor="middle" font-size="10" fill="#fff">NotFound.jsx</text>
+
+    <!-- Lines App → routes -->
+    <line x1="430" y1="42" x2="65"  y2="75" stroke="#adb5bd" stroke-width="1" stroke-dasharray="3,2"/>
+    <line x1="430" y1="42" x2="180" y2="75" stroke="#adb5bd" stroke-width="1" stroke-dasharray="3,2"/>
+    <line x1="430" y1="42" x2="280" y2="75" stroke="#adb5bd" stroke-width="1" stroke-dasharray="3,2"/>
+    <line x1="430" y1="42" x2="379" y2="75" stroke="#adb5bd" stroke-width="1" stroke-dasharray="3,2"/>
+    <line x1="430" y1="42" x2="482" y2="75" stroke="#adb5bd" stroke-width="1" stroke-dasharray="3,2"/>
+    <line x1="430" y1="42" x2="580" y2="75" stroke="#adb5bd" stroke-width="1" stroke-dasharray="3,2"/>
+    <line x1="430" y1="42" x2="682" y2="75" stroke="#adb5bd" stroke-width="1" stroke-dasharray="3,2"/>
+    <line x1="430" y1="42" x2="790" y2="75" stroke="#adb5bd" stroke-width="1" stroke-dasharray="3,2"/>
+
+    <!-- Sub-components -->
+    <!-- MyBookRow -->
+    <rect x="418" y="145" width="128" height="24" rx="4" fill="#d3f9d8" stroke="#2f9e44" stroke-width="1.2"/>
+    <text x="482" y="161" text-anchor="middle" font-size="9.5" fill="#1e7e34">MyBookRow.jsx</text>
+    <line x1="482" y1="103" x2="482" y2="145" stroke="#2f9e44" stroke-width="1.2"/>
+
+    <!-- SearchBookRow -->
+    <rect x="516" y="145" width="128" height="24" rx="4" fill="#fff3bf" stroke="#e67700" stroke-width="1.2"/>
+    <text x="580" y="161" text-anchor="middle" font-size="9.5" fill="#e67700">SearchBookRow.jsx</text>
+    <line x1="580" y1="103" x2="580" y2="145" stroke="#e67700" stroke-width="1.2"/>
+
+    <!-- ExchangeRow -->
+    <rect x="618" y="145" width="128" height="24" rx="4" fill="#ffc9c9" stroke="#c92a2a" stroke-width="1.2"/>
+    <text x="682" y="161" text-anchor="middle" font-size="9.5" fill="#c92a2a">ExchangeRow.jsx</text>
+    <line x1="682" y1="103" x2="682" y2="145" stroke="#c92a2a" stroke-width="1.2"/>
+
+    <!-- BottomNav note -->
+    <rect x="100" y="175" width="280" height="36" rx="5" fill="#e7f5ff" stroke="#1971c2" stroke-width="1.2"/>
+    <text x="240" y="190" text-anchor="middle" font-size="9" font-weight="700" fill="#1971c2">BottomNavigationBar (SCRUM-14)</text>
+    <text x="240" y="203" text-anchor="middle" font-size="8" fill="#1864ab">Ana Sayfa · Kitaplarım · Ara · Takas</text>
+
+    <!-- Drawer note -->
+    <rect x="400" y="175" width="220" height="36" rx="5" fill="#fff3bf" stroke="#e67700" stroke-width="1.2"/>
+    <text x="510" y="190" text-anchor="middle" font-size="9" font-weight="700" fill="#e67700">Drawer + FAB + Bottom Sheet (SCRUM-15)</text>
+    <text x="510" y="203" text-anchor="middle" font-size="8" fill="#e67700">Hamburger → Drawer · + → Sheet · Shipped → Dialog</text>
+  </svg>
+</div>
+
+<p class="page-footer">Kitap Takası v2.1 &nbsp;·&nbsp; SCRUM-14 &amp; SCRUM-15 &nbsp;·&nbsp; UI Wireframe Mockuplar &nbsp;·&nbsp; 30 Mayıs 2026</p>
+
+</body>
+</html>

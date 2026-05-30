@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kitap Takası — ER Diyagramı</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f0f2f5;
+      padding: 28px 20px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 20px;
+      color: #1a1a2e;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      text-align: center;
+      font-size: 12px;
+      color: #6c757d;
+      margin-bottom: 24px;
+    }
+    .diagram-wrap {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+      padding: 20px;
+      max-width: 920px;
+      margin: 0 auto 28px;
+    }
+    svg { width: 100%; height: auto; display: block; }
+
+    /* Data dictionary table */
+    .dict-wrap {
+      max-width: 920px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+    .dict-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.07);
+      overflow: hidden;
+    }
+    .dict-card .card-header {
+      padding: 8px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .dict-card table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    .dict-card th {
+      background: #f4f6f9;
+      padding: 5px 10px;
+      text-align: left;
+      color: #555;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .dict-card td {
+      padding: 5px 10px;
+      border-bottom: 1px solid #f0f0f0;
+      color: #333;
+    }
+    .dict-card tr:last-child td { border-bottom: none; }
+    .badge {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 8px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+    .pk  { background: #fff3bf; color: #b38600; }
+    .fk  { background: #d0ebff; color: #1864ab; }
+    .uq  { background: #d3f9d8; color: #1e7e34; }
+    .nn  { background: #f1f3f5; color: #555; }
+    .idx { background: #e5dbff; color: #5f3dc4; }
+
+    @media print {
+      body { background: #fff; }
+      .diagram-wrap, .dict-card { box-shadow: none; border: 1px solid #ddd; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Kitap Takası — Varlık İlişki (ER) Diyagramı</h1>
+<p class="subtitle">Sub-task 2.1.1 · Veritabanı Tasarımı · 30 Mayıs 2026</p>
+
+<div class="diagram-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 500" font-family="'Segoe UI', Arial, sans-serif">
+
+  <!-- ── background ── -->
+  <rect width="880" height="500" fill="#f8f9fa" rx="8"/>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!--  ENTITY: users  (left)                                     -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- shadow -->
+  <rect x="33" y="93" width="194" height="244" rx="7" fill="#00000018"/>
+  <!-- card -->
+  <rect x="30" y="90" width="194" height="244" rx="7" fill="#fff" stroke="#1971c2" stroke-width="2"/>
+  <!-- header -->
+  <rect x="30" y="90" width="194" height="36" rx="7" fill="#1971c2"/>
+  <rect x="30" y="108" width="194" height="18" fill="#1971c2"/>
+  <text x="127" y="113" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">users</text>
+
+  <!-- rows -->
+  <!-- user_id PK -->
+  <rect x="30" y="126" width="194" height="26" fill="#fff9db"/>
+  <text x="46" y="143" font-size="11.5" fill="#333">🔑 user_id</text>
+  <text x="210" y="143" text-anchor="end" font-size="10" fill="#b38600" font-weight="600">SERIAL PK</text>
+  <!-- username -->
+  <rect x="30" y="152" width="194" height="26" fill="#fff"/>
+  <text x="46" y="169" font-size="11.5" fill="#333">username</text>
+  <text x="210" y="169" text-anchor="end" font-size="10" fill="#1e7e34" font-weight="600">VARCHAR UQ</text>
+  <!-- password -->
+  <rect x="30" y="178" width="194" height="26" fill="#f8f9fa"/>
+  <text x="46" y="195" font-size="11.5" fill="#333">password</text>
+  <text x="210" y="195" text-anchor="end" font-size="10" fill="#555">VARCHAR NN</text>
+  <!-- email -->
+  <rect x="30" y="204" width="194" height="26" fill="#fff"/>
+  <text x="46" y="221" font-size="11.5" fill="#333">email</text>
+  <text x="210" y="221" text-anchor="end" font-size="10" fill="#555">VARCHAR NN</text>
+  <!-- phone -->
+  <rect x="30" y="230" width="194" height="26" fill="#f8f9fa"/>
+  <text x="46" y="247" font-size="11.5" fill="#333">phone</text>
+  <text x="210" y="247" text-anchor="end" font-size="10" fill="#555">VARCHAR NN</text>
+  <!-- address -->
+  <rect x="30" y="256" width="194" height="26" fill="#fff"/>
+  <text x="46" y="273" font-size="11.5" fill="#333">address</text>
+  <text x="210" y="273" text-anchor="end" font-size="10" fill="#555">VARCHAR NN</text>
+  <!-- bottom border radius fix -->
+  <rect x="30" y="282" width="194" height="52" rx="0" fill="#f4f6f9"/>
+  <rect x="30" y="308" width="194" height="26" rx="0" fill="#f4f6f9"/>
+  <path d="M30 308 h194 v18 q0 8 -8 8 h-178 q-8 0 -8 -8 z" fill="#eef2ff"/>
+  <text x="127" y="326" text-anchor="middle" font-size="10" fill="#888" font-style="italic">Toplam: 6 sütun</text>
+  <!-- outline bottom -->
+  <rect x="30" y="90" width="194" height="244" rx="7" fill="none" stroke="#1971c2" stroke-width="2"/>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!--  ENTITY: books  (right)                                    -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <rect x="653" y="93" width="194" height="192" rx="7" fill="#00000018"/>
+  <rect x="650" y="90" width="194" height="192" rx="7" fill="#fff" stroke="#2f9e44" stroke-width="2"/>
+  <rect x="650" y="90" width="194" height="36" rx="7" fill="#2f9e44"/>
+  <rect x="650" y="108" width="194" height="18" fill="#2f9e44"/>
+  <text x="747" y="113" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">books</text>
+
+  <!-- isbn PK -->
+  <rect x="650" y="126" width="194" height="26" fill="#fff9db"/>
+  <text x="666" y="143" font-size="11.5" fill="#333">🔑 isbn</text>
+  <text x="830" y="143" text-anchor="end" font-size="10" fill="#b38600" font-weight="600">VARCHAR PK</text>
+  <!-- title -->
+  <rect x="650" y="152" width="194" height="26" fill="#fff"/>
+  <text x="666" y="169" font-size="11.5" fill="#333">title</text>
+  <text x="830" y="169" text-anchor="end" font-size="10" fill="#555">VARCHAR NN</text>
+  <!-- author -->
+  <rect x="650" y="178" width="194" height="26" fill="#f8f9fa"/>
+  <text x="666" y="195" font-size="11.5" fill="#333">author</text>
+  <text x="830" y="195" text-anchor="end" font-size="10" fill="#555">VARCHAR NN</text>
+  <!-- genre -->
+  <rect x="650" y="204" width="194" height="26" fill="#fff"/>
+  <text x="666" y="221" font-size="11.5" fill="#333">genre</text>
+  <text x="830" y="221" text-anchor="end" font-size="10" fill="#555">VARCHAR NN</text>
+  <!-- footer -->
+  <path d="M650 230 h194 v44 q0 8 -8 8 h-178 q-8 0 -8 -8 z" fill="#eef2ff"/>
+  <text x="747" y="270" text-anchor="middle" font-size="10" fill="#888" font-style="italic">Toplam: 4 sütun</text>
+  <rect x="650" y="90" width="194" height="192" rx="7" fill="none" stroke="#2f9e44" stroke-width="2"/>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!--  ENTITY: users_books  (center, junction/associative)       -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <rect x="323" y="153" width="234" height="218" rx="7" fill="#00000018"/>
+  <rect x="320" y="150" width="234" height="218" rx="7" fill="#fff" stroke="#e67700" stroke-width="2.5"/>
+  <!-- diamond label background -->
+  <rect x="320" y="150" width="234" height="36" rx="7" fill="#e67700"/>
+  <rect x="320" y="168" width="234" height="18" fill="#e67700"/>
+  <text x="437" y="173" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">users_books</text>
+  <!-- small "junction table" badge -->
+  <rect x="355" y="188" width="164" height="14" rx="6" fill="#fff4e6"/>
+  <text x="437" y="199" text-anchor="middle" font-size="9.5" fill="#e67700" font-weight="600">« birleştirme tablosu »</text>
+
+  <!-- users_books_id PK -->
+  <rect x="320" y="204" width="234" height="26" fill="#fff9db"/>
+  <text x="336" y="221" font-size="11.5" fill="#333">🔑 users_books_id</text>
+  <text x="540" y="221" text-anchor="end" font-size="10" fill="#b38600" font-weight="600">SERIAL PK</text>
+  <!-- user_id FK -->
+  <rect x="320" y="230" width="234" height="26" fill="#e7f5ff"/>
+  <text x="336" y="247" font-size="11.5" fill="#333">🔗 user_id</text>
+  <text x="540" y="247" text-anchor="end" font-size="10" fill="#1864ab" font-weight="600">INT FK → users</text>
+  <!-- requester FK (nullable) -->
+  <rect x="320" y="256" width="234" height="26" fill="#e7f5ff"/>
+  <text x="336" y="273" font-size="11.5" fill="#333">🔗 requester</text>
+  <text x="540" y="273" text-anchor="end" font-size="10" fill="#1864ab" font-weight="600">BIGINT FK → users</text>
+  <!-- bookisbn FK -->
+  <rect x="320" y="282" width="234" height="26" fill="#e7f5ff"/>
+  <text x="336" y="299" font-size="11.5" fill="#333">🔗 bookisbn</text>
+  <text x="540" y="299" text-anchor="end" font-size="10" fill="#1864ab" font-weight="600">VARCHAR FK → books</text>
+  <!-- condition -->
+  <rect x="320" y="308" width="234" height="26" fill="#f8f9fa"/>
+  <text x="336" y="325" font-size="11.5" fill="#333">condition</text>
+  <text x="540" y="325" text-anchor="end" font-size="10" fill="#555">VARCHAR NN</text>
+  <!-- footer -->
+  <path d="M320 334 h234 v26 q0 8 -8 8 h-218 q-8 0 -8 -8 z" fill="#eef2ff"/>
+  <text x="437" y="357" text-anchor="middle" font-size="10" fill="#888" font-style="italic">Toplam: 5 sütun</text>
+  <rect x="320" y="150" width="234" height="218" rx="7" fill="none" stroke="#e67700" stroke-width="2.5"/>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!--  RELATIONSHIP LINES                                        -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+
+  <!-- users  ───(1)──< users_books (user_id) >──────── -->
+  <!-- line from users right edge (224,247) to users_books left edge (320,247) -->
+  <line x1="224" y1="247" x2="320" y2="247" stroke="#1971c2" stroke-width="2"/>
+  <!-- crow's foot (many) at users_books end -->
+  <line x1="320" y1="240" x2="308" y2="247" stroke="#1971c2" stroke-width="1.5"/>
+  <line x1="320" y1="254" x2="308" y2="247" stroke="#1971c2" stroke-width="1.5"/>
+  <line x1="312" y1="240" x2="312" y2="254" stroke="#1971c2" stroke-width="1.5"/>
+  <!-- one-side (single bar) at users end -->
+  <line x1="224" y1="240" x2="224" y2="254" stroke="#1971c2" stroke-width="2"/>
+  <!-- label -->
+  <rect x="238" y="230" width="52" height="14" rx="3" fill="#d0ebff"/>
+  <text x="264" y="241" text-anchor="middle" font-size="9.5" fill="#1864ab" font-weight="600">1 sahip oluyor N</text>
+
+  <!-- users  ───(1)──< users_books (requester) — curved up -->
+  <path d="M 127 90 Q 127 40 437 40 Q 554 40 554 150" fill="none" stroke="#1971c2" stroke-width="1.8" stroke-dasharray="6,3"/>
+  <!-- crow's foot at users_books top -->
+  <line x1="547" y1="150" x2="554" y2="162" stroke="#1971c2" stroke-width="1.5"/>
+  <line x1="561" y1="150" x2="554" y2="162" stroke="#1971c2" stroke-width="1.5"/>
+  <line x1="547" y1="155" x2="561" y2="155" stroke="#1971c2" stroke-width="1.5"/>
+  <!-- label -->
+  <rect x="300" y="28" width="120" height="14" rx="3" fill="#fff3cd"/>
+  <text x="360" y="39" text-anchor="middle" font-size="9.5" fill="#856404" font-weight="600">requester (nullable FK)</text>
+
+  <!-- books  ───(1)──< users_books (bookisbn) -->
+  <!-- line from books left edge (650,299) to users_books right edge (554,299) -->
+  <line x1="554" y1="299" x2="650" y2="299" stroke="#2f9e44" stroke-width="2"/>
+  <!-- crow's foot (many) at users_books end -->
+  <line x1="554" y1="292" x2="566" y2="299" stroke="#2f9e44" stroke-width="1.5"/>
+  <line x1="554" y1="306" x2="566" y2="299" stroke="#2f9e44" stroke-width="1.5"/>
+  <line x1="560" y1="292" x2="560" y2="306" stroke="#2f9e44" stroke-width="1.5"/>
+  <!-- one-side at books end -->
+  <line x1="650" y1="292" x2="650" y2="306" stroke="#2f9e44" stroke-width="2"/>
+  <!-- label -->
+  <rect x="574" y="282" width="52" height="14" rx="3" fill="#d3f9d8"/>
+  <text x="600" y="293" text-anchor="middle" font-size="9.5" fill="#1e7e34" font-weight="600">N taşınıyor 1</text>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!--  CARDINALITY LEGEND                                        -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <rect x="28" y="390" width="280" height="92" rx="6" fill="white" stroke="#dee2e6" stroke-width="1"/>
+  <text x="168" y="408" text-anchor="middle" font-size="11" font-weight="700" fill="#495057">Kardinalite Gösterimi (Crow's Foot)</text>
+  <!-- one -->
+  <line x1="50" y1="428" x2="90" y2="428" stroke="#333" stroke-width="1.5"/>
+  <line x1="90" y1="421" x2="90" y2="435" stroke="#333" stroke-width="1.5"/>
+  <text x="100" y="432" font-size="10" fill="#333">Bir (1)</text>
+  <!-- many -->
+  <line x1="50" y1="450" x2="90" y2="450" stroke="#333" stroke-width="1.5"/>
+  <line x1="90" y1="443" x2="78" y2="450" stroke="#333" stroke-width="1.5"/>
+  <line x1="90" y1="457" x2="78" y2="450" stroke="#333" stroke-width="1.5"/>
+  <line x1="82" y1="443" x2="82" y2="457" stroke="#333" stroke-width="1.5"/>
+  <text x="100" y="454" font-size="10" fill="#333">Çok (N)</text>
+  <!-- FK dashed -->
+  <line x1="50" y1="472" x2="90" y2="472" stroke="#555" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="100" y="476" font-size="10" fill="#333">Nullable FK (requester)</text>
+  <!-- PK badge -->
+  <rect x="168" y="420" width="24" height="12" rx="3" fill="#fff9db" stroke="#f59f00" stroke-width="1"/>
+  <text x="180" y="430" text-anchor="middle" font-size="9" fill="#b38600" font-weight="700">PK</text>
+  <text x="198" y="431" font-size="10" fill="#333">Birincil Anahtar</text>
+  <!-- FK badge -->
+  <rect x="168" y="440" width="24" height="12" rx="3" fill="#d0ebff" stroke="#339af0" stroke-width="1"/>
+  <text x="180" y="450" text-anchor="middle" font-size="9" fill="#1864ab" font-weight="700">FK</text>
+  <text x="198" y="451" font-size="10" fill="#333">Yabancı Anahtar</text>
+  <!-- UQ badge -->
+  <rect x="168" y="460" width="24" height="12" rx="3" fill="#d3f9d8" stroke="#40c057" stroke-width="1"/>
+  <text x="180" y="470" text-anchor="middle" font-size="9" fill="#2f9e44" font-weight="700">UQ</text>
+  <text x="198" y="471" font-size="10" fill="#333">Benzersiz Kısıt</text>
+
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!--  RELATIONSHIP SUMMARY BOX                                  -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <rect x="560" y="390" width="292" height="92" rx="6" fill="white" stroke="#dee2e6" stroke-width="1"/>
+  <text x="706" y="408" text-anchor="middle" font-size="11" font-weight="700" fill="#495057">İlişkiler</text>
+
+  <text x="575" y="428" font-size="10.5" fill="#333">users</text>
+  <text x="620" y="428" font-size="10" fill="#888">──1:N──</text>
+  <text x="668" y="428" font-size="10.5" fill="#333">users_books</text>
+  <text x="745" y="428" font-size="10" fill="#6c757d">(user_id)</text>
+
+  <text x="575" y="448" font-size="10.5" fill="#333">users</text>
+  <text x="620" y="448" font-size="10" fill="#888">──0:N──</text>
+  <text x="668" y="448" font-size="10.5" fill="#333">users_books</text>
+  <text x="745" y="448" font-size="10" fill="#6c757d">(requester)</text>
+
+  <text x="575" y="468" font-size="10.5" fill="#333">books</text>
+  <text x="620" y="468" font-size="10" fill="#888">──1:N──</text>
+  <text x="668" y="468" font-size="10.5" fill="#333">users_books</text>
+  <text x="745" y="468" font-size="10" fill="#6c757d">(bookisbn)</text>
+
+  <line x1="600" y1="474" x2="840" y2="474" stroke="#dee2e6" stroke-width="1"/>
+  <text x="706" y="487" text-anchor="middle" font-size="10" fill="#868e96" font-style="italic">3 tablo · 3 FK · 2 SERIAL PK</text>
+
+</svg>
+</div>
+
+<!-- Data Dictionary -->
+<div class="dict-wrap">
+
+  <!-- users -->
+  <div class="dict-card">
+    <div class="card-header" style="background:#1971c2;">users — Kullanıcılar</div>
+    <table>
+      <thead><tr><th>Sütun</th><th>Tip</th><th>Kısıt</th></tr></thead>
+      <tbody>
+        <tr><td>user_id</td><td>SERIAL</td><td><span class="badge pk">PK</span></td></tr>
+        <tr><td>username</td><td>VARCHAR</td><td><span class="badge uq">UQ</span> <span class="badge nn">NN</span></td></tr>
+        <tr><td>password</td><td>VARCHAR</td><td><span class="badge nn">NN</span> bcrypt hash</td></tr>
+        <tr><td>email</td><td>VARCHAR</td><td><span class="badge nn">NN</span></td></tr>
+        <tr><td>phone</td><td>VARCHAR</td><td><span class="badge nn">NN</span></td></tr>
+        <tr><td>address</td><td>VARCHAR</td><td><span class="badge nn">NN</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- books -->
+  <div class="dict-card">
+    <div class="card-header" style="background:#2f9e44;">books — Kitaplar</div>
+    <table>
+      <thead><tr><th>Sütun</th><th>Tip</th><th>Kısıt</th></tr></thead>
+      <tbody>
+        <tr><td>isbn</td><td>VARCHAR</td><td><span class="badge pk">PK</span></td></tr>
+        <tr><td>title</td><td>VARCHAR</td><td><span class="badge nn">NN</span></td></tr>
+        <tr><td>author</td><td>VARCHAR</td><td><span class="badge nn">NN</span></td></tr>
+        <tr><td>genre</td><td>VARCHAR</td><td><span class="badge nn">NN</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- users_books -->
+  <div class="dict-card">
+    <div class="card-header" style="background:#e67700;">users_books — Takas Kayıtları</div>
+    <table>
+      <thead><tr><th>Sütun</th><th>Tip</th><th>Kısıt</th></tr></thead>
+      <tbody>
+        <tr><td>users_books_id</td><td>SERIAL</td><td><span class="badge pk">PK</span></td></tr>
+        <tr><td>user_id</td><td>INTEGER</td><td><span class="badge fk">FK</span> → users <span class="badge nn">NN</span></td></tr>
+        <tr><td>requester</td><td>BIGINT</td><td><span class="badge fk">FK</span> → users <em style="font-size:10px;color:#888">(nullable)</em></td></tr>
+        <tr><td>bookisbn</td><td>VARCHAR</td><td><span class="badge fk">FK</span> → books <span class="badge nn">NN</span></td></tr>
+        <tr><td>condition</td><td>VARCHAR</td><td><span class="badge nn">NN</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<p style="text-align:center;font-size:11px;color:#aaa;margin-top:18px;">
+  Kitap Takası v2.1 · Sub-task 2.1.1 · ER Diyagramı · 30 Mayıs 2026
+</p>
+
+</body>
+</html>
