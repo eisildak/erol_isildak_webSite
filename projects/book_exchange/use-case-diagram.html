@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kitap Takası — UML Kullanım Senaryosu Diyagramı</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 24px;
+      background: #f1f3f5;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      text-align: center;
+      color: #212529;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #6c757d;
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+    .diagram-wrapper {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      padding: 16px;
+      max-width: 1020px;
+      margin: 0 auto;
+    }
+    svg { width: 100%; height: auto; }
+
+    /* Actor table */
+    .info-section {
+      max-width: 1020px;
+      margin: 24px auto 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 16px 20px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+    }
+    .card h2 { font-size: 15px; margin: 0 0 10px; color: #343a40; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th { background: #e9ecef; padding: 6px 10px; text-align: left; color: #495057; }
+    td { padding: 6px 10px; border-bottom: 1px solid #f1f3f5; color: #495057; }
+    tr:last-child td { border-bottom: none; }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+    .blue  { background:#d0ebff; color:#1971c2; }
+    .green { background:#d3f9d8; color:#2f9e44; }
+    .yellow{ background:#fff3bf; color:#e67700; }
+    .orange{ background:#ffe8cc; color:#d9480f; }
+    .gray  { background:#e9ecef; color:#495057; }
+  </style>
+</head>
+<body>
+
+<h1>Kitap Takası — UML Kullanım Senaryosu Diyagramı</h1>
+<p class="subtitle">Task 1.3 · Proje Raporu Eki · Hazırlayan: Sistem Analizi</p>
+
+<div class="diagram-wrapper">
+  <!-- Inline SVG for crisp rendering -->
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 750" font-family="Arial, sans-serif">
+
+    <!-- Background -->
+    <rect width="1000" height="750" fill="#f8f9fa" rx="8"/>
+
+    <!-- Title -->
+    <text x="500" y="38" text-anchor="middle" font-size="20" font-weight="bold" fill="#212529">Kitap Takası — UML Kullanım Senaryosu Diyagramı</text>
+
+    <!-- System boundary -->
+    <rect x="220" y="60" width="590" height="640" fill="white" stroke="#495057" stroke-width="2" rx="6"/>
+    <text x="515" y="82" text-anchor="middle" font-size="14" font-weight="bold" fill="#495057">«system»  Kitap Takası Sistemi</text>
+
+    <!-- Auth group label -->
+    <text x="350" y="115" text-anchor="middle" font-size="11" fill="#6c757d">— Kimlik Doğrulama —</text>
+
+    <ellipse cx="350" cy="140" rx="80" ry="22" fill="#d0ebff" stroke="#339af0" stroke-width="1.5"/>
+    <text x="350" y="144" text-anchor="middle" font-size="12" fill="#1971c2">Kayıt Ol</text>
+
+    <ellipse cx="350" cy="200" rx="80" ry="22" fill="#d0ebff" stroke="#339af0" stroke-width="1.5"/>
+    <text x="350" y="204" text-anchor="middle" font-size="12" fill="#1971c2">Giriş Yap</text>
+
+    <line x1="240" y1="238" x2="800" y2="238" stroke="#dee2e6" stroke-width="1" stroke-dasharray="4"/>
+
+    <!-- Kitap Yönetimi label -->
+    <text x="420" y="258" text-anchor="middle" font-size="11" fill="#6c757d">— Kitap Yönetimi —</text>
+
+    <ellipse cx="350" cy="288" rx="98" ry="22" fill="#d3f9d8" stroke="#40c057" stroke-width="1.5"/>
+    <text x="350" y="292" text-anchor="middle" font-size="12" fill="#2f9e44">ISBN ile Kitap Ekle</text>
+
+    <ellipse cx="350" cy="348" rx="98" ry="22" fill="#d3f9d8" stroke="#40c057" stroke-width="1.5"/>
+    <text x="350" y="352" text-anchor="middle" font-size="12" fill="#2f9e44">Manuel Kitap Ekle</text>
+
+    <ellipse cx="350" cy="408" rx="98" ry="22" fill="#d3f9d8" stroke="#40c057" stroke-width="1.5"/>
+    <text x="350" y="412" text-anchor="middle" font-size="12" fill="#2f9e44">Kitaplarımı Görüntüle</text>
+
+    <ellipse cx="350" cy="468" rx="98" ry="22" fill="#d3f9d8" stroke="#40c057" stroke-width="1.5"/>
+    <text x="350" y="472" text-anchor="middle" font-size="12" fill="#2f9e44">Kitap Sil</text>
+
+    <!-- Arama &amp; Takas label -->
+    <text x="620" y="258" text-anchor="middle" font-size="11" fill="#6c757d">— Arama &amp; Takas —</text>
+
+    <ellipse cx="640" cy="288" rx="90" ry="22" fill="#fff3bf" stroke="#f59f00" stroke-width="1.5"/>
+    <text x="640" y="292" text-anchor="middle" font-size="12" fill="#e67700">Kitap Ara</text>
+
+    <ellipse cx="640" cy="348" rx="90" ry="22" fill="#fff3bf" stroke="#f59f00" stroke-width="1.5"/>
+    <text x="640" y="352" text-anchor="middle" font-size="12" fill="#e67700">Kitap İste</text>
+
+    <ellipse cx="640" cy="408" rx="110" ry="22" fill="#fff3bf" stroke="#f59f00" stroke-width="1.5"/>
+    <text x="640" y="412" text-anchor="middle" font-size="12" fill="#e67700">Gelen İstekleri Görüntüle</text>
+
+    <ellipse cx="640" cy="468" rx="110" ry="22" fill="#fff3bf" stroke="#f59f00" stroke-width="1.5"/>
+    <text x="640" y="472" text-anchor="middle" font-size="12" fill="#e67700">Giden İstekleri Görüntüle</text>
+
+    <line x1="240" y1="506" x2="800" y2="506" stroke="#dee2e6" stroke-width="1" stroke-dasharray="4"/>
+    <text x="515" y="526" text-anchor="middle" font-size="11" fill="#6c757d">— Takas İşlemi —</text>
+
+    <ellipse cx="400" cy="560" rx="100" ry="22" fill="#ffe8cc" stroke="#fd7e14" stroke-width="1.5"/>
+    <text x="400" y="564" text-anchor="middle" font-size="12" fill="#d9480f">İsteği Kabul Et</text>
+
+    <ellipse cx="620" cy="560" rx="105" ry="22" fill="#ffe8cc" stroke="#fd7e14" stroke-width="1.5"/>
+    <text x="620" y="564" text-anchor="middle" font-size="12" fill="#d9480f">Kargo Gönder (Shipped)</text>
+
+    <ellipse cx="510" cy="640" rx="100" ry="22" fill="#ffe8cc" stroke="#fd7e14" stroke-width="1.5"/>
+    <text x="510" y="644" text-anchor="middle" font-size="12" fill="#d9480f">Takas Tamamlandı</text>
+
+    <!-- ===== ACTORS ===== -->
+
+    <!-- Misafir -->
+    <circle cx="100" cy="148" r="18" fill="#e9ecef" stroke="#495057" stroke-width="1.5"/>
+    <line x1="100" y1="166" x2="100" y2="210" stroke="#495057" stroke-width="1.5"/>
+    <line x1="75"  y1="183" x2="125" y2="183" stroke="#495057" stroke-width="1.5"/>
+    <line x1="100" y1="210" x2="80"  y2="240" stroke="#495057" stroke-width="1.5"/>
+    <line x1="100" y1="210" x2="120" y2="240" stroke="#495057" stroke-width="1.5"/>
+    <text x="100" y="258" text-anchor="middle" font-size="13" font-weight="bold" fill="#495057">Misafir</text>
+    <text x="100" y="272" text-anchor="middle" font-size="11" fill="#6c757d">(Guest)</text>
+
+    <!-- Öğrenci -->
+    <circle cx="100" cy="370" r="18" fill="#e9ecef" stroke="#1971c2" stroke-width="2"/>
+    <line x1="100" y1="388" x2="100" y2="432" stroke="#1971c2" stroke-width="1.5"/>
+    <line x1="75"  y1="405" x2="125" y2="405" stroke="#1971c2" stroke-width="1.5"/>
+    <line x1="100" y1="432" x2="80"  y2="462" stroke="#1971c2" stroke-width="1.5"/>
+    <line x1="100" y1="432" x2="120" y2="462" stroke="#1971c2" stroke-width="1.5"/>
+    <text x="100" y="478" text-anchor="middle" font-size="13" font-weight="bold" fill="#1971c2">Öğrenci</text>
+    <text x="100" y="492" text-anchor="middle" font-size="11" fill="#6c757d">(Kullanıcı)</text>
+
+    <!-- Harici API -->
+    <circle cx="900" cy="288" r="18" fill="#e9ecef" stroke="#495057" stroke-width="1.5"/>
+    <line x1="900" y1="306" x2="900" y2="350" stroke="#495057" stroke-width="1.5"/>
+    <line x1="875" y1="323" x2="925" y2="323" stroke="#495057" stroke-width="1.5"/>
+    <line x1="900" y1="350" x2="880" y2="380" stroke="#495057" stroke-width="1.5"/>
+    <line x1="900" y1="350" x2="920" y2="380" stroke="#495057" stroke-width="1.5"/>
+    <text x="900" y="396" text-anchor="middle" font-size="13" font-weight="bold" fill="#495057">Harici</text>
+    <text x="900" y="410" text-anchor="middle" font-size="11" fill="#6c757d">Kitap API'si</text>
+
+    <!-- ===== ASSOCIATIONS ===== -->
+    <!-- Misafir -->
+    <line x1="118" y1="155" x2="270" y2="142" stroke="#495057" stroke-width="1.2"/>
+    <line x1="118" y1="163" x2="270" y2="198" stroke="#495057" stroke-width="1.2"/>
+
+    <!-- Öğrenci -->
+    <line x1="118" y1="375" x2="270" y2="204" stroke="#1971c2" stroke-width="1.2"/>
+    <line x1="118" y1="388" x2="252" y2="288" stroke="#1971c2" stroke-width="1.2"/>
+    <line x1="118" y1="395" x2="252" y2="350" stroke="#1971c2" stroke-width="1.2"/>
+    <line x1="118" y1="400" x2="252" y2="408" stroke="#1971c2" stroke-width="1.2"/>
+    <line x1="118" y1="406" x2="252" y2="465" stroke="#1971c2" stroke-width="1.2"/>
+    <line x1="118" y1="415" x2="550" y2="290" stroke="#1971c2" stroke-width="1.2"/>
+    <line x1="118" y1="420" x2="550" y2="350" stroke="#1971c2" stroke-width="1.2"/>
+    <line x1="118" y1="425" x2="530" y2="408" stroke="#1971c2" stroke-width="1.2"/>
+    <line x1="118" y1="430" x2="530" y2="466" stroke="#1971c2" stroke-width="1.2"/>
+    <line x1="118" y1="440" x2="300" y2="558" stroke="#1971c2" stroke-width="1.2"/>
+    <line x1="118" y1="448" x2="520" y2="558" stroke="#1971c2" stroke-width="1.2"/>
+
+    <!-- Harici API (dashed) -->
+    <line x1="882" y1="290" x2="748" y2="288" stroke="#495057" stroke-width="1.2" stroke-dasharray="5,3"/>
+
+    <!-- include/extend -->
+    <line x1="450" y1="573" x2="490" y2="618" stroke="#868e96" stroke-width="1.2" stroke-dasharray="6,3"/>
+    <text x="436" y="602" font-size="10" fill="#868e96">«include»</text>
+
+    <line x1="600" y1="574" x2="548" y2="618" stroke="#868e96" stroke-width="1.2" stroke-dasharray="6,3"/>
+    <text x="568" y="602" font-size="10" fill="#868e96">«include»</text>
+
+    <line x1="640" y1="326" x2="640" y2="310" stroke="#868e96" stroke-width="1.2" stroke-dasharray="6,3"/>
+    <text x="648" y="323" font-size="10" fill="#868e96">«extend»</text>
+
+    <line x1="350" y1="326" x2="350" y2="310" stroke="#868e96" stroke-width="1.2" stroke-dasharray="6,3"/>
+    <text x="358" y="323" font-size="10" fill="#868e96">«extend»</text>
+
+    <!-- LEGEND -->
+    <rect x="20" y="615" width="188" height="122" fill="white" stroke="#dee2e6" stroke-width="1" rx="4"/>
+    <text x="114" y="633" text-anchor="middle" font-size="11" font-weight="bold" fill="#495057">Gösterim</text>
+    <line x1="34" y1="650" x2="74" y2="650" stroke="#495057" stroke-width="1.5"/>
+    <text x="80" y="654" font-size="10" fill="#495057">İlişki (association)</text>
+    <line x1="34" y1="670" x2="74" y2="670" stroke="#868e96" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <text x="80" y="674" font-size="10" fill="#868e96">«include» / «extend»</text>
+    <line x1="34" y1="690" x2="74" y2="690" stroke="#495057" stroke-width="1.2" stroke-dasharray="5,3"/>
+    <text x="80" y="694" font-size="10" fill="#495057">Harici sistem bağlantısı</text>
+    <ellipse cx="54" cy="718" rx="30" ry="10" fill="#d0ebff" stroke="#339af0" stroke-width="1.2"/>
+    <text x="90" y="722" font-size="10" fill="#1971c2">Kullanım senaryosu</text>
+
+  </svg>
+</div>
+
+<!-- Info tables -->
+<div class="info-section">
+  <div class="card">
+    <h2>Aktörler</h2>
+    <table>
+      <tr><th>Aktör</th><th>Açıklama</th></tr>
+      <tr><td><span class="badge gray">Misafir</span></td><td>Kayıtsız kullanıcı — yalnızca kayıt ve giriş yapabilir</td></tr>
+      <tr><td><span class="badge blue">Öğrenci</span></td><td>Kayıtlı kullanıcı — tüm işlemlere erişebilir</td></tr>
+      <tr><td><span class="badge gray">Harici API</span></td><td>ISBN ile kitap meta verisi sağlayan dış servis</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h2>Kullanım Senaryoları</h2>
+    <table>
+      <tr><th>Senaryo</th><th>Grup</th></tr>
+      <tr><td>Kayıt Ol</td><td><span class="badge blue">Kimlik Doğrulama</span></td></tr>
+      <tr><td>Giriş Yap</td><td><span class="badge blue">Kimlik Doğrulama</span></td></tr>
+      <tr><td>ISBN ile Kitap Ekle</td><td><span class="badge green">Kitap Yönetimi</span></td></tr>
+      <tr><td>Manuel Kitap Ekle</td><td><span class="badge green">Kitap Yönetimi</span></td></tr>
+      <tr><td>Kitaplarımı Görüntüle</td><td><span class="badge green">Kitap Yönetimi</span></td></tr>
+      <tr><td>Kitap Sil</td><td><span class="badge green">Kitap Yönetimi</span></td></tr>
+      <tr><td>Kitap Ara</td><td><span class="badge yellow">Arama &amp; Takas</span></td></tr>
+      <tr><td>Kitap İste</td><td><span class="badge yellow">Arama &amp; Takas</span></td></tr>
+      <tr><td>Gelen İstekleri Görüntüle</td><td><span class="badge yellow">Arama &amp; Takas</span></td></tr>
+      <tr><td>Giden İstekleri Görüntüle</td><td><span class="badge yellow">Arama &amp; Takas</span></td></tr>
+      <tr><td>İsteği Kabul Et</td><td><span class="badge orange">Takas İşlemi</span></td></tr>
+      <tr><td>Kargo Gönder</td><td><span class="badge orange">Takas İşlemi</span></td></tr>
+      <tr><td>Takas Tamamlandı</td><td><span class="badge orange">Takas İşlemi</span></td></tr>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>
