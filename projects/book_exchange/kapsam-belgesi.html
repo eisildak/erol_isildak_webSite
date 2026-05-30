@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kitap Takası – Proje Kapsam Belgesi</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Georgia", serif;
+      font-size: 13.5px;
+      color: #1a1a2e;
+      background: #fff;
+      padding: 0;
+    }
+
+    /* ---- A4 page shell ---- */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 20px auto;
+      padding: 18mm 20mm 14mm 20mm;
+      background: #fff;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.12);
+    }
+
+    /* ---- Header banner ---- */
+    .header-banner {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      color: #fff;
+      border-radius: 6px;
+      padding: 18px 24px 14px;
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .header-banner h1 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .header-banner .sub {
+      font-size: 12px;
+      opacity: 0.75;
+      margin-top: 4px;
+    }
+    .header-meta {
+      text-align: right;
+      font-size: 11px;
+      opacity: 0.8;
+      line-height: 1.7;
+    }
+
+    /* ---- Divider ---- */
+    .divider {
+      height: 3px;
+      background: linear-gradient(to right, #e63946, #457b9d, #1a1a2e);
+      border-radius: 2px;
+      margin: 0 0 14px;
+    }
+
+    /* ---- Section headings ---- */
+    h2 {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #0f3460;
+      border-left: 4px solid #e63946;
+      padding-left: 8px;
+      margin: 14px 0 8px;
+    }
+
+    p {
+      line-height: 1.65;
+      color: #2d2d2d;
+    }
+
+    /* ---- Two-column layout ---- */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 2px;
+    }
+
+    /* ---- Boxes ---- */
+    .box {
+      border: 1px solid #e0e0e0;
+      border-radius: 5px;
+      padding: 10px 13px;
+      background: #fafafa;
+    }
+    .box.accent {
+      border-color: #a8d5e2;
+      background: #f0f8fb;
+    }
+    .box.warn {
+      border-color: #f4c6c6;
+      background: #fff5f5;
+    }
+    .box h3 {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 6px;
+    }
+    .box ul {
+      list-style: none;
+      padding: 0;
+    }
+    .box ul li {
+      font-size: 12.5px;
+      padding: 2px 0 2px 14px;
+      position: relative;
+      line-height: 1.55;
+      color: #333;
+    }
+    .box ul li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: #e63946;
+      font-size: 10px;
+      top: 3px;
+    }
+
+    /* ---- Stack table ---- */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-top: 4px;
+    }
+    thead tr {
+      background: #0f3460;
+      color: #fff;
+    }
+    thead th {
+      padding: 6px 10px;
+      text-align: left;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+    tbody tr:nth-child(even) { background: #f4f7fb; }
+    tbody tr:nth-child(odd)  { background: #fff; }
+    tbody td {
+      padding: 5px 10px;
+      border-bottom: 1px solid #e8e8e8;
+      color: #333;
+    }
+    .chip {
+      display: inline-block;
+      padding: 1px 7px;
+      border-radius: 9px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .chip.fe  { background: #d0ebff; color: #1971c2; }
+    .chip.be  { background: #d3f9d8; color: #2f9e44; }
+    .chip.db  { background: #fff3bf; color: #e67700; }
+    .chip.sec { background: #ffe8cc; color: #d9480f; }
+    .chip.ext { background: #e5dbff; color: #7048e8; }
+    .chip.tst { background: #f3f0ff; color: #5f3dc4; }
+
+    /* ---- Scope in/out ---- */
+    .scope-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    /* ---- Timeline row ---- */
+    .timeline {
+      display: flex;
+      gap: 0;
+      margin-top: 6px;
+    }
+    .tl-item {
+      flex: 1;
+      border-left: 3px solid #e63946;
+      padding: 4px 0 4px 10px;
+    }
+    .tl-item + .tl-item {
+      border-left-color: #457b9d;
+      margin-left: 10px;
+    }
+    .tl-item:last-child {
+      border-left-color: #2f9e44;
+    }
+    .tl-label {
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #888;
+    }
+    .tl-value {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-top: 2px;
+    }
+
+    /* ---- Footer ---- */
+    .footer {
+      margin-top: 18px;
+      padding-top: 8px;
+      border-top: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      font-size: 10.5px;
+      color: #999;
+    }
+
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { margin: 0; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ================================================================ -->
+  <!--  HEADER                                                          -->
+  <!-- ================================================================ -->
+  <div class="header-banner">
+    <div>
+      <h1>Kitap Takası — Proje Kapsam Belgesi</h1>
+      <div class="sub">Task 1.1 · Kapsam &amp; Gereksinim Dokümanı</div>
+    </div>
+    <div class="header-meta">
+      Versiyon: 2.1<br>
+      Tarih: 30 Mayıs 2026<br>
+      Durum: Taslak
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <!-- ================================================================ -->
+  <!--  1. PROJE AMACI                                                  -->
+  <!-- ================================================================ -->
+  <h2>1 · Proje Amacı</h2>
+  <p>
+    <strong>Kitap Takası</strong>, ikinci el kitapların atıl kalmak yerine topluluk içinde el değiştirmesine
+    olanak tanıyan, tam yığınlı (full-stack) bir web tabanlı takas platformudur. Proje; kullanıcıların kişisel
+    kitaplıklarını dijital ortamda oluşturmasını, başkalarının kitaplarını aramasını ve doğrudan eşler arası
+    (peer-to-peer) takas taleplerini yönetmesini sağlar. Böylece hem ekonomik tasarruf hem de
+    sürdürülebilir tüketim hedeflenmektedir.
+  </p>
+
+  <!-- ================================================================ -->
+  <!--  2. HEDEF KİTLE & PROBLEM                                        -->
+  <!-- ================================================================ -->
+  <div class="two-col" style="margin-top:10px;">
+    <div class="box accent">
+      <h3>Hedef Kitle</h3>
+      <ul>
+        <li>Üniversite öğrencileri (ders kitabı maliyetini azaltmak isteyenler)</li>
+        <li>Kitap tutkunları (koleksiyonunu büyütmek / tazelemek isteyenler)</li>
+        <li>Topluluk tabanlı paylaşım ekonomisine ilgi duyan herkes</li>
+      </ul>
+    </div>
+    <div class="box warn">
+      <h3>Çözülen Problem</h3>
+      <ul>
+        <li>İkinci el kitapların geniş kitlelere ulaşamaması</li>
+        <li>Mevcut platformlardaki karmaşık listeleme ve para akışı engelleri</li>
+        <li>Takas sürecinin takibinde yaşanan belirsizlikler</li>
+        <li>Kitap bilgisinin manuel girilmesinden kaynaklanan hatalar</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!--  3. KAPSAM — DAHIL / HARİÇ                                       -->
+  <!-- ================================================================ -->
+  <h2>2 · Kapsam</h2>
+  <div class="scope-grid">
+    <div class="box">
+      <h3>✅ Projeye Dahil</h3>
+      <ul>
+        <li>Kullanıcı kayıt &amp; giriş (bcrypt şifreleme)</li>
+        <li>ISBN ile otomatik kitap ekleme (Google Books API)</li>
+        <li>Başlık / yazar ile manuel kitap ekleme</li>
+        <li>Kişisel kitaplık görüntüleme &amp; silme</li>
+        <li>Başlığa göre kitap arama (regex destekli)</li>
+        <li>Takas talebi gönderme ve alma</li>
+        <li>İsteği kabul etme &amp; kargo durumu bildirimi</li>
+        <li>Gelen / giden takas listesi yönetimi</li>
+        <li>Tek Sayfa Uygulama (SPA) React arayüzü</li>
+        <li>Backend &amp; frontend birim testleri</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>🚫 Projeye Dahil Değil</h3>
+      <ul>
+        <li>Para transferi / ödeme sistemi</li>
+        <li>Mobil uygulama (iOS / Android)</li>
+        <li>Gerçek zamanlı mesajlaşma / bildirim sistemi</li>
+        <li>Kargo entegrasyonu (3. taraf lojistik API)</li>
+        <li>Sosyal medya paylaşım özellikleri</li>
+        <li>Yönetici (Admin) paneli &amp; raporlama</li>
+        <li>Çok dil desteği</li>
+        <li>Cookie tabanlı oturum yönetimi (v2.1 kapsamı dışı)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!--  4. TEKNOLOJİ YIĞINI                                             -->
+  <!-- ================================================================ -->
+  <h2>3 · Teknoloji Yığını</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Katman</th>
+        <th>Teknoloji</th>
+        <th>Seçim Gerekçesi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="chip fe">Ön Yüz</span></td>
+        <td>React 18, React Router v6, SCSS</td>
+        <td>Bileşen tabanlı SPA; Virtual DOM ile yüksek performans</td>
+      </tr>
+      <tr>
+        <td><span class="chip be">Arka Yüz</span></td>
+        <td>Node.js, Express 4</td>
+        <td>JavaScript dil birliği; olay güdümlü, bloklamayan G/Ç</td>
+      </tr>
+      <tr>
+        <td><span class="chip db">Veritabanı</span></td>
+        <td>PostgreSQL, pg (bağlantı havuzu)</td>
+        <td>Güçlü ilişkisel veri modeli; users–books–users_books şeması</td>
+      </tr>
+      <tr>
+        <td><span class="chip sec">Güvenlik</span></td>
+        <td>bcrypt 5 (salt rounds: 12)</td>
+        <td>Endüstri standardı parola karma; brute-force direnci</td>
+      </tr>
+      <tr>
+        <td><span class="chip ext">Harici API</span></td>
+        <td>Google Books API</td>
+        <td>ISBN'den otomatik başlık, yazar, tür bilgisi çekme</td>
+      </tr>
+      <tr>
+        <td><span class="chip tst">Test / Derleme</span></td>
+        <td>Jest, Testing Library, Supertest, Webpack 5, Babel 7</td>
+        <td>Uçtan uca birim testi; modern JS transpile desteği</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ================================================================ -->
+  <!--  5. BAŞARI KRİTERLERİ                                            -->
+  <!-- ================================================================ -->
+  <h2>4 · Başarı Kriterleri</h2>
+  <div class="two-col">
+    <div class="box">
+      <h3>İşlevsel Kriterler</h3>
+      <ul>
+        <li>Kullanıcı 30 saniye içinde kayıt olup giriş yapabilmelidir</li>
+        <li>ISBN girişinde kitap bilgisi API'den otomatik doldurulmalıdır</li>
+        <li>Takas talebi karşı tarafa anlık yansımalıdır</li>
+        <li>Tüm CRUD işlemleri hatasız tamamlanmalıdır</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>Kalite Kriterleri</h3>
+      <ul>
+        <li>Şifreler hiçbir zaman düz metin olarak saklanmamalıdır</li>
+        <li>Birim test kapsamı ≥ %70 (backend + frontend)</li>
+        <li>Sayfa yükleme süresi &lt; 2 saniye (yerel ağ)</li>
+        <li>SQL injection'a karşı parametreli sorgu kullanımı</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!--  6. ZAMAN ÇİZELGESİ                                              -->
+  <!-- ================================================================ -->
+  <h2>5 · Zaman Çizelgesi (Özet)</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-label">Analiz &amp; Tasarım</div>
+      <div class="tl-value">Hafta 1–2</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-label">Backend Geliştirme</div>
+      <div class="tl-value">Hafta 3–4</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-label">Frontend Geliştirme</div>
+      <div class="tl-value">Hafta 4–6</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-label">Test &amp; Entegrasyon</div>
+      <div class="tl-value">Hafta 7</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-label">Demo &amp; Teslim</div>
+      <div class="tl-value">Hafta 8</div>
+    </div>
+  </div>
+
+  <!-- ================================================================ -->
+  <!--  FOOTER                                                          -->
+  <!-- ================================================================ -->
+  <div class="footer">
+    <span>Kitap Takası v2.1 · Proje Kapsam Belgesi · Task 1.1</span>
+    <span>30 Mayıs 2026 · Gizlilik Seviyesi: Dahili</span>
+  </div>
+
+</div>
+</body>
+</html>
