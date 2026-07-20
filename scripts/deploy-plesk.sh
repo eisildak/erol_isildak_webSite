@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# npm run deploy:plesk
+# npm run deploy:plesk.  YL_-V043@u=lKe0q
 
 set -euo pipefail
 
