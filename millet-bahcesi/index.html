@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <script>
+    // Site hem erolisildak.online/ hem eisildak.github.io/erol_isildak_webSite/
+    // altında yayınlanıyor; base'i sayfanın bulunduğu klasörden hesapla.
+    document.write('<base href="' + location.pathname.replace(/[^/]*$/, '') + '">');
+  </script>
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kayseri Millet Bahçesi Interaktif Harita - NNY Üniversitesi">
+  <meta name="keywords" content="Kayseri, Millet Bahçesi, harita, navigasyon, NNY, üniversite">
+  
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Kayseri Millet Bahçesi Harita">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>Kayseri Millet Bahçesi Harita - NNY Üniversitesi</title>
+  <link rel="manifest" href="manifest.json">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Google Maps API -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWVBfYxASYj1aTqcS8pvHa67IDic4wthk&libraries=geometry,places&callback=initMap"></script>
+  
+  <script>
+    // Global function for Google Maps callback
+    function initMap() {
+      console.log("✅ Google Maps API initialized successfully!");
+      // Flutter web will handle the map creation
+      window.googleMapsReady = true;
+    }
+
+    // Initialize as false
+    window.googleMapsReady = false;
+  </script>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #2c3e50;
+      background-color: #f8fafc;
+    }
+    
+    /* Header Section */
+    .header {
+      /* Bitiş rengi #3498db yerine biraz koyu: beyaz metin AA (>=4.5:1) sağlasın */
+      background: linear-gradient(135deg, #2c3e50 0%, #2574a9 100%);
+      color: white;
+      padding: 40px 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .header-content {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .nny-logo {
+      flex-shrink: 0;
+    }
+    
+    .nny-logo img {
+      width: 120px;
+      height: 120px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(255,255,255,0.25);
+      background: white;
+      padding: 15px;
+      transition: transform 0.3s ease;
+    }
+    
+    .nny-logo img:hover {
+      transform: scale(1.05);
+    }
+    
+    .header-text {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .header-text h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    
+    .header-text .subtitle {
+      font-size: 1.2rem;
+      font-weight: 300;
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+    
+    .header-text .description {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: 0.95;
+      line-height: 1.6;
+    }
+    
+    /* Features Section */
+    .features {
+      background: white;
+      padding: 60px 0;
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #596a7a;
+      margin-bottom: 50px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    
+    .feature-card {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 1px solid #e1e8ed;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+    
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, #3498db, #2980b9);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+    
+    .feature-card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #2c3e50;
+    }
+    
+    .feature-card p {
+      color: #596a7a;
+      line-height: 1.6;
+    }
+    
+    /* Map Section */
+    .map-section {
+      background: #f8fafc;
+      padding: 40px 0;
+      min-height: 80vh;
+    }
+    
+    .map-container {
+      position: relative;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+      overflow: hidden;
+      height: 70vh;
+      min-height: 500px;
+    }
+    
+    .map-header {
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+      color: white;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .map-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+    
+    .fullscreen-btn {
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .fullscreen-btn:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    
+    .map-frame {
+      width: 100%;
+      height: calc(100% - 70px);
+      border: none;
+      display: block;
+    }
+    
+    /* Fullscreen styles */
+    .map-container.fullscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 1000;
+      border-radius: 0;
+    }
+    
+    .map-container.fullscreen .map-frame {
+      height: calc(100vh - 70px);
+    }
+    
+    /* Info Cards */
+    .info-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .info-card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border-left: 4px solid #3498db;
+    }
+    
+    .info-card h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+    
+    .info-card p {
+      color: #596a7a;
+      font-size: 0.95rem;
+    }
+    
+    /* Download Section */
+    .download-section {
+      /* Önceki #667eea -> #764ba2 gradyanında beyaz metin açık uçta 3.7:1'de
+         kalıyordu; koyulaştırılmış tonlarla her noktada AA (>=4.5:1). */
+      background: linear-gradient(135deg, #4c5fd5 0%, #6a3f99 100%);
+      padding: 60px 0;
+      color: white;
+    }
+
+    /* Genel .section-title (koyu lacivert) ve .section-subtitle (gri)
+       renkleri mor zeminde okunmuyordu. */
+    .download-section .section-title {
+      color: #ffffff;
+    }
+
+    .download-section .section-subtitle {
+      color: rgba(255, 255, 255, 0.92);
+    }
+    
+    .download-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      margin-top: 40px;
+    }
+    
+    .download-card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .download-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.15);
+    }
+    
+    .platform-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+    }
+    
+    .download-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+    
+    .download-card p {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+    
+    .qr-placeholder {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 20px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #596a7a;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    .download-btn {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border: 2px solid rgba(255,255,255,0.3);
+      padding: 12px 30px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      display: inline-block;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-family: inherit;
+      outline: none;
+    }
+    
+    .download-btn:focus {
+      outline: 2px solid rgba(255,255,255,0.5);
+      outline-offset: 2px;
+    }
+    
+    .download-btn:hover {
+      background: rgba(255,255,255,0.3);
+      border-color: rgba(255,255,255,0.5);
+      transform: translateY(-2px);
+    }
+    
+    .download-btn.disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    
+    .coming-soon {
+      font-size: 0.85rem;
+      opacity: 0.92;
+    }
+
+    .file-info {
+      margin-top: 10px;
+      opacity: 0.92;
+    }
+    
+    .file-info small {
+      font-size: 0.8rem;
+      margin-top: 10px;
+      font-style: italic;
+    }
+    
+    /* Footer */
+    .footer {
+      background: #2c3e50;
+      color: white;
+      padding: 40px 0;
+    }
+    
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .footer-info h4 {
+      color: #3498db;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+    
+    .team-info {
+      text-align: left;
+    }
+    
+    .team-info p {
+      margin: 8px 0;
+      opacity: 0.9;
+    }
+    
+    .footer-copyright {
+      text-align: right;
+    }
+    
+    .footer-copyright p {
+      margin: 5px 0;
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+    
+    /* Loading Screen */
+    .loading-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(255,255,255,0.3);
+      border-top: 5px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    .loading-text {
+      color: white;
+      font-size: 1.2rem;
+      margin-top: 20px;
+      text-align: center;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header-content {
+        text-align: center;
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .nny-logo img {
+        width: 100px;
+        height: 100px;
+        padding: 12px;
+      }
+      
+      .header-text h1 {
+        font-size: 2rem;
+      }
+      
+      .header-text .subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .map-container {
+        margin: 0 -20px;
+        border-radius: 0;
+        height: 60vh;
+      }
+      
+      .info-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .download-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      
+      .download-card {
+        padding: 30px 20px;
+      }
+      
+      .platform-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+      }
+      
+      .qr-placeholder {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+      }
+      
+      .team-info {
+        text-align: center;
+      }
+      
+      .footer-copyright {
+        text-align: center;
+      }
+    }
+  </style>
+
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    const serviceWorkerVersion = "1084187166" /* Flutter's service worker is deprecated and will be removed in a future Flutter release. */;
+  </script>
+  <!-- This script adds the flutter initialization JS code -->
+  <script src="flutter.js" defer></script>
+</head>
+<body>
+  <!-- Flutter Loading -->
+  <div id="loading" class="loading-container">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Kayseri Millet Bahçesi Haritası Yükleniyor...</div>
+  </div>
+  
+  <!-- Header Section -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="nny-logo">
+          <img src="https://raw.githubusercontent.com/eisildak/millet_bahcesi_map/main/assets/icons/nny_university_logo.png" 
+               alt="NNY Üniversitesi Logo" 
+               onerror="this.src='https://raw.githubusercontent.com/eisildak/millet_bahcesi_map/main/assets/icons/nny_logo.png'">
+        </div>
+        <div class="header-text">
+          <h1>Kayseri Millet Bahçesi</h1>
+          <div class="subtitle">İnteraktif Harita ve Navigasyon Rehberi</div>
+          <div class="description">
+            Nuh Naci Yazgan Üniversitesi tarafından geliştirilen modern Flutter teknolojisi ile
+            ziyaretçilere ilgi noktalarını keşfetme ve yol tarifi alma imkanı sunar.
+            Projenin altyapısı, farklı açık alanlara hızla uygulanabilecek şekilde geliştirilmiştir;
+            farklı etkinlikler ve destinasyonlar için kolayca uyarlanabilir.
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <h2 class="section-title">Uygulama Özellikleri</h2>
+      <p class="section-subtitle">
+        Kayseri Millet Bahçesi'nde unutulmaz bir deneyim yaşamanız için geliştirilmiş özellikler
+      </p>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🗺️</div>
+          <h3>İnteraktif Harita</h3>
+          <p>Google Maps entegrasyonu ile detaylı harita görünümü ve gerçek zamanlı konum takibi</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">📍</div>
+          <h3>İlgi Noktaları</h3>
+          <p>Bahçe içerisindeki önemli noktaların işaretlenmesi ve detaylı bilgileri</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <h3>Akıllı Arama</h3>
+          <p>İlgi noktalarını isim, kategori ve açıklama bazında arama, kategori filtresi</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🧭</div>
+          <h3>Navigasyon</h3>
+          <p>Yürüyerek yol tarifi ve adım adım rehberlik, mesafe hesaplama özellikleri</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>Kullanıcı Dostu</h3>
+          <p>Modern ve sezgisel arayüz tasarımı, kolay kullanım</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🌐</div>
+          <h3>Konum Servisleri</h3>
+          <p>GPS ile mevcut konum tespiti ve mesafe hesaplama</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="map-section">
+    <div class="container">
+      <div class="map-container" id="mapContainer">
+        <div class="map-header">
+          <div class="map-title">🗺️ Kayseri Millet Bahçesi Haritası</div>
+          <button class="fullscreen-btn" id="fullscreenBtn">
+            <span>⛶</span> Tam Ekran
+          </button>
+        </div>
+        <div id="flutter-map" class="map-frame"></div>
+      </div>
+      
+      <div class="info-cards">
+        <div class="info-card">
+          <h4>📍 İlgi Noktaları</h4>
+          <p>NNY Stant, Çocuk Oyun Alanı, Yürüyüş Parkuru, Bahçe Kafesi, Tesis Alanları, Süs Havuzu</p>
+        </div>
+        
+        <div class="info-card">
+          <h4>🎯 Kategoriler</h4>
+          <p>Bilgi Standı, Eğlence, Spor, Restoran, Tesis, Doğa alanları</p>
+        </div>
+        
+        <div class="info-card">
+          <h4>🚀 Teknoloji</h4>
+          <p>Flutter 3.0+, Google Maps API, GPS Konum Servisleri</p>
+        </div>
+        
+        <div class="info-card">
+          <h4>📱 Platform</h4>
+          <p>Android, iOS ve Web platformlarında çalışır</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download Section -->
+  <section class="download-section">
+    <div class="container">
+      <h2 class="section-title">Mobil Uygulamayı İndirin</h2>
+      <p class="section-subtitle">
+        Kayseri Millet Bahçesi harita uygulamasını mobil cihazınıza indirin ve her zaman yanınızda taşıyın
+      </p>
+      
+      <div class="download-grid">
+        <!-- Android APK -->
+        <div class="download-card">
+          <div class="platform-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="#A4C639">
+              <path d="M17.523,15.3414c-0.5665,0-1.0233-0.4568-1.0233-1.0233s0.4568-1.0233,1.0233-1.0233 s1.0233,0.4568,1.0233,1.0233S18.0895,15.3414,17.523,15.3414z M6.477,15.3414c-0.5665,0-1.0233-0.4568-1.0233-1.0233 s0.4568-1.0233,1.0233-1.0233s1.0233,0.4568,1.0233,1.0233S7.0435,15.3414,6.477,15.3414z M12,2.8594 c-0.0896,0-0.1792,0.0224-0.2687,0.0672L6.5313,5.1875c-0.1791,0.0896-0.2687,0.2687-0.2687,0.4478v6.7031 c0,1.7911,1.4588,3.25,3.25,3.25h5.4375c1.7911,0,3.25-1.4589,3.25-3.25V5.6353c0-0.1791-0.0896-0.358-0.2687-0.4478 l-5.2-2.26C12.1792,2.8818,12.0896,2.8594,12,2.8594z"/>
+            </svg>
+          </div>
+          <h3>Android APK</h3>
+          <p>Android cihazlar için optimize edilmiş uygulama. Doğrudan APK dosyasını indirerek kurulum yapabilirsiniz.</p>
+          
+          <div class="qr-placeholder" id="androidQR">
+            <div class="qr-code-container">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=8&data=https%3A%2F%2Feisildak.github.io%2Ferol_isildak_webSite%2Fapp%2Fandroid%2Fnny-map.apk" 
+          alt="Android APK QR Kod" style="width: 100%; height: 100%; border-radius: 8px;">
+            </div>
+          </div>
+          
+          <a class="download-btn" 
+             id="androidDownloadBtn"
+             href="https://eisildak.github.io/erol_isildak_webSite/app/android/nny-map.apk" 
+             target="_blank" rel="noopener">
+            📥 Android APK İndir (v1.1.0)
+          </a>
+          <div class="file-info">
+            <small>📊 Dosya Boyutu: ~55MB | 📱 Android 7.0+</small>
+          </div>
+        </div>
+        
+        <!-- iOS IPA -->
+        <div class="download-card">
+          <div class="platform-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="#000000">
+              <path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z"/>
+            </svg>
+          </div>
+          <h3>iOS IPA</h3>
+          <p>iOS test sürümü (Ad Hoc). QR kodu iPhone kamerasıyla okutun, açılan sayfada Safari ile "Şimdi Yükle"ye dokunun.</p>
+          
+          <div class="qr-placeholder" id="iosQR">
+            <div class="qr-code-container">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=8&data=https%3A%2F%2Feisildak.github.io%2Ferol_isildak_webSite%2Finstall.html%3Fapp%3Dnny-map"
+          alt="iOS kurulum QR Kod" style="width: 100%; height: 100%; border-radius: 8px;">
+            </div>
+          </div>
+          
+          <a class="download-btn"
+             id="iosDownloadBtn"
+             href="https://eisildak.github.io/erol_isildak_webSite/install.html?app=nny-map"
+             target="_blank" rel="noopener">
+            📥 iOS'a Yükle (v1.1.0)
+          </a>
+          <div class="file-info">
+            <small>📱 iOS 15.0+ | Yalnızca geliştirici hesabına kayıtlı iPhone'lar</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-info">
+          <h4>Proje Ekibi</h4>
+          <div class="team-info">
+            <p><strong>📋 Hazırlayan:</strong> Erol IŞILDAK</p>
+            <p><strong>👨‍🏫 Danışman:</strong> Öğr.Gör. Gülsüm KEMERLİ</p>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          <p>&copy; 2026 Nuh Naci Yazgan Üniversitesi</p>
+          <p>Tüm hakları saklıdır.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // APK Download Function
+    function downloadAPK() {
+      // APK dosyasının doğrudan linkini buraya koyun
+      const apkUrl = 'https://eisildak.github.io/erol_isildak_webSite/app/android/nny-map.apk';
+      
+      // Alternatif olarak external link
+      // const apkUrl = 'https://your-direct-download-link.com/app-release.apk';
+      
+      const a = document.createElement('a');
+      a.href = apkUrl;
+      a.download = 'kayseri-millet-bahcesi.apk';
+      a.target = '_blank';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+    
+    // Hide loading screen after 3 seconds regardless
+    setTimeout(function() {
+      document.getElementById('loading').style.display = 'none';
+    }, 3000);
+
+    // Flutter App Initialization
+    window.addEventListener('load', function(ev) {
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine({
+            hostElement: document.getElementById('flutter-map')
+          }).then(function(appRunner) {
+            return appRunner.runApp();
+          }).then(function() {
+            // Flutter app yüklendi, loading'i gizle
+            document.getElementById('loading').style.display = 'none';
+          });
+        }
+      });
+    });
+    
+    // Fullscreen functionality
+    document.getElementById('fullscreenBtn').addEventListener('click', function() {
+      const mapContainer = document.getElementById('mapContainer');
+      const btn = this;
+      
+      if (!mapContainer.classList.contains('fullscreen')) {
+        mapContainer.classList.add('fullscreen');
+        btn.innerHTML = '<span>⛶</span> Çık';
+      } else {
+        mapContainer.classList.remove('fullscreen');
+        btn.innerHTML = '<span>⛶</span> Tam Ekran';
+      }
+    });
+    
+    // ESC key to exit fullscreen
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const mapContainer = document.getElementById('mapContainer');
+        const btn = document.getElementById('fullscreenBtn');
+        if (mapContainer.classList.contains('fullscreen')) {
+          mapContainer.classList.remove('fullscreen');
+          btn.innerHTML = '<span>⛶</span> Tam Ekran';
+        }
+      }
+    });
+  </script>
+</body>
+</html>

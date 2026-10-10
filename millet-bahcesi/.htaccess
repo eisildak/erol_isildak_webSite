@@ -1,0 +1,14 @@
+# MIME type for APK files
+AddType application/vnd.android.package-archive .apk
+
+# Enable RewriteEngine
+RewriteEngine On
+
+# Allow direct access to app-release.apk
+RewriteCond %{REQUEST_URI} ^/app-release\.apk$ [NC]
+RewriteRule ^ - [L]
+
+# Rewrite all other requests to index.html for SPA
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]
