@@ -29,6 +29,7 @@ fi
 EXCLUDES=(
   "--exclude-glob .git/"
   "--exclude-glob node_modules/"
+  "--exclude-glob .playwright-mcp/"
   "--exclude-glob reports/"
   "--exclude-glob .gitignore"
   "--exclude-glob .gitattributes"
