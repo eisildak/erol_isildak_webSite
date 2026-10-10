@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# npm run deploy:plesk.  YL_-V043@u=lKe0q
+# npm run deploy:plesk  (şifre .env.local içinde: PLESK_PASS)
 
 set -euo pipefail
 
