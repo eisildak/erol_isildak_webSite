@@ -908,15 +908,7 @@ function initLegacyHashRedirects() {
     }
 }
 
-function initDomainRedirect() {
-    if (window.location.hostname === "eisildak.github.io") {
-        const target = "https://erolisildak.com" + window.location.pathname + window.location.hash;
-        window.location.replace(target);
-    }
-}
-
 document.addEventListener("DOMContentLoaded", () => {
-    initDomainRedirect();
     initLegacyHashRedirects();
     initMobileMenu();
     initLanguage();
