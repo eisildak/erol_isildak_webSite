@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://erolisildak.com/sitemap.xml
+Sitemap: https://www.erolisildak.online/sitemap.xml
