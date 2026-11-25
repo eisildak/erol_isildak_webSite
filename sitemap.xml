@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.erolisildak.online/index.html</loc>
+    <loc>http://www.erolisildak.online/index.html</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.erolisildak.online/experience.html</loc>
+    <loc>http://www.erolisildak.online/experience.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.erolisildak.online/education.html</loc>
+    <loc>http://www.erolisildak.online/education.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.erolisildak.online/projects.html</loc>
+    <loc>http://www.erolisildak.online/projects.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.erolisildak.online/apps.html</loc>
+    <loc>http://www.erolisildak.online/apps.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.erolisildak.online/links.html</loc>
+    <loc>http://www.erolisildak.online/links.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.erolisildak.online/contact.html</loc>
+    <loc>http://www.erolisildak.online/contact.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.erolisildak.online/beacon-privacy.html</loc>
+    <loc>http://www.erolisildak.online/beacon-privacy.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://www.erolisildak.online/install.html</loc>
+    <loc>http://www.erolisildak.online/install.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
