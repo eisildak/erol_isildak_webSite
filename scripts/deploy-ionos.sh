@@ -39,14 +39,13 @@ EXCLUDES=(
 EXCLUDE_ARGS="$(printf '%s ' "${EXCLUDES[@]}")"
 
 echo "Deploying to IONOS host: $IONOS_HOST"
-echo "Targets: / and /erolisildak.com/"
+echo "Target: /"
 
 lftp -u "${IONOS_USER},${IONOS_PASS}" "sftp://${IONOS_HOST}" -e "
 set sftp:auto-confirm yes;
 lcd ${REPO_ROOT};
 mirror -R --verbose ${EXCLUDE_ARGS} ./ /;
-mirror -R --verbose ${EXCLUDE_ARGS} ./ /erolisildak.com/;
 bye
 "
 
-echo "Deploy completed for both targets."
+echo "Deploy completed."
